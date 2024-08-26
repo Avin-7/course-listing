@@ -1,0 +1,21 @@
+to see which files are changed 
+git status
+
+
+//steps to push the code/////
+
+step 1:
+to confirm the changes
+git add file-name
+
+to confirm changes of all files
+git add .
+
+
+step 2:
+to give a commit message, message should have the updates or changes made in the file
+git commit -m "message here"
+
+step 3:
+to push the code to github
+git push origin main
