@@ -2,7 +2,9 @@ import React from "react";
 
 function Courses() {
   return (
-    <div>{/*remove these curly braces and comment then code here  */}</div>
+    <div className=" bg-slate-100">
+      <h1 className=" text-center font-bold text-3xl pt-14">Courses</h1>
+    </div>
   );
 }
 

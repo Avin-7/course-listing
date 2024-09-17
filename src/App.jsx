@@ -1,14 +1,12 @@
 import "./App.css";
-import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar"
-import Courses from "./components/Courses/Courses"
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Courses />
+      <Home />
     </>
   );
 }
