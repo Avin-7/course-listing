@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <div>
       {/*remove these curly braces and comment then code here  */}
-      <h1>navbar branch created</h1>
+      <h1>Navbar</h1>
     </div>
   );
 }
