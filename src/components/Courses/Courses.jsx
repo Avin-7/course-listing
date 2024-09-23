@@ -7,11 +7,11 @@ function Courses() {
       {/* From here search options starts */}
       <div>
         <div>
-          <div className=" flex justify-center align-middle mt-5 ">
+          <div className=" flex justify-center align-middle mt-5 max-lg:flex-wrap gap-2">
             <button className=" px-3 py-3 rounded-sm bg-purple-300 hover:bg-gray-200 transition  text-black mx-2 ">
               HTML
             </button>
-            <button className=" px-3 py-3 rounded-sm bg-purple-300 hover:bg-purple-200 transition  text-black mx-2">
+            <button className=" px-3 py-3 max-lg:px-2 max-lg:py-1 rounded-sm bg-purple-300 hover:bg-purple-200 transition text-black mx-2">
               CSS
             </button>
             <button className=" px-3 py-3 rounded-sm bg-purple-300 hover:bg-gray-200 transition  text-black mx-2">
