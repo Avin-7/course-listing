@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-screen bg-white h-20 flex items-center justify-between border-b-2">
+      <nav className="w-full bg-white h-20 flex items-center justify-between border-b-2">
         <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-inter">
           DotLib
         </h1>
