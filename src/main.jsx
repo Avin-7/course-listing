@@ -7,6 +7,7 @@ import Home from "./components/Home/Home.jsx";
 import Login from "./components/Login/Login.jsx";
 import Signup from "./components/Signup/Signup.jsx";
 import Admin from "./components/Admin/Admin.jsx";
+import conf from "./conf/conf.js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       {
-        path: "/admin",
+        path: conf.adminRouteLink,
         element: <Admin />,
       },
     ],
