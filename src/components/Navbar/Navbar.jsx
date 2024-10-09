@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { IoMenu } from "react-icons/io5"; 
+import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { useNavigate, Link } from "react-router-dom";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
+
+  // this below code is defining useNavigate hook to navigate user
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -12,81 +16,87 @@ function Navbar() {
           DotLib
         </h1>
 
-        { /* nav list start here */ }
+        {/* nav list start here */}
         <div className="text-black hidden text-xl lg:block font-Poppins">
           <a href="#" className="mr-4 hover:text-cyan-500">
             Home
           </a>
-          <a href="#" className="mr-4 hover:text-cyan-500">
+          <a href="#courses" className="mr-4 hover:text-cyan-500">
             Courses
           </a>
           <a href="#" className="mr-4 hover:text-cyan-500">
             Wishlist
           </a>
           <a href="#" className="mr-4 hover:text-cyan-500">
-            About us
+            About
           </a>
           <a href="#" className="mr-4 hover:text-cyan-500">
-            log in
+            Login
           </a>
         </div>
-        {/*nav list ends here */ }
+        {/*nav list ends here */}
 
         {/*  hamburger starts here*/}
 
-        <div className="lg:hidden" onClick={()=>setShowLinks(!showLinks)}>
-        <IoMenu size={40}/>
+        <div className="lg:hidden" onClick={() => setShowLinks(!showLinks)}>
+          <IoMenu size={40} />
         </div>
-        { /* hamburger ends here */}
+        {/* hamburger ends here */}
 
         {/* <!-- create account button statrs here --> */}
         <div className="hidden lg:block bg-cyan-600 p-3 text-white rounded-lg mr-5 font-inter">
           <button>Create new account</button>
         </div>
-        { /*create account button ends here */}
+        {/*create account button ends here */}
 
-        { /*navbar for smaller devices */}
+        {/*navbar for smaller devices */}
         {showLinks ? (
-          <div
-            id="toggleMenue"
-            className=" bg-white fixed inset-0 lg:hidden">
+          <div id="toggleMenue" className=" bg-white fixed inset-0 lg:hidden">
             <div className="w-full h-20 bg-white  flex items-center justify-between border-b-2">
               <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-inter">
                 DotLib
               </h1>
-              <div className="lg:block" onClick={() => setShowLinks(!showLinks)}>
-              <RxCross2 size={40}/>
+              <div
+                className="lg:block"
+                onClick={() => setShowLinks(!showLinks)}
+              >
+                <RxCross2 size={40} />
               </div>
             </div>
             <div className="mt-6">
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Home
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Courses
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Wishlist
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 About us
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)} >
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 log in
               </a>
             </div>
@@ -98,7 +108,7 @@ function Navbar() {
         ) : null}
         {/*navbar for smaller devices*/}
       </nav>
-      { /*navbar ends here*/}
+      {/*navbar ends here*/}
     </div>
   );
 }
