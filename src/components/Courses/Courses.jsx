@@ -204,6 +204,8 @@ function Courses() {
         {""}
         {/* Course display layout starts from here */}
         <div className="">{loading ? <SkeletonCard /> : <Card />}</div>
+
+       <Card />
       </div>
     </div>
   );
