@@ -94,7 +94,7 @@ function Courses() {
         return (
           <button
             key={Math.random()}
-            className="bg-transparent bg-gradient-to-tr from-purple-300 to-purple-400 px-4 py-2 rounded-md text-left"
+            className="bg-transparent bg-gradient-to-tr from-purple-300 to-purple-400 px-4 py-2 m-1 rounded-md text-left"
           >
             {query}
           </button>
@@ -148,8 +148,8 @@ function Courses() {
         {""}
         {""}
         {/* Search bar starts from here  */}
-        <div>
-          <div className=" flex justify-center align-middle mt-6">
+        <div className=" grid grid-rows-1 place-content-center mt-10 ">
+          <div className="flex align-middle justify-center mb-2">
             <input
               type="text"
               name="search"
@@ -175,21 +175,22 @@ function Courses() {
           Search Suggestions panel code starts from here
           ************************************************
           */}
-
-          {searchQuery ? (
-            <div className="absolute left-96 flex flex-col z-10 gap-2  ml-[4.25rem] p-2 w-96 min-h-10 mt-1 text-black bg-white rounded-b-lg rounded-t-md transition-transform ease-in-out">
-              {suggestions.length > 0 ? (
-                displaySuggestions()
-              ) : (
-                <button
-                  key={Date.now()}
-                  className="bg-transparent bg-gradient-to-tr from-purple-300 to-purple-400 px-4 py-2 rounded-md text-left"
-                >
-                  No results found
-                </button>
-              )}
-            </div>
-          ) : null}
+          <div className="flex flex-col align-middle justify-center">
+            {searchQuery ? (
+              <div className="flex flex-col text-black bg-violet-100 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
+                {suggestions.length > 0 ? (
+                  displaySuggestions()
+                ) : (
+                  <button
+                    key={Date.now()}
+                    className="bg-transparent bg-gradient-to-tr from-purple-200 to-purple-300 rounded-md px-4 py-2 m-1  text-left"
+                  >
+                    No results found
+                  </button>
+                )}
+              </div>
+            ) : null}
+          </div>
 
           {/* 
           ************************************************

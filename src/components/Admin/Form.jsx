@@ -33,6 +33,23 @@ function Form({ formToAdmin, showAddCourseForm }) {
     console.log(data);
     console.log("data added");
   };
+  const validateData = () => {
+    if (
+      name &&
+      description &&
+      category &&
+      keywords &&
+      courseLink &&
+      uploadedOn &&
+      duration &&
+      author &&
+      platform
+    ) {
+      
+    } else {
+      console.log("Invalid data");
+    }
+  };
 
   return (
     <div className="">
