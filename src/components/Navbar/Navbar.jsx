@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { IoMenu } from "react-icons/io5"; 
+import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { useNavigate, Link } from "react-router-dom";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
+
+  // this below code is defining useNavigate hook to navigate user
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -12,40 +16,45 @@ function Navbar() {
           DotLib
         </h1>
 
-        { /* nav list start here */ }
+        {/* nav list start here */}
         <div className="text-black hidden text-xl lg:block font-Poppins">
           <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
             HOME
           </a>
           <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
             COURSES
+
           </a>
           <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
             WISHLIST
           </a>
+
           <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
             ABOUT US
           </a>
           <a href="#" className=" text-slate-100 mr-4 hover:text-cyan-500">
             LOG IN
           </a>
+          
         </div>
-        {/*nav list ends here */ }
+        {/*nav list ends here */}
 
         {/*  hamburger starts here*/}
 
+
         <div className="lg:hidden" onClick={()=>setShowLinks(!showLinks)}>
         <IoMenu size={40} color="white"/>
+
         </div>
-        { /* hamburger ends here */}
+        {/* hamburger ends here */}
 
         {/* <!-- create account button statrs here --> */}
         <div className="hidden lg:block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-white rounded-lg mr-5 font-Poppins">
           <button>Create new account</button>
         </div>
-        { /*create account button ends here */}
+        {/*create account button ends here */}
 
-        { /*navbar for smaller devices */}
+        {/*navbar for smaller devices */}
         {showLinks ? (
           <div
             id="toggleMenue"
@@ -62,31 +71,36 @@ function Navbar() {
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Home
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Courses
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 Wishlist
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)}>
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 About us
               </a>
               <a
                 href="#"
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 font-medium font-inter block"
-                onClick={()=>setShowLinks(!showLinks)} >
+                onClick={() => setShowLinks(!showLinks)}
+              >
                 log in
               </a>
             </div>
@@ -98,7 +112,7 @@ function Navbar() {
         ) : null}
         {/*navbar for smaller devices*/}
       </nav>
-      { /*navbar ends here*/}
+      {/*navbar ends here*/}
     </div>
   );
 }
