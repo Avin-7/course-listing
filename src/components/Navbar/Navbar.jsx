@@ -11,56 +11,60 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full bg-white h-20 flex items-center justify-between border-b-2">
-        <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-inter">
+      <nav className="w-full bg-slate-950 h-20 flex items-center justify-between border-b-2">
+        <h1 className=" text-3xl text-slate-100 p-5 font-semibold ml-5 font-inter">
           DotLib
         </h1>
 
         {/* nav list start here */}
         <div className="text-black hidden text-xl lg:block font-Poppins">
-          <a href="#" className="mr-4 hover:text-cyan-500">
-            Home
+          <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
+            HOME
           </a>
-          <a href="#courses" className="mr-4 hover:text-cyan-500">
-            Courses
+          <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
+            COURSES
+
           </a>
-          <a href="#" className="mr-4 hover:text-cyan-500">
-            Wishlist
+          <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
+            WISHLIST
           </a>
-          <a href="#" className="mr-4 hover:text-cyan-500">
-            About
+
+          <a href="#" className="text-slate-100 mr-4 hover:text-cyan-500">
+            ABOUT US
           </a>
-          <a href="#" className="mr-4 hover:text-cyan-500">
-            Login
+          <a href="#" className=" text-slate-100 mr-4 hover:text-cyan-500">
+            LOG IN
           </a>
+          
         </div>
         {/*nav list ends here */}
 
         {/*  hamburger starts here*/}
 
-        <div className="lg:hidden" onClick={() => setShowLinks(!showLinks)}>
-          <IoMenu size={40} />
+
+        <div className="lg:hidden" onClick={()=>setShowLinks(!showLinks)}>
+        <IoMenu size={40} color="white"/>
+
         </div>
         {/* hamburger ends here */}
 
         {/* <!-- create account button statrs here --> */}
-        <div className="hidden lg:block bg-cyan-600 p-3 text-white rounded-lg mr-5 font-inter">
+        <div className="hidden lg:block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-white rounded-lg mr-5 font-Poppins">
           <button>Create new account</button>
         </div>
         {/*create account button ends here */}
 
         {/*navbar for smaller devices */}
         {showLinks ? (
-          <div id="toggleMenue" className=" bg-white fixed inset-0 lg:hidden">
-            <div className="w-full h-20 bg-white  flex items-center justify-between border-b-2">
-              <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-inter">
+          <div
+            id="toggleMenue"
+            className=" bg-white fixed inset-0 lg:hidden">
+            <div className="w-full h-20 bg-slate-950  flex items-center justify-between border-b-2">
+              <h1 className=" text-3xl text-white p-5 font-semibold ml-5 font-inter">
                 DotLib
               </h1>
-              <div
-                className="lg:block"
-                onClick={() => setShowLinks(!showLinks)}
-              >
-                <RxCross2 size={40} />
+              <div className="lg:block" onClick={() => setShowLinks(!showLinks)}>
+              <RxCross2 size={40} color="white"/>
               </div>
             </div>
             <div className="mt-6">
