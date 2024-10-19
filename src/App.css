@@ -26,13 +26,12 @@ body
     overflow: hidden;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.9);
     margin: 20px;
-    
 
 }
 .card img
 {
     width: 100%;
-    height: auto;
+    height: 250px;
     padding: 0;
 }
 
