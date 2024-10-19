@@ -3,7 +3,27 @@ import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
 import { RxMagnifyingGlass } from "react-icons/rx";
 function Courses() {
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([
+    {
+      title: "Dummy title",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
+      image:
+        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
+    },
+    {
+      title: "Dummy title",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
+      image:
+        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
+    },
+    {
+      title: "Dummy title",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
+      image:
+        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
+    },
+  ]);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -159,7 +179,7 @@ function Courses() {
                 setSearchQuery(e.target.value);
               }}
               placeholder="Enter Keywords"
-              className="w-96 border border-purple-500 outline-1 outline-purple-800 py-3 px-2 rounded-lg rounded-tr-none rounded-ee-none bg-gray-50 text-black my-0"
+              className="w-96 max-lg:w-72 max-md:w-60 border border-purple-500 outline-1 outline-purple-800 py-3 px-2 rounded-lg rounded-tr-none rounded-ee-none bg-gray-50 text-black my-0"
             />
             <button
               onClick={() => {
@@ -175,9 +195,9 @@ function Courses() {
           Search Suggestions panel code starts from here
           ************************************************
           */}
-          <div className="flex flex-col align-middle justify-center">
+          <div className="flex  flex-col relative align-middle justify-center">
             {searchQuery ? (
-              <div className="flex flex-col text-black bg-violet-100 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
+              <div className="flex flex-col absolute top-1 w-full text-black bg-violet-100 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
                 {suggestions.length > 0 ? (
                   displaySuggestions()
                 ) : (
@@ -203,9 +223,23 @@ function Courses() {
         {""}
         {""}
         {/* Course display layout starts from here */}
-        <div className="">{loading ? <SkeletonCard /> : <Card />}</div>
-
-       <Card />
+        <div className="">
+          {loading ? (
+            <SkeletonCard />
+          ) : (
+            <div>
+              <div className=" grid grid-cols-3 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
+                {data.map((course) => {
+                  return (
+                    <div>
+                      <Card course={course} />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
