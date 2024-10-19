@@ -8,6 +8,9 @@ import Login from "./components/Login/Login.jsx";
 import Signup from "./components/Signup/Signup.jsx";
 import Admin from "./components/Admin/Admin.jsx";
 import conf from "./conf/conf.js";
+import Wishlist from "./components/Wishlist/Wishlist.jsx";
+import AboutUs from "./components/About/AboutUs.jsx";
+import Courses from "./components/Courses/Courses.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,12 +21,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/courses",
+        element: <Courses />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
       },
       {
         path: conf.adminRouteLink,
