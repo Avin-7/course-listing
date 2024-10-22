@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -63,4 +64,130 @@ body
 {
     margin-top: 10px;
     margin-left: 90%;
+}
+
+/* sign-up */
+
+input[type="email"],input[type="password"],input[type='text']
+{
+ border-bottom:1px solid black;
+ width: 90%;
+ outline: none;
+ margin-bottom: 5px;
+}
+img{
+ border-radius: 5px 0px 0px 5px;
+ height: 100%;
+}
+.sign_in_btn
+{
+ width: 90%;
+ margin-top: 20px;
+ background-color: rgb(17, 114, 153);
+ color: white;
+ padding: 8px;
+ background-color: rgb(33, 33, 173);
+ 
+}
+.hyper{
+ margin-top: 50px;
+}
+#col{
+ /* background-color: red; */
+ width: 100%;
+
+}
+#container_sign_up{
+ width: 28%;
+ height: 60%;
+ border-radius: 30px;
+ box-shadow: 1px 1px 4px 0px black;
+}
+
+.b1{
+     background: rgb(33, 33, 173);
+     border: 1px solid black;
+     padding: 5px;
+     width: 30%;
+     margin-left: 20px;  
+}
+.b2{
+ background: #fff;
+ border: 1px solid rgb(255, 255, 255);
+ padding: 5px;
+ margin: 35px;
+ width: 180px;
+ display: flex;
+ box-shadow: 1px 1px 4px 0px black;
+ border-radius: 7px;
+ margin-left: 60px;
+ position: relative;
+ bottom: 20px;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.h11{
+ margin-left: 65px;
+ width: 73%;
+ font-family: "Pacifico", cursive;
+ font-weight: 400;
+ font-style: normal;
+ font-size: 40px;
+ padding-bottom: 50px;
+}
+span{
+ padding-left: 4px;
+}
+
+form{
+ width: 150%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+form .option{
+ color: #5a5a5a;
+ font-weight: bold;
+ margin: 10px 0;
+ position: relative;
+ margin-left: 41%;
+ margin-right: 50%;
+}
+form .option:before{
+ position:absolute;
+ content: '';
+ background:#b6b6b6;
+ width: 124px;
+ height: 2px;
+ right: 46px;
+ top: 11px;
+ border-radius: 10px;
+}
+form .option:after{
+ position:absolute;
+ content: '';
+ background:#b6b6b6;
+ width: 126px;
+ height: 2px;
+ left: 40px;
+ top: 11px;
+ border-radius: 10px;
+}
+.sign_up {
+ color: #b6b6b6;
+ margin-left: 90px;
+ margin-bottom: 10px;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.sign_up a{
+ color: blue;
+ 
+}
+#input_container  ,#input_container2,#input_container1
+{
+ font-family: Georgia, 'Times New Roman', Times, serif;
+ font-weight: bold;
+ padding: 2px;
+}
+.sign_in_btn:hover{
+ background-color: rgb(30, 30, 138);
 }
