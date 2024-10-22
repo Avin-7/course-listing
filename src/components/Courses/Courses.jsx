@@ -22,6 +22,12 @@ function Courses() {
       image:
         "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
     },
+    {
+      title: "Dummy title",
+      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
+      image:
+        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
+    },
   ]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -135,7 +141,9 @@ function Courses() {
 
   return (
     <div id="courses" className=" bg-gray-50 min-h-96 font-poppins  max-sm:8">
-      <h1 className=" text-center font-bold text-3xl pt-14">Courses</h1>
+      <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-blue-600">
+        What would you like to learn?
+      </h1>
       {/* From here search options starts */}
       <div>
         <div>
@@ -228,10 +236,10 @@ function Courses() {
             <SkeletonCard />
           ) : (
             <div>
-              <div className=" grid grid-cols-3 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
+              <div className=" grid grid-cols-4 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
                 {data.map((course) => {
                   return (
-                    <div>
+                    <div key={Math.random()}>
                       <Card course={course} />
                     </div>
                   );

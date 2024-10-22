@@ -24,7 +24,7 @@ function Card({ course }) {
             <p className=" my-1">
              {course.desc}
             </p>
-            <div className="flex justify-end ml-40 rounded-lg mt-4 px-4 py-3 bg-purple-400 hover:animate-vibrate ease-in-out transition">
+            <div className="flex justify-end ml-36 rounded-lg mt-4 px-4 py-3 bg-purple-400 hover:animate-vibrate ease-in-out transition">
               <button className=" tracking-tight text-md">View more</button>
               <RxArrowTopRight className="mt-0.5 ml-0.5 text-xl " />
             </div>

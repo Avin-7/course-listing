@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import service from "../../appwrite/config";
 function Form({ formToAdmin, showAddCourseForm }) {
   /**
    **States which manages the form inputs....
@@ -7,32 +7,52 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [keywords, setKeywords] = useState("");
-  const [courseLink, setCourseLink] = useState("");
-  const [uploadedOn, setUploadedOn] = useState("");
+  const [keywords, setKeywords] = useState([]);
+  const [link, setLink] = useState("");
+  const [uploaded, setUploaded] = useState("");
   const [duration, setDuration] = useState("");
   const [author, setAuthor] = useState("");
   const [platform, setPlatform] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState(0);
 
   /**
    **Submit button handler function....
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       name,
       description,
       category,
       keywords,
-      courseLink,
-      uploadedOn,
+      link,
+      uploaded,
       duration,
       author,
       platform,
+      price,
+      image,
     };
-    console.log(data);
+
+    const res = await service.uploadData({
+      name,
+      description,
+      platform,
+      author,
+      price,
+      category,
+      link,
+      image,
+      uploaded,
+      duration,
+      keywords,
+    });
+
+    console.log(res);
     console.log("data added");
   };
+
   const validateData = () => {
     if (
       name &&
@@ -45,7 +65,6 @@ function Form({ formToAdmin, showAddCourseForm }) {
       author &&
       platform
     ) {
-      
     } else {
       console.log("Invalid data");
     }
@@ -93,13 +112,29 @@ function Form({ formToAdmin, showAddCourseForm }) {
             placeholder="eg: frontend/database/fullstack"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
+          <label className="mt-2 mb-0 ">Enter price</label>
+          <input
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="eg: 0/199"
+            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+          />
+          <label className="mt-2 mb-0 ">Enter image</label>
+          <input
+            type="file"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            placeholder="eg: .jpg/.png"
+            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+          />
         </div>
         <div className=" flex flex-col w-[48%]">
           <label className="mt-2 mb-0 ">Enter course link </label>
           <input
             type="text"
-            value={courseLink}
-            onChange={(e) => setCourseLink(e.target.value)}
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
             placeholder="eg:www.udemy.com/webdev-course/"
             className=" py-2 mb-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
@@ -107,8 +142,8 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter uploaded date </label>
           <input
             type="text"
-            value={uploadedOn}
-            onChange={(e) => setUploadedOn(e.target.value)}
+            value={uploaded}
+            onChange={(e) => setUploaded(e.target.value)}
             placeholder="eg:12/02/2023"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />

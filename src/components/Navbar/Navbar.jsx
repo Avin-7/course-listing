@@ -11,42 +11,39 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full bg-slate-950 h-20 flex items-center justify-between border-b-2">
+      <nav className="w-full bg-white  h-20 flex items-center justify-between border-b-2">
         <Link to={"/"}>
-          <h1 className=" text-3xl text-slate-100 p-5 font-semibold ml-5 font-inter">
+          <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-test bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
         </Link>
 
         {/* nav list start here */}
-        <div className="text-black hidden text-xl lg:block font-Poppins">
-          <Link to={"/"} className="text-slate-100 mr-4 hover:text-cyan-500">
-            HOME
+        <div className="text-black hidden text-lg lg:block font-poppins">
+          <Link to={"/"} className="text-black mr-4 hover:text-purple-600 ">
+            Home
           </Link>
           <Link
             to={"/courses"}
-            className="text-slate-100 mr-4 hover:text-cyan-500"
+            className="text-black mr-4 hover:text-purple-600"
           >
-            COURSES
+            Courses
           </Link>
           <Link
             to={"/wishlist"}
-            className="text-slate-100 mr-4 hover:text-cyan-500"
+            className="text-black mr-4 hover:text-purple-600"
           >
-            WISHLIST
+            Wishlist
           </Link>
 
-          <Link
-            to={"/about"}
-            className="text-slate-100 mr-4 hover:text-cyan-500"
-          >
-            ABOUT US
+          <Link to={"/about"} className="text-black mr-4 hover:text-purple-600">
+            About
           </Link>
           <Link
             to={"/login"}
-            className=" text-slate-100 mr-4 hover:text-cyan-500"
+            className=" text-black mr-4 hover:text-purple-600 ease-in-out transition"
           >
-            LOG IN
+            Login
           </Link>
         </div>
         {/*nav list ends here */}
