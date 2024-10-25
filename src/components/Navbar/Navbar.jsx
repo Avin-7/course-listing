@@ -56,9 +56,9 @@ function Navbar() {
         {/* hamburger ends here */}
 
         {/* <!-- create account button statrs here --> */}
-        <div className="hidden lg:block bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-white rounded-lg mr-5 font-Poppins">
+        <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
           <Link to={"/signup"}>
-            <button>Create new account</button>
+            <button className="rounded-xl font-medium btn-hover color-7">Create new account</button>
           </Link>
         </div>
         {/*create account button ends here */}

@@ -8,6 +8,42 @@ body
 {
     background-color: #f0f0f0;
 }
+/* signup button  */
+
+.btn-hover {
+    width: 200px;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-7 {
+    background-image: linear-gradient(to right, #A568FF, #BC29EC, #55B3FF, #5460F9);
+    box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 0.75);
+}
 
 .container
 {

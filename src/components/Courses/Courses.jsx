@@ -141,7 +141,7 @@ function Courses() {
 
   return (
     <div id="courses" className=" bg-gray-50 min-h-96 font-poppins  max-sm:8">
-      <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-r from-blue-950 to-blue-600">
+      <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr from-blue-900 via-purple-500 to-blue-700">
         What would you like to learn?
       </h1>
       {/* From here search options starts */}
