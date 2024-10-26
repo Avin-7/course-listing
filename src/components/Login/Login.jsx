@@ -1,4 +1,5 @@
 import React from 'react'
+import Google from "../../assets/Google.png";
 
 function Login() {
   return (
@@ -27,7 +28,7 @@ function Login() {
           </div>
           <div className="option2">OR</div>
             <button className="b2">
-              <img src="G.png" alt="" className="size-5"/>
+              <img src={Google} alt="" className="size-5"/>
               <span className="">Sign in  with Google</span>
             </button>
             <div className="sign_up">
