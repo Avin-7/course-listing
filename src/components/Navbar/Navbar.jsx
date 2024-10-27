@@ -2,17 +2,28 @@ import React, { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { useNavigate, Link } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
+import { logout as authLogout } from "../../store/authSlice";
+import authService from "../../appwrite/auth";
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
-
+  var authStatus = useSelector((state) => state.auth.status);
   // this below code is defining useNavigate hook to navigate user
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logoutUser = async () => {
+    try {
+      const res = await authService.logout();
+      dispatch(authLogout(res));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div>
-      <nav className="w-full bg-white  h-20 flex items-center justify-between border-b-2">
-        <Link to={"/"}>
+      <nav className="w-full h-20 flex items-center justify-between border-b-2">
+        <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-test bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
@@ -39,12 +50,14 @@ function Navbar() {
           <Link to={"/about"} className="text-black mr-4 hover:text-purple-600">
             About
           </Link>
-          <Link
-            to={"/login"}
-            className=" text-black mr-4 hover:text-purple-600 ease-in-out transition"
-          >
-            Login
-          </Link>
+          {!authStatus ? (
+            <Link
+              to={"/login"}
+              className=" text-black mr-4 hover:text-purple-600 ease-in-out transition"
+            >
+              Login
+            </Link>
+          ) : null}
         </div>
         {/*nav list ends here */}
 
@@ -57,9 +70,20 @@ function Navbar() {
 
         {/* <!-- create account button statrs here --> */}
         <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
-          <Link to={"/signup"}>
-            <button className="rounded-xl font-medium btn-hover color-7">Create new account</button>
-          </Link>
+          {authStatus ? (
+            <button
+              className="rounded-xl font-medium px-6 py-3 border-2 border-purple-500 bg-purple-500 hover:border-none text-white"
+              onClick={() => logoutUser()}
+            >
+              Sign out
+            </button>
+          ) : (
+            <Link to={"/signup"}>
+              <button className="rounded-xl font-medium btn-hover-animation color-7">
+                Create new account
+              </button>
+            </Link>
+          )}
         </div>
         {/*create account button ends here */}
 
