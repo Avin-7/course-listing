@@ -9,6 +9,8 @@ export default {
       fontFamily: {
         test: ["Playwrite TZ"],
         poppins: ["Poppins", "sans-serif"],
+        roboto:["Roboto","sans-serif"],
+
       },
       animation: {
         'pulsate': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

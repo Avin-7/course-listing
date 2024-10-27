@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import tum from "../../assets/tum.jpg";
 import { RxHeart, RxHeartFilled, RxArrowTopRight } from "react-icons/rx";
 
+
 function Card({ course }) {
   const [wishlist, setWishlist] = useState(false);
   return (
