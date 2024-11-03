@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import service from "../../appwrite/config";
+
 function Form({ formToAdmin, showAddCourseForm }) {
   /**
    **States which manages the form inputs....
@@ -34,22 +35,27 @@ function Form({ formToAdmin, showAddCourseForm }) {
       price,
       image,
     };
+    // console.log(image);
 
-    const res = await service.uploadData({
-      name,
-      description,
-      platform,
-      author,
-      price,
-      category,
-      link,
-      image,
-      uploaded,
-      duration,
-      keywords,
-    });
+    const file = await service.uploadFile(image);
+    if (file) {
+      const fileId = file.$id;
+      const res = await service.uploadData({
+        name,
+        description,
+        platform,
+        author,
+        price,
+        category,
+        link,
+        fileId,
+        uploaded,
+        duration,
+        keywords,
+      });
+      // if (res) console.log(res);
+    }
 
-    console.log(res);
     console.log("data added");
   };
 
@@ -123,8 +129,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter image</label>
           <input
             type="file"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            onChange={(e) => setImage(e.target.files[0])}
             placeholder="eg: .jpg/.png"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
