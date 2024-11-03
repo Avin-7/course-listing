@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Google from "../../assets/Google.png";
 import { useDispatch } from "react-redux";
-import { login as authLogin } from "../../store/authSlice";
+import { login as authLogin, storeWishlist } from "../../store/authSlice";
+import { adminlogin } from "../../store/adminSlice";
 import { useNavigate } from "react-router-dom";
 import authService from "../../appwrite/auth";
+import conf from "../../conf/conf";
+import service from "../../appwrite/config";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +21,25 @@ function Login() {
       const user = await authService.login({ email, password });
       if (user) {
         dispatch(authLogin(user));
-        alert("Logged in");
+        // console.log(user);
+        const userId = user.userId;
+        const res = await service.getWishlists(userId);
+        if (res) {
+          const wishlist = res.documents[0].wishlist;
+          const wishlistId = res.documents[0].$id;
+          dispatch(storeWishlist({ userId, wishlist, wishlistId }));
+        }
+      }
+      if (
+        email == conf.adminEmailId.toLowerCase() &&
+        password == conf.adminPassword.toLowerCase()
+      ) {
+        dispatch(
+          adminlogin(
+            email == conf.adminEmailId.toLowerCase() &&
+              password == conf.adminPassword.toLowerCase()
+          )
+        );
       }
       navigate("/");
     } catch (err) {
@@ -31,8 +52,8 @@ function Login() {
         <form className="w-28 form-login " />
         <div className="flex bg-white h-5" id="container">
           <div className="pl-10 mr-5" id="col">
-            <div className="h11">
-              <h1 className=" pl-19 font-semibold p-4 ">Login</h1>
+            <div className="h11 ">
+              <h1 className=" pl-19 font-semibold p-4 font-pacifico">Login</h1>
             </div>
             <div className="mt-4" id="input_container">
               <label htmlFor="email">Email</label>

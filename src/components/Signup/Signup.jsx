@@ -3,28 +3,63 @@ import Google from "../../assets/Google.png";
 import authService from "../../appwrite/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login as authLogin } from "../../store/authSlice";
-
+import { login as authLogin, storeWishlist } from "../../store/authSlice";
+import { adminlogin } from "../../store/adminSlice";
+import conf from "../.././conf/conf";
+import validation from "../../validation";
+import service from "../../appwrite/config";
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const signup = async (e) => {
     e.preventDefault();
     try {
-      const user = await authService.createAccount({ email, password, name });
-      if (user) {
-        dispatch(authLogin(user));
-        alert("Logged in");
+      if (validation.username_validation(name)) {
+        if (validation.email_validation(email)) {
+          if (validation.password_validation(password)) {
+            const user = await authService.createAccount({
+              email,
+              password,
+              name,
+            });
+            if (user) {
+              dispatch(authLogin(user));
+              // console.log(user);
+              const userId = user.userId;
+              const wishlist = [];
+              const res = await service.createWishlist({ userId, wishlist });
+              const wishlistId = res.$id;
+              dispatch(storeWishlist({ userId, wishlist, wishlistId }));
+            }
+            if (email == conf.adminEmailId && password == conf.adminPassword) {
+              dispatch(
+                adminlogin(
+                  email == conf.adminEmailId && password == conf.adminPassword
+                )
+              );
+            }
+
+            navigate("/");
+          } else {
+            setError(
+              "Enter valid password:" +
+                "minimum 8 characters " +
+                "with 2 lowercase characters," +
+                " 1 number, 1 special character, 1 uppercase"
+            );
+          }
+        } else {
+          setError("Enter valid email");
+        }
+      } else {
+        setError("Enter valid name");
       }
-      navigate("/");
     } catch (err) {
-      setError(err.message);
+      console.log(err.message);
     }
   };
   return (
@@ -34,7 +69,7 @@ function Signup() {
           <div className="flex bg-white h-5" id="container_sign_up">
             <div className="pl-10 mr-5" id="col">
               <div className="h11">
-                <h1 className="font-semibold p-4 ">Sign-Up</h1>
+                <h1 className="font-semibold p-4 font-pacifico">Sign-Up</h1>
               </div>
               <div id="input_container1">
                 <label htmlFor="text">Username</label>
@@ -69,6 +104,10 @@ function Signup() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              <div>
+                <h2 className=" text-red-500 my-2 font-sans">{error}</h2>
+              </div>
+
               <div className="relative">
                 <button
                   type="submit"
@@ -85,7 +124,6 @@ function Signup() {
               </button>
             </div>
           </div>
-          <div>{error}</div>
         </form>
       </div>
     </>
