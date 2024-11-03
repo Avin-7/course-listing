@@ -1,42 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
+import { useSelector } from "react-redux";
+import service from "../../appwrite/config";
+import magnifier from "../../assets/magnifier.png";
 function Wishlist() {
-  const [data, setData] = useState([
-    {
-      title: "Dummy title",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-      image:
-        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-    },
-    {
-      title: "Dummy title",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-      image:
-        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-    },
-    {
-      title: "Dummy title",
-      desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-      image:
-        "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-    },
-  ]);
+  const wishlistData = useSelector((state) => state.auth.wishlistData);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    service.getWishlistedCourses(wishlistData).then((res) => {
+      if (res) {
+        setData(res.documents);
+      }
+    });
+  }, [wishlistData]);
   return (
-    <div>
-      <div>
+    <div className="">
+      <div >
         <h1 className=" text-3xl font-semibold font-poppins tracking tracking-wide mt-10 ml-24">
           Wishlist
         </h1>
       </div>
       <div className=" ">
         <div className=" grid grid-cols-3 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
-          {data.map((course) => {
-            return (
-              <div key={Math.random()}>
-                <Card course={course} />
+          {data.length != 0 ? (
+            data.map((course) => {
+              return (
+                <div key={course.$id}>
+                  <Card course={course} />
+                </div>
+              );
+            })
+          ) : (
+            <div className="  absolute top-1/4 left-[35%]">
+              <div className=" w-1/3 h-1/3">
+                <img src={magnifier} className="w-full h-full" alt="" />{" "}
               </div>
-            );
-          })}
+            </div>
+          )}
         </div>
       </div>
     </div>
