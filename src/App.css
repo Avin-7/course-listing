@@ -12,14 +12,12 @@ body
 /* signup button  */
 
 .btn-hover-animation {
-    width: 200px;
-    font-size: 17px;
+    width: 180px;
     font-weight: 500;
-    letter-spacing: 1px;
     color: #fff;
     cursor: pointer;
     margin: 20px;
-    height: 55px;
+    height: 50px;
     text-align:center;
     border: none;
     background-size: 300% 100%;
@@ -52,6 +50,7 @@ body
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 60px;
+    height: 480px;
     margin-bottom: 40px;
 }
 
@@ -286,9 +285,6 @@ body
        .h11{
         margin-left: 80px;
         width: 73%;
-        font-family: "Pacifico", cursive;
-        font-weight: 400;
-        font-style: normal;
         font-size: 40px;
        }
 
