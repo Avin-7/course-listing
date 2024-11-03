@@ -5,9 +5,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout as authLogout } from "../../store/authSlice";
 import authService from "../../appwrite/auth";
+import conf from "../../conf/conf";
+
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
-  var authStatus = useSelector((state) => state.auth.status);
+  const authStatus = useSelector((state) => state.auth.status);
+  const adminStatus = useSelector((state) => state.adminauth.status);
+
   // this below code is defining useNavigate hook to navigate user
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,6 +19,7 @@ function Navbar() {
     try {
       const res = await authService.logout();
       dispatch(authLogout(res));
+      navigate("/");
     } catch (err) {
       console.log(err.message);
     }
@@ -22,15 +27,15 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-20 flex items-center justify-between border-b-2">
+      <nav className="w-full h-20 flex items-center justify-between bg-[#fffefa]">
         <Link to={"/"} className=" border-none outline-none">
-          <h1 className=" text-3xl text-black p-5 font-semibold ml-5 font-test bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+          <h1 className=" text-2xl text-black p-5 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
         </Link>
 
         {/* nav list start here */}
-        <div className="text-black hidden text-lg lg:block font-poppins">
+        <div className="text-black hidden text-md tracking-wide lg:block font-figtree">
           <Link to={"/"} className="text-black mr-4 hover:text-purple-600 ">
             Home
           </Link>
@@ -50,6 +55,16 @@ function Navbar() {
           <Link to={"/about"} className="text-black mr-4 hover:text-purple-600">
             About
           </Link>
+          {adminStatus ? (
+            <Link
+              className="text-black mr-4 hover:text-purple-600"
+              to={conf.adminRouteLink}
+            >
+              Admin
+            </Link>
+          ) : (
+            false
+          )}
           {!authStatus ? (
             <Link
               to={"/login"}
@@ -72,7 +87,7 @@ function Navbar() {
         <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
           {authStatus ? (
             <button
-              className="rounded-xl font-medium px-6 py-3 border-2 border-purple-500 bg-purple-500 hover:border-none text-white"
+              className="rounded-xl font-medium px-6 py-3 bg-purple-500  text-white"
               onClick={() => logoutUser()}
             >
               Sign out
