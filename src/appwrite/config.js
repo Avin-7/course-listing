@@ -21,7 +21,7 @@ export class Service {
     price,
     category,
     link,
-    image,
+    fileId,
     uploaded,
     duration,
     keywords,
@@ -39,7 +39,7 @@ export class Service {
           price: price,
           category: category,
           link: link,
-          image: image,
+          image: fileId,
           uploaded: uploaded,
           duration: duration,
           keywords: keywords,
@@ -50,7 +50,7 @@ export class Service {
     }
   }
 
-  async getData() {
+  async getCourses() {
     try {
       return await this.database.listDocuments(
         conf.appWriteDatabaseId,
@@ -61,6 +61,82 @@ export class Service {
       return false;
     }
   }
+  async getWishlistedCourses(numbers) {
+    console.log(numbers);
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.equal("$id", numbers)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getData :: error " + error);
+      return false;
+    }
+  }
+  async updateWishlistStatus(id, status) {
+    try {
+      return await this.database.updateDocument(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        id,
+        { wishlisted: status }
+      );
+    } catch (error) {
+      console.log("Appwrite service :: updatePost :: error " + error);
+    }
+  }
+
+  async getCourse(id) {
+    try {
+      return await this.database.getDocument(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        id
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getData :: error " + error);
+      return false;
+    }
+  }
+  async createWishlist({ userId, wishlist }) {
+    try {
+      return await this.database.createDocument(
+        conf.appWriteDatabaseId,
+        conf.appWriteWishlistCollectionId,
+        ID.unique(),
+        { userId: userId, wishlist: wishlist }
+      );
+    } catch (error) {
+      console.log("Appwrite service :: createPost :: error " + error);
+    }
+  }
+  async getWishlists(userId) {
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteWishlistCollectionId,
+        [Query.equal("userId", userId)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getData :: error " + error);
+      return false;
+    }
+  }
+
+  async updateWishlist(id, userId, wishlist) {
+    try {
+      return await this.database.updateDocument(
+        conf.appWriteDatabaseId,
+        conf.appWriteWishlistCollectionId,
+        id,
+        { userId: userId, wishlist: wishlist }
+      );
+    } catch (error) {
+      console.log("Appwrite service :: updatePost :: error " + error);
+    }
+  }
+
   //file upload service
   async uploadFile(file) {
     try {
