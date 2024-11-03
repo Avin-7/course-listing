@@ -5,11 +5,11 @@ import Card from "../Card/Card";
 import SkeletonCard from "../Card/SkeletonCard";
 import CourseDetails from "../Courses/CourseDetails";
 function Home() {
+
   return (
     <div>
       <Hero />
       <Courses />
-      <CourseDetails />
     </div>
   );
 }
