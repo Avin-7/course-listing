@@ -13,6 +13,9 @@ import conf from "./conf/conf.js";
 import Wishlist from "./components/Wishlist/Wishlist.jsx";
 import AboutUs from "./components/About/AboutUs.jsx";
 import Courses from "./components/Courses/Courses.jsx";
+import CourseDetails from "./components/Courses/CourseDetails.jsx";
+import Details from "./components/Courses/Details.jsx";
+import Loading from "./components/Loading/Loading.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs />,
+      },
+      {
+        path: "/loading",
+        element: <Loading />,
+      },
+      {
+        path: "/course/:id",
+        element: <Details />,
       },
       {
         path: conf.adminRouteLink,
