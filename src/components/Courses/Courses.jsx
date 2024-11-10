@@ -3,7 +3,6 @@ import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
 import { RxMagnifyingGlass } from "react-icons/rx";
 import service from "../../appwrite/config.js";
-import { useSelector } from "react-redux";
 function Courses() {
   // const [data, setData] = useState([
   //   {
@@ -142,16 +141,68 @@ function Courses() {
   }, [searchQuery]);
 
   useEffect(() => {
-    service
-      .getCourses()
-      .then((courses) => {
-        setCourses(courses.documents);
-        // console.log(courses);
-      })
-      .catch((error) => console.log("Error in data fetch"))
-      .finally(() => {
-        console.log("fetch completed!!");
-      });
+    // service
+    //   .getCourses()
+    //   .then((courses) => {
+    setCourses([
+      {
+        $collectionId: "67150b750016dff76b2e",
+        $createdAt: "2024-11-03T05:14:44.505+00:00",
+        $databaseId: "67150b58000821ac8c8f",
+        $id: "672706c30001af16ac1d",
+        $permissions: (3)[
+          ('read("user:671ded9a003cee3f8cee")',
+          'update("user:671ded9a003cee3f8cee")',
+          'delete("user:671ded9a003cee3f8cee")')
+        ],
+        $updatedAt: "2024-11-07T04:59:24.911+00:00",
+        author:
+          "Rafael Irizarry Professor of Biostatistics, T.H. Chan School of Public Health",
+        category: "data science",
+        description:
+          "Build a movie recommendation system and learn the science behind one of the most popular and successful data science techniques.",
+        duration: "8 weeks, 2–4 hours per week",
+        image: "67270786002c205dacdd",
+        keywords: "data science",
+        link: "https://www.edx.org/learn/machine-learning/harvard-university-data-science-machine-learning",
+        name: "HarvardX: Data Science: Machine Learning",
+        platform: "edX",
+        price: 0,
+        uploaded: "October 16, 2024",
+        wishlisted: false,
+      },
+      {
+        $collectionId: "67150b750016dff76b2e",
+        $createdAt: "2024-11-05T15:40:03.185+00:00",
+        $databaseId: "67150b58000821ac8c8f",
+        $id: "672a3c5200007a1bd38e",
+        $permissions: (3)[
+          ('read("user:671ded9a003cee3f8cee")',
+          'update("user:671ded9a003cee3f8cee")',
+          'delete("user:671ded9a003cee3f8cee")')
+        ],
+        $updatedAt: "2024-11-07T15:25:44.548+00:00",
+        author: "David J. Malan",
+        category: "programming",
+        description:
+          "A gentle introduction to programming that prepares you for subsequent courses in coding.",
+        duration: "3 weeks, 2 - 6 hours per week",
+        image: "672a3c4c003672ee6931",
+        keywords: "programming",
+        link: "https://www.edx.org/learn/scratch-programming/harvard-university-cs50-s-introduction-to-programming-with-scratch",
+        name: "CS50's Introduction to Programming with Scratch",
+        platform: "edX",
+        price: 0,
+        uploaded: "May 1, 2021",
+        wishlisted: false,
+      },
+    ]);
+    console.log(courses);
+    // })
+    // .catch((error) => console.log("Error in data fetch" + error))
+    // .finally(() => {
+    //   console.log("fetch completed!!");
+    // });
   }, [filter]);
   /*
   ***************************************
@@ -160,7 +211,7 @@ function Courses() {
   */
 
   return (
-    <div id="courses" className=" bg-gray-50 h-[780px] font-poppins  max-sm:8">
+    <div id="courses" className=" bg-gray-50 h-[980px] font-poppins max-sm:8">
       <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-blue-900 via-purple-500 to-blue-700">
         What would you like to learn?
       </h1>
@@ -206,7 +257,6 @@ function Courses() {
               onChange={(e) => {
                 setSearchQuery(e.target.value);
               }}
-              
               placeholder="Enter Keywords"
               className="w-96 max-lg:w-72 max-md:w-60 pl-4 py-3 px-2 rounded-xl outline-none bg-gray-200 text-black my-0"
             />

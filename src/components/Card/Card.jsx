@@ -8,9 +8,9 @@ import { addToWishlist, removeFromWishlist } from "../../store/authSlice";
 function Card({ course }) {
   const dispatch = useDispatch();
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
-  useEffect(() => {
-    service.updateWishlistStatus(course.$id, wishlisted);
-  }, [wishlisted]);
+  // useEffect(() => {
+  //   service.updateWishlistStatus(course.$id, wishlisted);
+  // }, [wishlisted]);
   return course ? (
     <div>
       <div className="container">
@@ -41,7 +41,7 @@ function Card({ course }) {
                 />
               )}
             </div>
-            <h1 className="text-base text-balance font-poppins leading-[1.7rem]">
+            <h1 className=" font-poppins font-medium text-xl text-balance ">
               {course.name}
             </h1>
             <p className=" my-1 font-roboto">{course.description}</p>

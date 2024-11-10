@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Google from "../../assets/Google.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login as authLogin, storeWishlist } from "../../store/authSlice";
 import { adminlogin } from "../../store/adminSlice";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,8 @@ function Login() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+
+  const adminStatus = useSelector((state) => state.adminauth.status);
   const dispatch = useDispatch();
 
   const login = async (e) => {
@@ -21,7 +23,9 @@ function Login() {
       const user = await authService.login({ email, password });
       if (user) {
         dispatch(authLogin(user));
-        // console.log(user);
+        if (user.providerUid == conf.adminEmailId.toLowerCase()) {
+          dispatch(adminlogin(true));
+        }
         const userId = user.userId;
         const res = await service.getWishlists(userId);
         if (res) {
@@ -30,17 +34,7 @@ function Login() {
           dispatch(storeWishlist({ userId, wishlist, wishlistId }));
         }
       }
-      if (
-        email == conf.adminEmailId.toLowerCase() &&
-        password == conf.adminPassword.toLowerCase()
-      ) {
-        dispatch(
-          adminlogin(
-            email == conf.adminEmailId.toLowerCase() &&
-              password == conf.adminPassword.toLowerCase()
-          )
-        );
-      }
+
       navigate("/");
     } catch (err) {
       setError(err.message);

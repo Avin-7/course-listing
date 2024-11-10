@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Form from "./Form";
+import Table from "../Admin/Table";
 function Admin() {
   const [showAddCourseForm, setShowAddCourseForm] = useState(false);
 
@@ -32,6 +33,9 @@ function Admin() {
             ) : null}
           </div>
         </div>
+      </div>
+      <div className="">
+        <Table />
       </div>
     </div>
   );

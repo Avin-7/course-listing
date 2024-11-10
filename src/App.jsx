@@ -19,6 +19,8 @@ function App() {
   const userId = useSelector((state) => state.auth.userId);
   const wishlistId = useSelector((state) => state.auth.wishlistId);
 
+  const adminStatus = useSelector((state) => state.adminauth.status);
+
   useEffect(() => {
     authService.getCurrentUser().then((userData) => {
       if (userData) {
@@ -41,9 +43,9 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    service.updateWishlist(wishlistId, userId, wishlistData);
-  }, [wishlistData]);
+  // useEffect(() => {
+  //   service.updateWishlist(wishlistId, userId, wishlistData);
+  // }, [wishlistData]);
 
   const loading = () => {
     navigate("/loading");
@@ -58,6 +60,7 @@ function App() {
 
   return (
     <>
+      {console.log(adminStatus)}
       <Navbar />
       <Outlet />
     </>

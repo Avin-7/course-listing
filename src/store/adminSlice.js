@@ -8,8 +8,8 @@ const adminSlice = createSlice({
   name: "adminauth",
   initialState,
   reducers: {
-    adminlogin: (state) => {
-      state.status = true;
+    adminlogin: (state, action) => {
+      state.status = action.payload;
     },
   },
 });

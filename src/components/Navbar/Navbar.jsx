@@ -5,6 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout as authLogout } from "../../store/authSlice";
 import authService from "../../appwrite/auth";
+import { adminlogin } from "../../store/adminSlice";
 import conf from "../../conf/conf";
 
 function Navbar() {
@@ -19,6 +20,7 @@ function Navbar() {
     try {
       const res = await authService.logout();
       dispatch(authLogout(res));
+      dispatch(adminlogin(false));
       navigate("/");
     } catch (err) {
       console.log(err.message);
