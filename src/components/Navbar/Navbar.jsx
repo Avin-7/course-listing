@@ -27,9 +27,9 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-20 flex items-center justify-between bg-[#fffefa]">
+      <nav className="w-full h-16 flex items-center justify-between bg-[#fffefa]">
         <Link to={"/"} className=" border-none outline-none">
-          <h1 className=" text-2xl text-black p-5 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+          <h1 className=" text-2xl text-black p-4 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
         </Link>

@@ -15,7 +15,7 @@ function Admin() {
               onClick={() => {
                 setShowAddCourseForm((prev) => !prev);
               }}
-              className=" px-4 py-3 bg-blue-500 text-white text-sm font-semibold rounded-md"
+              className=" px-5 py-3 bg-blue-500 text-white text-sm font-semibold rounded-md"
               disabled={showAddCourseForm}
             >
               Add course
