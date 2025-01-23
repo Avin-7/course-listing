@@ -19,6 +19,11 @@ function Hero(){
         </div>
         <div className="bg-pink-300 w-72 h-72 rounded-full top-17 left-9 absolute mix-blend-multiply filter blur-3xl"> 
         </div>
+
+
+
+
+        
         </div>
         <div className=" font-poppins relative  h-96 bottom-3 ">
           <h1 className="text-6xl my-8 font-semibold pb-10 mx-32 max-md:mx-20 max-sm:mx-8 max-md:text-4xl break-words tracking-wider bg-clip-text   mb-20 drop-shadow-md text-transparent bg-black ">
