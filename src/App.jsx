@@ -28,9 +28,9 @@ function App() {
         const userId = userData.$id;
         service.getWishlists(userId).then((res) => {
           if (res) {
-            // console.log(res);
-            const wishlist = res.documents[0].wishlist;
-            const wishlistId = res.documents[0].$id;
+            console.log(res);
+            const wishlist = res.documents[0]?.wishlist;
+            const wishlistId = res.documents[0]?.$id;
             dispatch(storeWishlist({ userId, wishlist, wishlistId }));
           }
         });
@@ -60,7 +60,6 @@ function App() {
 
   return (
     <>
-      {console.log(adminStatus)}
       <Navbar />
       <Outlet />
     </>
