@@ -77,12 +77,12 @@ function Form({ formToAdmin, showAddCourseForm }) {
   };
 
   return (
-    <div className="">
+    <div className="w-full flex flex-col justify-center items-center">
       <form
-        className="text-black flex justify-center align-middle gap-2"
+        className="text-black flex justify-center align-middle gap-2 w-10/12"
         onSubmit={handleSubmit}
       >
-        <div className=" flex flex-col w-[48%]">
+        <div className=" flex flex-col w-2/4">
           <label className="mt-2 mb-0 ">Enter name </label>
           <input
             type="text"
@@ -122,7 +122,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <input
             type="number"
             value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            onChange={(e) => setPrice(Number(e.target.value))}
             placeholder="eg: 0/199"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
@@ -134,7 +134,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
         </div>
-        <div className=" flex flex-col w-[48%]">
+        <div className=" flex flex-col w-2/4">
           <label className="mt-2 mb-0 ">Enter course link </label>
           <input
             type="text"
@@ -181,20 +181,20 @@ function Form({ formToAdmin, showAddCourseForm }) {
           />
         </div>
       </form>
-      <div className=" flex justify-end gap-2 my-2">
+      <div className=" flex justify-end gap-2 w-9/12 my-12">
         <button
           type="submit"
           onClick={() => {
             formToAdmin(!showAddCourseForm);
           }}
-          className="w-1/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-red-600 hover:bg-red-600 hover:text-white transition"
+          className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-red-600 hover:bg-red-600 hover:text-white transition"
         >
           Cancel
         </button>
         <button
           type="submit"
           onClick={(e) => handleSubmit(e)}
-          className="w-2/5 px-2 py-3 bg-blue-800 rounded-md text-white"
+          className="w-2/4 px-2 py-3 bg-blue-800 rounded-md text-white"
         >
           Submit
         </button>
