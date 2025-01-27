@@ -197,7 +197,6 @@ function Courses() {
         wishlisted: false,
       },
     ]);
-    console.log(courses);
     // })
     // .catch((error) => console.log("Error in data fetch" + error))
     // .finally(() => {
