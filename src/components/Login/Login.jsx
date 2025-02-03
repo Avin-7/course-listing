@@ -3,10 +3,11 @@ import Google from "../../assets/Google.png";
 import { useDispatch, useSelector } from "react-redux";
 import { login as authLogin, storeWishlist } from "../../store/authSlice";
 import { adminlogin } from "../../store/adminSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import authService from "../../appwrite/auth";
 import conf from "../../conf/conf";
 import service from "../../appwrite/config";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -100,9 +101,12 @@ function Login() {
                 )}
 
                 <div className="w-[90%] flex">
-                  <a href="#" className=" no-underline text-blue-900 ">
+                  <Link
+                    to="/forgot-password"
+                    className=" no-underline text-blue-900"
+                  >
                     Forgot password
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="relative">
