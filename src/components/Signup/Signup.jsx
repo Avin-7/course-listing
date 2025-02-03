@@ -18,7 +18,7 @@ function Signup() {
   const signup = async (e) => {
     e.preventDefault();
     try {
-      if (validation.username_validation(name)) {
+      if (name.length > 2) {
         if (validation.email_validation(email)) {
           if (validation.password_validation(password)) {
             const user = await authService.createAccount({
@@ -48,7 +48,7 @@ function Signup() {
             setError(
               "Enter valid password:" +
                 "minimum 8 characters " +
-                "with 2 lowercase characters," +
+                "2 lowercase characters," +
                 " 1 number, 1 special character, 1 uppercase"
             );
           }
@@ -126,8 +126,10 @@ function Signup() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div>
-                  <h2 className=" text-red-500 my-2 font-sans">{error}</h2>
+                <div className=" w-72 px-4">
+                  <h2 className=" text-red-500 my-2 text-pretty break-words font-sans">
+                    {error}
+                  </h2>
                 </div>
 
                 <div className="relative">
