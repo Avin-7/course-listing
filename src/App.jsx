@@ -1,7 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./components/Home/Home";
 import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/auth";
 import service from "./appwrite/config";
@@ -46,17 +45,6 @@ function App() {
   // useEffect(() => {
   //   service.updateWishlist(wishlistId, userId, wishlistData);
   // }, [wishlistData]);
-
-  const loading = () => {
-    navigate("/loading");
-    setTimeout(function () {
-      navigate("/");
-    }, 2000);
-  };
-
-  useEffect(() => {
-    loading();
-  }, [user]);
 
   return (
     <>

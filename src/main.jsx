@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import Home from "./components/Home/Home.jsx";
 import Login from "./components/Login/Login.jsx";
+import ForgotPassword from "./components/Login/ForgotPassword.jsx";
+import ResetPassword from "./components/Login/ResetPassword.jsx";
 import Signup from "./components/Signup/Signup.jsx";
 import Admin from "./components/Admin/Admin.jsx";
 import conf from "./conf/conf.js";
@@ -15,7 +17,6 @@ import AboutUs from "./components/About/AboutUs.jsx";
 import Courses from "./components/Courses/Courses.jsx";
 import CourseDetails from "./components/Courses/CourseDetails.jsx";
 import Details from "./components/Courses/Details.jsx";
-import Loading from "./components/Loading/Loading.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,16 +47,20 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
       {
-        path: "/loading",
-        element: <Loading />,
-      },
-      {
         path: "/course/:id",
         element: <Details />,
       },
       {
         path: conf.adminRouteLink,
         element: <Admin />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
     ],
   },
