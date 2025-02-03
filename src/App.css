@@ -112,10 +112,10 @@ body
 {
  width: 90%;
  margin-top: 20px;
- background-color: rgb(17, 114, 153);
+ background-color: hsl(197, 80%, 33%);
  color: white;
  padding: 8px;
- background-color: rgb(33, 33, 173);
+ background-color: #2121ad;
 }
 .hyper{
  margin-top: 50px;
@@ -172,7 +172,7 @@ body
  align-items: center;
  justify-content: center;
 }
-.form-signup .option{
+.option{
  color: #5a5a5a;
  font-weight: bold;
  margin: 10px 0;
@@ -180,21 +180,21 @@ body
  margin-left: 41%;
  margin-right: 50%;
 }
-.form-signup .option:before{
+.option:before{
  position:absolute;
  content: '';
  background:#b6b6b6;
- width: 124px;
+ width: 64px;
  height: 2px;
  right: 46px;
  top: 11px;
  border-radius: 10px;
 }
-.form-signup .option:after{
+.option:after{
  position:absolute;
  content: '';
  background:#b6b6b6;
- width: 126px;
+ width: 64px;
  height: 2px;
  left: 40px;
  top: 11px;
