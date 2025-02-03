@@ -156,8 +156,9 @@ function Navbar() {
             <Link
               className="text-black m-4 hover:text-purple-600 p-3 text-md tracking-wide lg:block font-figtree "
               to={conf.adminRouteLink} 
+              onClick={() => setShowLinks(!showLinks)}
             >
-              Admin login
+              Admin
             </Link>
 
           ) : (
