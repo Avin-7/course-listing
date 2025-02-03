@@ -64,67 +64,90 @@ function Signup() {
   };
   return (
     <>
-      <div className="text-black flex justify-center h-screen items-center">
-        <form className="w-full form-signup">
-          <div className="flex bg-white h-5" id="container_sign_up">
-            <div className="pl-10 mr-5" id="col">
-              <div className="h11">
-                <h1 className="font-semibold p-4 font-pacifico">Sign-Up</h1>
-              </div>
-              <div id="input_container1">
-                <label htmlFor="text">Username</label>
-                <input
-                  className="input"
-                  type="text"
-                  name=""
-                  value={name}
-                  id=""
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="mt-4" id="input_container">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="Email"
-                  value={email}
-                  id="he"
-                  className="bg-transparent input"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mt-6" id="input_container2">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="text"
-                  name="password"
-                  id="password"
-                  value={password}
-                  className="bg-transparent input"
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div>
-                <h2 className=" text-red-500 my-2 font-sans">{error}</h2>
-              </div>
+      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br from-fuchsia-600  via-purple-600 to-indigo-500">
+        <div className=" w-2/4 text-left flex justify-center ">
+          <div className="py-52 text-white ">
+            <h1 className=" text-7xl font-figtree font-extralight tracking-wide text-balance px-20 break-words mb-3">
+              Create
+            </h1>
+            <h3 className=" text-7xl font-figtree tracking-wide font-extralight  text-balance px-20 mb-3">
+              your new
+            </h3>
+            <h2 className="text-7xl font-figtree tracking-wide font-extralight  text-balance px-20 mb-1">
+              account.
+            </h2>
+          </div>
+        </div>
+        <div className="w-2/4 flex justify-center">
+          <form>
+            <div className=" bg-white py-1 px-5 rounded-xl">
+              <div className="pl-10 mr-5">
+                <div className=" text-4xl -ml-4 my-6 w-full">
+                  <h1 className=" text-3xl text-black p-5 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+                    DotLib
+                  </h1>
+                </div>
+                <div className="mt-4 mb-6">
+                  <label htmlFor="email" className=" font-normal mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="Name"
+                    value={name}
+                    id="he"
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="mt-4 mb-6">
+                  <label htmlFor="email" className=" font-normal mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="Email"
+                    value={email}
+                    id="he"
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="mt-4 mb-6">
+                  <label htmlFor="password" className=" font-normal mb-6">
+                    Password
+                  </label>
+                  <input
+                    type="text"
+                    name="password"
+                    id="password"
+                    value={password}
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <h2 className=" text-red-500 my-2 font-sans">{error}</h2>
+                </div>
 
-              <div className="relative">
-                <button
-                  type="submit"
-                  className="sign_in_btn"
-                  onClick={(e) => signup(e)}
-                >
-                  Sign up
+                <div className="relative">
+                  <button
+                    type="submit"
+                    className=" w-[90%] my-5 bg-[#2121ad] text-white py-3 px-2 rounded-xl hover:bg-[#2121adee] transition ease-linear"
+                    onClick={(e) => signup(e)}
+                  >
+                    Create new account
+                  </button>
+                </div>
+                <div className="option ">OR</div>
+                <button className="w-[90%] flex justify-center items-center gap-2 my-10 py-3 px-2 border-b-2 border-blue-700 rounded-xl bg-gray-200 hover:border-blue-900 hover:bg-neutral-100 transition-all ease-linear">
+                  <img src={Google} alt="" className="size-5 img" />
+                  <span className="span">Signup with Google</span>
                 </button>
               </div>
-              <div className="option">OR</div>
-              <button className="b2">
-                <img src={Google} alt="" className="size-5 img" />
-                <span className="span">Sign up with Google</span>
-              </button>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );
