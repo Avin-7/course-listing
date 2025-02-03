@@ -39,6 +39,29 @@ export class AuthService {
     }
   }
 
+  async forgotPassword({ email }) {
+    try {
+      return await this.account.createRecovery(
+        email,
+        "http://localhost:5173/reset-password"
+      );
+    } catch (error) {
+      console.log("ERROR in forgot password", error);
+    }
+  }
+  async resetPassword({ userId, secret, password }) {
+    try {
+      return await this.account.updateRecovery(
+        userId,
+        secret,
+        password.newPassword,
+        password.repeatPassword
+      );
+    } catch (error) {
+      console.log("ERROR in reset password", error);
+    }
+  }
+
   async getCurrentUser() {
     try {
       return await this.account.get();
