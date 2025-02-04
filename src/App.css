@@ -5,10 +5,6 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-body
-{
-    background-color: #f0f0f0;
-}
 /* signup button  */
 
 .btn-hover-animation {
@@ -41,7 +37,6 @@ body
 
 .btn-hover-animation.color-7 {
     background-image: linear-gradient(to right, #A568FF, #BC29EC, #55B3FF, #5460F9);
-    box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 0.75);
 }
 
 .container
