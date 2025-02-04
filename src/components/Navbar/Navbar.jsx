@@ -29,9 +29,9 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-20 flex items-center justify-between bg-[#fffefa]">
+      <nav className="w-full h-16 flex items-center justify-between bg-white">
         <Link to={"/"} className=" border-none outline-none">
-          <h1 className=" text-2xl text-black p-5 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+          <h1 className=" text-2xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
         </Link>
@@ -80,8 +80,11 @@ function Navbar() {
 
         {/*  hamburger starts here*/}
 
-        <div className="lg:hidden" onClick={() => setShowLinks(!showLinks)}>
-          <IoMenu size={40} color="black" />
+        <div
+          className="lg:hidden absolute top-5 right-12 text-3xl"
+          onClick={() => setShowLinks(!showLinks)}
+        >
+          <IoMenu color="black" />
         </div>
         {/* hamburger ends here */}
 
@@ -89,7 +92,7 @@ function Navbar() {
         <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
           {authStatus ? (
             <button
-              className="rounded-xl font-medium px-6 py-3 bg-purple-500  text-white"
+              className="rounded-xl font-medium px-2 py-1 bg-purple-500  text-white"
               onClick={() => logoutUser()}
             >
               Sign out
@@ -106,96 +109,95 @@ function Navbar() {
 
         {/*navbar for smaller devices */}
         {showLinks ? (
-          <div id="toggleMenue" className=" bg-white fixed inset-0 lg:hidden z-10">
-            <div className="w-full h-20 bg-[#fffefa]  flex items-center justify-between">
+          <div
+            id="toggleMenue"
+            className="fixed inset-0 lg:hidden z-10"
+          >
+            <div className="w-full h-16 bg-white flex items-center justify-between">
               <Link to={"/"}>
-                <h1 className=" text-3xl  p-5 font-semibold ml-5 font-inter  font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+                <h1 className=" text-2xl max-md:text-xl p-5 font-semibold ml-5  font-inter font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                   DotLib
                 </h1>
               </Link>
               <div
-                className="lg:block mr-5"
+                className="lg:block mr-5 absolute top-5 right-7 text-3xl "
                 onClick={() => setShowLinks(!showLinks)}
               >
-                <RxCross2 size={40} color="black" />
+                <RxCross2 color="black" />
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="py-6 bg-white flex flex-col justify-center items-center font-figtree">
               <Link
                 to={"/"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block font-figtree block"
+                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Home
               </Link>
               <Link
                 to={"/courses"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block font-figtree block"
+                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Courses
               </Link>
               <Link
                 to={"/wishlist"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block font-figtree block"
+                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Wishlist
               </Link>
               <Link
-                to={"/aboutus"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block font-figtree block"
+                to={"/about"}
+                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 About us
               </Link>
 
-            <div className="mt-6">
-            {adminStatus ? (
-            <Link
-              className="text-black m-4 hover:text-purple-600 p-3 text-md tracking-wide lg:block font-figtree "
-              to={conf.adminRouteLink} 
-              onClick={() => setShowLinks(!showLinks)}
-            >
-              Admin
-            </Link>
-
-          ) : (
-            false
-          )}
-          {!authStatus ? (
-            <Link
-              to={"/login"}
-              className=" text-black mr-4 hover:text-purple-600 ease-in-out transition "
-            >
-              Login
-            </Link>
-          ) : null}
-            </div>
-            
-
+              <div className="mt-6">
+                {adminStatus ? (
+                  <Link
+                    to={conf.adminRouteLink}
+                    className="text-black m-4 hover:text-purple-600 p-3 text-md tracking-wide lg:block  "
+                    onClick={() => setShowLinks(!showLinks)}
+                  >
+                    Admin
+                  </Link>
+                ) : (
+                  false
+                )}
+                {!authStatus ? (
+                  <Link
+                    to={"/login"}
+                    className=" text-black mr-4 m-4 p-3 hover:text-purple-600 ease-in-out transition "
+                  >
+                    Login
+                  </Link>
+                ) : null}
+              </div>
             </div>
 
             {/* <div className="w-full h-[1px] bg-gray-300 mt-6 mb-5"></div> */}
 
-        
-              <div className="block lg:hidden p-3 text-white mr-5 font-poppins mt-6 ml-3">
-          {authStatus ? (
-            <button
-              className="rounded-xl font-medium px-6 py-3 bg-purple-500  text-white"
-              onClick={() => logoutUser()}
-            >
-              Sign out
-            </button>
-          ) : (
-            <Link to={"/signup"}>
-              <button className="rounded-xl font-medium btn-hover-animation color-7">
-                Create new account
-              </button>
-            </Link>
-          )}
-      </div>
+            <div className="lg:hidden p-3 pb-6 bg-white flex justify-center items-center font-figtree">
+              {authStatus ? (
+                <button
+                  className="rounded-xl font-medium px-6 py-3 bg-purple-500  text-white"
+                  onClick={() => logoutUser()}
+                >
+                  Sign out
+                </button>
+              ) : (
+                <Link to={"/signup"}>
+                  <button className="text-black">
+                    Create new account
+                  </button>
+                </Link>
+              )}
+            </div>
           </div>
         ) : null}
         {/*navbar for smaller devices*/}
