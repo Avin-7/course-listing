@@ -64,8 +64,8 @@ function Signup() {
   };
   return (
     <>
-      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br from-fuchsia-600  via-purple-600 to-indigo-500">
-        <div className=" w-2/4 text-left flex justify-center ">
+      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br from-fuchsia-600  via-purple-600 to-indigo-500 py-5">
+        <div className=" w-2/4 max-md:hidden text-left flex justify-center ">
           <div className="py-52 text-white ">
             <h1 className=" text-7xl font-figtree font-extralight tracking-wide text-balance px-20 break-words mb-3">
               Create
@@ -80,10 +80,10 @@ function Signup() {
         </div>
         <div className="w-2/4 flex justify-center">
           <form>
-            <div className=" bg-white py-1 px-5 rounded-xl">
-              <div className="pl-10 mr-5">
+            <div className="w-80 max-[375px]:w-[18rem]  bg-white py-1 px-5 rounded-xl">
+              <div className="pl-8 max-[375px]:pl-5 mr-5">
                 <div className=" text-4xl -ml-4 my-6 w-full">
-                  <h1 className=" text-3xl text-black p-5 font-semibold ml-14 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+                  <h1 className=" text-3xl text-black p-5 font-semibold ml-10 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                     DotLib
                   </h1>
                 </div>
@@ -96,7 +96,7 @@ function Signup() {
                     name="Name"
                     value={name}
                     id="he"
-                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[98%] focus:border-b-blue-700"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -109,7 +109,7 @@ function Signup() {
                     name="Email"
                     value={email}
                     id="he"
-                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[98%] focus:border-b-blue-700"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -122,7 +122,7 @@ function Signup() {
                     name="password"
                     id="password"
                     value={password}
-                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[90%] focus:border-b-blue-700"
+                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-[98%] focus:border-b-blue-700"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -135,14 +135,14 @@ function Signup() {
                 <div className="relative">
                   <button
                     type="submit"
-                    className=" w-[90%] my-5 bg-[#2121ad] text-white py-3 px-2 rounded-xl hover:bg-[#2121adee] transition ease-linear"
+                    className=" w-[98%] my-5 bg-[#2121ad] text-white py-3 px-2 rounded-xl hover:bg-[#2121adee] transition ease-linear"
                     onClick={(e) => signup(e)}
                   >
                     Create new account
                   </button>
                 </div>
                 <div className="option ">OR</div>
-                <button className="w-[90%] flex justify-center items-center gap-2 my-10 py-3 px-2 border-b-2 border-blue-700 rounded-xl bg-gray-200 hover:border-blue-900 hover:bg-neutral-100 transition-all ease-linear">
+                <button className="w-[98%] flex justify-center items-center gap-2 my-10 py-3 px-2 border-b-2 border-blue-700 rounded-xl bg-gray-200 hover:border-blue-900 hover:bg-neutral-100 transition-all ease-linear">
                   <img src={Google} alt="" className="size-5 img" />
                   <span className="span">Signup with Google</span>
                 </button>
