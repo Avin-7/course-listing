@@ -113,7 +113,7 @@ function Navbar() {
             id="toggleMenue"
             className="fixed inset-0 lg:hidden z-10"
           >
-            <div className="w-full h-16 bg-white flex items-center justify-between">
+            <div className="w-full h-16 bg-white flex items-center justify-between inset-0">
               <Link to={"/"}>
                 <h1 className=" text-2xl max-md:text-xl p-5 font-semibold ml-5  font-inter font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                   DotLib
@@ -172,6 +172,7 @@ function Navbar() {
                 {!authStatus ? (
                   <Link
                     to={"/login"}
+                    onClick={() => setShowLinks(!showLinks)}
                     className=" text-black mr-4 m-4 p-3 hover:text-purple-600 ease-in-out transition "
                   >
                     Login
@@ -191,7 +192,9 @@ function Navbar() {
                   Sign out
                 </button>
               ) : (
-                <Link to={"/signup"}>
+                <Link to={"/signup"}
+                onClick={() => setShowLinks(!showLinks)}
+                >
                   <button className="text-black">
                     Create new account
                   </button>
