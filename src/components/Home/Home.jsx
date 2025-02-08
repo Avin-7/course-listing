@@ -8,7 +8,7 @@ function Home() {
     <div>
       <Hero />
       <Courses />
-      {/* <Testimonial /> */}
+      <Testimonial />
     </div>
   );
 }
