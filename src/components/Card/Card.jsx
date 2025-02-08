@@ -41,13 +41,13 @@ function Card({ course }) {
                 />
               )}
             </div>
-            <h1 className=" font-poppins font-medium text-xl text-balance ">
+            <h1 className=" font-poppins font-medium text-xl max-md:text-sm text-balance ">
               {course.name}
             </h1>
-            <p className=" my-1 font-roboto">{course.description}</p>
+            <p className=" my-1 font-roboto max-md:hidden">{course.description}</p>
             <Link to={`/course/${course.$id}`}>
               <div className="flex justify-center align-middle gap-0.5 rounded-xl mt-4 px-4 py-3 bg-purple-400 hover:animate-vibrate w-full ease-in-out transition">
-                <button className=" tracking-tight text-md ">
+                <button className=" tracking-tight max-md:text-sm ">
                   <span>View more</span>
                 </button>
                 <RxArrowTopRight className="mt-0.5 text-xl " />

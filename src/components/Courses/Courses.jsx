@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
-import { RxMagnifyingGlass } from "react-icons/rx";
+import { RxMagnifyingGlass, RxArrowRight } from "react-icons/rx";
 import service from "../../appwrite/config.js";
+
 function Courses() {
   // const [data, setData] = useState([
   //   {
@@ -303,7 +305,7 @@ function Courses() {
         {/* Course display layout starts from here */}
         <div className="">
           <div>
-            <div className=" grid grid-cols-4 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
+            <div className=" grid grid-cols-4 place-items-center max-xl:grid-cols-3  max-lg:grid-cols-2 max-md:flex max-md:gap-4 max-md:overflow-auto max-md:pl-3">
               {courses &&
                 courses.map((course) => {
                   return (
@@ -312,6 +314,14 @@ function Courses() {
                     </div>
                   );
                 })}
+              <div className="hidden max-md:block ">
+                <Link to={"/courses/list"}>
+                  <div className=" m-4 rounded-full bg-purple-300 px-4 py-3 text-sm font-normal w-28 flex justify-center gap-1">
+                    <span>view all</span>
+                    <RxArrowRight className=" text-lg" />
+                  </div>
+                </Link>
+              </div>
             </div>
             <div>
               {courses.length == 0 ? (

@@ -17,6 +17,7 @@ import AboutUs from "./components/About/AboutUs.jsx";
 import Courses from "./components/Courses/Courses.jsx";
 import CourseDetails from "./components/Courses/CourseDetails.jsx";
 import Details from "./components/Courses/Details.jsx";
+import ListOfCourses from "./components/Courses/ListOfCourses.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/courses",
         element: <Courses />,
+      },
+      {
+        path: "/courses/list",
+        element: <ListOfCourses />,
       },
       {
         path: "/login",

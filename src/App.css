@@ -378,3 +378,16 @@ btn {
 .marquee-item {
   flex: 0 0 auto;
 }
+
+@media (max-width: 768px) {
+  .container {
+    height: 230px;
+  }
+  .card {
+    width: 240px;
+    overflow: hidden;
+  }
+  .card img {
+    height: 80px;
+  }
+}
