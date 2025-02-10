@@ -92,13 +92,13 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                {errorMessage != "" && (
+                {errorMessage != "" && !adminStatus ? (
                   <div className=" mb-2">
                     <h3 className=" text-red-500 font-figtree text-lg">
                       {errorMessage}
                     </h3>
                   </div>
-                )}
+                ) : null}
 
                 <div className="w-full flex">
                   <Link
