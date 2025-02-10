@@ -92,7 +92,7 @@ function Navbar() {
         <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
           {authStatus ? (
             <button
-              className="rounded-xl font-medium px-2 py-1 bg-purple-500  text-white"
+              className="rounded-xl font-medium px-4 py-3 bg-purple-500  text-white"
               onClick={() => logoutUser()}
             >
               Sign out
