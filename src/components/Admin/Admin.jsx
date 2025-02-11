@@ -27,7 +27,6 @@ function Admin() {
     service
       .getCourses()
       .then((data) => {
-        console.log(data);
         setCourses(data.documents);
       })
       .catch((error) => console.log("Error in data fetch" + error))
