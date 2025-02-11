@@ -16,7 +16,8 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [platform, setPlatform] = useState("");
   const [image, setImage] = useState("");
   const [price, setPrice] = useState(0);
-
+  const [allBenefits, setAllBenefits] = useState([]);
+  const [benefit, setBenefit] = useState("");
   /**
    **Submit button handler function....
    */
@@ -35,7 +36,6 @@ function Form({ formToAdmin, showAddCourseForm }) {
       price,
       image,
     };
-    // console.log(image);
 
     const file = await service.uploadFile(image);
     if (file) {
@@ -52,6 +52,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
         uploaded,
         duration,
         keywords,
+        allBenefits,
       });
       // if (res) console.log(res);
     }
@@ -75,7 +76,28 @@ function Form({ formToAdmin, showAddCourseForm }) {
       console.log("Invalid data");
     }
   };
-
+  const handleAddBenefit = () => {
+    if (benefit) {
+      const res = benefit.split("_");
+      setAllBenefits(res);
+      console.log(res);
+    }
+  };
+  const clearAllFields = () => {
+    setName("");
+    setDescription("");
+    setCategory("");
+    setKeywords([]);
+    setLink("");
+    setUploaded("");
+    setDuration("");
+    setAuthor("");
+    setPlatform("");
+    setImage("");
+    setPrice(0);
+    setAllBenefits([]);
+    setBenefit("");
+  };
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <form
@@ -179,6 +201,45 @@ function Form({ formToAdmin, showAddCourseForm }) {
             placeholder="Enter platform"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
+          <div className=" mt-3">
+            <label className=" ">{`Enter benefits (separate with an underscore _)`}</label>
+            <div className=" flex">
+              <textarea
+                type="text"
+                value={benefit}
+                onChange={(e) => setBenefit(e.target.value)}
+                placeholder="Enter benefits"
+                className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2 w-[95%] h-32 resize-none"
+              />
+              <span
+                onClick={(e) => handleAddBenefit()}
+                className=" bg-blue-500 text-white ml-1 mb-2 px-4 py-3 text-sm rounded-md h-12"
+              >
+                ADD
+              </span>
+              <span
+                onClick={(e) => setBenefit([])}
+                className=" bg-yellow-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12"
+              >
+                CLEAR
+              </span>
+            </div>
+            {allBenefits.length > 0 ? (
+              <div>
+                <ul className=" list-disc pl-5 mb-2">
+                  {allBenefits.map((data) => {
+                    return <li>{data}</li>;
+                  })}
+                </ul>
+                <span
+                  onClick={(e) => setAllBenefits([])}
+                  className=" bg-red-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12"
+                >
+                  Delete all
+                </span>
+              </div>
+            ) : null}
+          </div>
         </div>
       </form>
       <div className=" flex justify-end gap-2 w-9/12 my-12">
@@ -190,6 +251,15 @@ function Form({ formToAdmin, showAddCourseForm }) {
           className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-red-600 hover:bg-red-600 hover:text-white transition"
         >
           Cancel
+        </button>
+        <button
+          type="submit"
+          onClick={() => {
+            clearAllFields();
+          }}
+          className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-yellow-600 hover:bg-yellow-600 hover:text-white transition"
+        >
+          Clear all fields
         </button>
         <button
           type="submit"

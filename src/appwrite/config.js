@@ -25,6 +25,7 @@ export class Service {
     uploaded,
     duration,
     keywords,
+    allBenefits,
   }) {
     try {
       return await this.database.createDocument(
@@ -43,6 +44,7 @@ export class Service {
           uploaded: uploaded,
           duration: duration,
           keywords: keywords,
+          benefits: allBenefits,
         }
       );
     } catch (error) {
