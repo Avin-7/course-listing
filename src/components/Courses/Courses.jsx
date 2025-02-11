@@ -129,7 +129,7 @@ function Courses() {
         return (
           <button
             key={Math.random()}
-            className="bg-transparent backdrop-blur-3xl border-b-[1px] border-b-gray-50 px-4 py-2 m-1 text-left"
+            className="bg-transparent backdrop-blur-3xl border-b-[1px] border-neutral-700  px-4 py-2 m-1 text-left"
           >
             {query}
           </button>
@@ -212,33 +212,33 @@ function Courses() {
   */
 
   return (
-    <div id="courses" className=" bg-gray-50 font-poppins max-sm:8">
-      <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-blue-900 via-purple-500 to-blue-700">
+    <div id="courses" className=" bg-neutral-900 font-poppins max-sm:8">
+      <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>
       {/* From here search options starts */}
       <div>
         <div>
-          <div className=" flex justify-center align-middle mt-5 flex-wrap gap-4 font-figtree">
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+          <div className=" flex justify-center align-middle mt-5 flex-wrap gap-4 font-figtree text-gray-300">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-sm ">
               HTML
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4  bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4  bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               CSS
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               Javascript
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               Python
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               Java
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               Frontend development
             </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-gray-200 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-black text-sm ">
+            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
               Backend development
             </button>
           </div>
@@ -249,7 +249,7 @@ function Courses() {
         {""}
         {/* Search bar starts from here  */}
         <div className=" grid grid-rows-1 place-content-center mt-10 ">
-          <div className="flex align-middle justify-center relative mb-2">
+          <div className="flex align-middle justify-center relative mb-2 font-figtree">
             <input
               type="text"
               name="search"
@@ -259,7 +259,7 @@ function Courses() {
                 setSearchQuery(e.target.value);
               }}
               placeholder="Enter Keywords"
-              className="w-96 max-lg:w-72 max-md:w-60 pl-4 py-3 px-2 rounded-xl outline-none bg-gray-200 text-black my-0"
+              className="w-96 max-lg:w-72 max-md:w-60 pl-4 py-3 px-2 rounded-xl outline-none bg-neutral-800 placeholder-gray-400 text-gray-100 my-0"
             />
             <button
               onClick={() => {
@@ -267,7 +267,7 @@ function Courses() {
               }}
               className="px-4 bg-transparent absolute top-3 right-2"
             >
-              <RxMagnifyingGlass className=" text-gray-600" size={"1.5em"} />
+              <RxMagnifyingGlass className=" text-neutral-600" size={"1.5em"} />
             </button>
           </div>
           {/* 
@@ -277,7 +277,7 @@ function Courses() {
           */}
           <div className="flex  flex-col relative align-middle justify-center">
             {searchQuery ? (
-              <div className="flex flex-col absolute top-1 w-full text-black bg-gray-200 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
+              <div className="flex flex-col absolute top-1 w-full text-gray-100 bg-neutral-800 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
                 {suggestions.length > 0 ? (
                   displaySuggestions()
                 ) : (
