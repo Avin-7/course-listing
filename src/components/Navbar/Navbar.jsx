@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between bg-white">
+      <nav className="w-full h-16 flex items-center justify-between bg-cyan-100/70">
         <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-2xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
