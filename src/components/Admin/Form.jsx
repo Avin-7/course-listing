@@ -18,6 +18,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [price, setPrice] = useState(0);
   const [allBenefits, setAllBenefits] = useState([]);
   const [benefit, setBenefit] = useState("");
+  const [ratings, setRatings] = useState(0);
   /**
    **Submit button handler function....
    */
@@ -52,6 +53,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
         uploaded,
         duration,
         keywords,
+        ratings,
         allBenefits,
       });
       // if (res) console.log(res);
@@ -95,6 +97,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
     setPlatform("");
     setImage("");
     setPrice(0);
+    setRatings(0);
     setAllBenefits([]);
     setBenefit("");
   };
@@ -199,6 +202,14 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             placeholder="Enter platform"
+            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+          />
+          <label className="mt-2 mb-0 ">Enter ratings </label>
+          <input
+            type="number"
+            value={ratings}
+            onChange={(e) => setRatings(Number.parseFloat(e.target.value))}
+            placeholder="Enter ratings in numbers eg:4.5"
             className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
           />
           <div className=" mt-3">

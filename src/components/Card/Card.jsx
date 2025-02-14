@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../../store/authSlice";
 import fullStar from "../../assets/fullStar.svg";
 import halfStar from "../../assets/fourPointFiveStar.svg";
-import fourPointTwoStar from "../../assets/fourPointTwoStar.svg"
-import fourPointThreeStar from "../../assets/fourPointThreeStar.svg"
-import fourPointFourStar from "../../assets/fourPointFourStar.svg"
-import fourPointSixStar from "../../assets/fourPointSixStar.svg"
-import fourPointSevenStar from "../../assets/fourPointSevenStar.svg"
-import fourPointEightStar from "../../assets/fourPointEightStar.svg"
-import fourPointNineStar from "../../assets/fourPointNineStar.svg"
+import fourPointTwoStar from "../../assets/fourPointTwoStar.svg";
+import fourPointThreeStar from "../../assets/fourPointThreeStar.svg";
+import fourPointFourStar from "../../assets/fourPointFourStar.svg";
+import fourPointSixStar from "../../assets/fourPointSixStar.svg";
+import fourPointSevenStar from "../../assets/fourPointSevenStar.svg";
+import fourPointEightStar from "../../assets/fourPointEightStar.svg";
+import fourPointNineStar from "../../assets/fourPointNineStar.svg";
 function Card({ course }) {
   const dispatch = useDispatch();
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
@@ -22,7 +22,7 @@ function Card({ course }) {
   const [ratings, setRatings] = useState(5);
 
   const showRatings = () => {
-    if (ratings == 4) {
+    if (course.ratings == 4) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -31,7 +31,7 @@ function Card({ course }) {
           <img src={fullStar} alt="" className="size-3" />
         </span>
       );
-    } else if (ratings == 4.2) {
+    } else if (course.ratings == 4.1 || course.ratings == 4.2) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -41,8 +41,7 @@ function Card({ course }) {
           <img src={fourPointTwoStar} alt="" className="size-3" />
         </span>
       );
-    }
-     else if (ratings == 4.3) {
+    } else if (course.ratings == 4.3) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -52,8 +51,7 @@ function Card({ course }) {
           <img src={fourPointThreeStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 4.4) {
+    } else if (course.ratings == 4.4) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -63,8 +61,7 @@ function Card({ course }) {
           <img src={fourPointFourStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 4.5) {
+    } else if (course.ratings == 4.5) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -74,8 +71,7 @@ function Card({ course }) {
           <img src={halfStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 4.6) {
+    } else if (course.ratings == 4.6) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -85,7 +81,7 @@ function Card({ course }) {
           <img src={fourPointSixStar} alt="" className="size-3" />
         </span>
       );
-    } else if (ratings == 4.7) {
+    } else if (course.ratings == 4.7) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -95,8 +91,7 @@ function Card({ course }) {
           <img src={fourPointSevenStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 4.8) {
+    } else if (course.ratings == 4.8) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -106,8 +101,7 @@ function Card({ course }) {
           <img src={fourPointEightStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 4.9) {
+    } else if (course.ratings == 4.9) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -117,8 +111,7 @@ function Card({ course }) {
           <img src={fourPointNineStar} alt="" className="size-3" />
         </span>
       );
-    
-    } else if (ratings == 5) {
+    } else if (course.ratings == 5) {
       return (
         <span className=" flex gap-0.5 text-sm">
           <img src={fullStar} alt="" className="size-3" />
@@ -161,12 +154,15 @@ function Card({ course }) {
           </div>
           <Link to={`/course/${course.$id}`}>
             <h2 className="font-figtree text-balance text-white text-[16px] my-2">
-              {course.name}
+              {course.name.slice(0, 49)}...
             </h2>
             <p className=" font-thin text-[14px] my-0.5">
               {course.description.slice(0, 90)}...
             </p>
-            <div className=" my-1.5">{showRatings()}</div>
+            <div className=" my-1.5 flex gap-1">
+              <span>{course.ratings}</span>
+              <span className=" mt-1">{showRatings()}</span>
+            </div>
             <p className=" text-[16px] text-purple-50">
               {course.price == 0 ? "Free" : course.price}
             </p>

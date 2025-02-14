@@ -25,6 +25,7 @@ export class Service {
     uploaded,
     duration,
     keywords,
+    ratings,
     allBenefits,
   }) {
     try {
@@ -44,6 +45,7 @@ export class Service {
           uploaded: uploaded,
           duration: duration,
           keywords: keywords,
+          ratings: ratings,
           benefits: allBenefits,
         }
       );
