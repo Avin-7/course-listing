@@ -4,80 +4,6 @@ function Testimonial() {
   return (
     <>
       <div>
-        {/* <div classNameName="w-full bg-violet-50 flex justify-center items-center text-white mt-24"> */}
-        {/* <div>
-            <div classNameNameName=" text-center w-full text-2xl pt-10">
-              <h1 classNameNameName=" font-poppins text-black text-3xl font-normal">
-                Testimonials
-              </h1>
-            </div>
-            <div classNameNameName="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 py-24">
-              <div classNameNameName=" bg-white w-96 rounded-xl pl-10">
-                <div classNameNameName=" flex justify-start align-middle gap-4 text-black pt-8">
-                  <img
-                    src={
-                      "https://peaklife.in/wp-content/uploads/2019/06/elon-musk-image.jpg"
-                    }
-                    alt=""
-                    classNameNameName=" h-16 w-16 object-cover rounded-full"
-                  />
-                  <div>
-                    <h3 classNameNameName=" text-xl font-roboto pt-4 ">Elon musk</h3>
-                    <h4>⭐⭐⭐⭐</h4>
-                  </div>
-                </div>
-                <div classNameNameName=" mt-2">
-                  <p classNameNameName=" text-black text-balance font-figtree">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reprehenderit unde obcaecati magnam cum deleniti?
-                  </p>
-                </div>
-              </div>
-              <div classNameNameName=" bg-white w-96 h-52 rounded-xl pl-10">
-                <div classNameNameName=" flex justify-start align-middle gap-4 text-black pt-8">
-                  <img
-                    src={
-                      "https://peaklife.in/wp-content/uploads/2019/06/elon-musk-image.jpg"
-                    }
-                    alt=""
-                    classNameNameName=" h-16 w-16 object-cover rounded-full"
-                  />
-                  <div>
-                    <h3 classNameNameName=" text-xl font-roboto pt-4 ">Elon musk</h3>
-                    <h4>⭐⭐⭐⭐</h4>
-                  </div>
-                </div>
-                <div classNameNameName=" mt-2">
-                  <p classNameNameName=" text-black text-balance font-figtree">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reprehenderit unde obcaecati magnam cum deleniti?
-                  </p>
-                </div>
-              </div>
-              <div classNameNameName=" bg-white w-96 h-52 rounded-xl pl-10">
-                <div classNameNameName=" flex justify-start align-middle gap-4 text-black pt-8">
-                  <img
-                    src={
-                      "https://peaklife.in/wp-content/uploads/2019/06/elon-musk-image.jpg"
-                    }
-                    alt=""
-                    classNameNameName=" h-16 w-16 object-cover rounded-full"
-                  />
-                  <div>
-                    <h3 classNameNameName=" text-xl font-roboto pt-4 ">Elon musk</h3>
-                    <h4>⭐⭐⭐⭐</h4>
-                  </div>
-                </div>
-                <div classNameNameName=" mt-2">
-                  <p classNameNameName=" text-black text-balance font-figtree">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reprehenderit unde obcaecati magnam cum deleniti?
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
         <div className="mx-auto bg-neutral-900 py-28">
           <h2 className="text-3xl text-white font-bold mb-20 text-center font-poppins">
             Testimonials
@@ -109,8 +35,6 @@ function Testimonial() {
                 <h3 className="mt-4 text-xl text-white font-DMsans">Jason</h3>
                 <span className="text-sm text-stone-300">Software Engineer</span>
               </div>
-              {/* <!-- Add more testimonials as needed --> */}
-              {/* <!-- Duplicate the testimonials to create the seamless scrolling effect --> */}
               <div className="marquee-item masonry-item bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 p-6 rounded-lg shadow-lg">
                 <p className="text-gray-300 font-figtree">
                   "The service was excellent. Highly recommend!"
