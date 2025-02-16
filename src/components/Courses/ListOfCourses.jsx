@@ -54,22 +54,23 @@ function ListOfCourses() {
       uploaded: "May 1, 2021",
       wishlisted: false,
     },
-    
   ]);
 
   return (
     <>
-      <div className=" my-2">
-        <div className="w-full">
-          {courses
-            ? courses.map((course) => {
-                return (
-                  <div key={course.image}>
-                    <ListItem course={course} />
-                  </div>
-                );
-              })
-            : null}
+      <div className="bg-neutral-800 h-svh">
+        <div className=" my-2 ">
+          <div className="w-full py-4">
+            {courses
+              ? courses.map((course) => {
+                  return (
+                    <div key={course.image}>
+                      <ListItem course={course} />
+                    </div>
+                  );
+                })
+              : null}
+          </div>
         </div>
       </div>
     </>

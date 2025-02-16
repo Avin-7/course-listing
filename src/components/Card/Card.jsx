@@ -124,39 +124,40 @@ function Card({ course }) {
     }
   };
   return course ? (
-    <div className="my-32 ml-12 w-[300px] h-[400px]">
+    <div className="relative my-32 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px]">
+      <div className="absolute p-2 text-2xl max-md:text-xl top-0 right-0 bg-white rounded-bl-full">
+        {!wishlisted ? (
+          <RxHeart
+          className=" ml-2"
+            onClick={(e) => {
+              setWishlisted(!wishlisted);
+              dispatch(addToWishlist(course.$id));
+            }}
+          />
+        ) : (
+          <RxHeartFilled
+            className="ml-1.5 text-[#f21b3f]"
+            onClick={() => {
+              setWishlisted(!wishlisted);
+              dispatch(removeFromWishlist(course.$id));
+            }}
+          />
+        )}
+      </div>
       <div className=" bg-neutral-800 text-white w-full h-full rounded-lg">
         <div className=" w-full">
           <img
             src={service.getFilePreiview(course.image)}
             alt=""
-            className=" h-[190px] w-full rounded-t-lg"
+            className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
           />
         </div>
-        <div className="relative p-3.5 text-gray-400 font-poppins ">
-          <div className="absolute text-2xl top-7 right-5">
-            {!wishlisted ? (
-              <RxHeart
-                onClick={(e) => {
-                  setWishlisted(!wishlisted);
-                  dispatch(addToWishlist(course.$id));
-                }}
-              />
-            ) : (
-              <RxHeartFilled
-                className="text-[#f21b3f]"
-                onClick={() => {
-                  setWishlisted(!wishlisted);
-                  dispatch(removeFromWishlist(course.$id));
-                }}
-              />
-            )}
-          </div>
+        <div className=" p-3.5 text-gray-400 font-poppins ">
           <Link to={`/course/${course.$id}`}>
-            <h2 className="font-figtree text-balance text-white text-[16px] my-2">
+            <h2 className="font-figtree text-balance text-white text-[16px] max-md:text-[14px] my-2 max-md:my-0.5 max-md:mr-4">
               {course.name.slice(0, 49)}...
             </h2>
-            <p className=" font-thin text-[14px] my-0.5">
+            <p className=" font-thin text-[14px] my-0.5 max-md:hidden">
               {course.description.slice(0, 90)}...
             </p>
             <div className=" my-1.5 flex gap-1">
