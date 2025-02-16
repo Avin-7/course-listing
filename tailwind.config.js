@@ -9,6 +9,7 @@ export default {
         roboto: ["Roboto", "sans-serif"],
         pacifico: ["Pacifico", "sans-serif"],
         figtree: ["Figtree", "sans-serif"],
+        DMsans: ["DM Sans", "serif"],
       },
       animation: {
         pulsate: "pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite",
