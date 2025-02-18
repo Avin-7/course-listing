@@ -21,17 +21,17 @@ export const Footer = () => {
         {/* ******Routes wrapper****** */}
         <div className='flex items-center'>
             <ul className='flex flex-col sm:flex-row gap-4 sm:gap-7 text-slate-400 text-smsm:text-lg'>
-                <li className='hover:text-purple-600'><Link to={"/"}>Home</Link></li>
-                <li className='hover:text-purple-600'><Link to={"/courses"}>Courses</Link></li>
-                <li className='hover:text-purple-600'><Link to={"/wishlist"}>Wishlist</Link></li>
-                <li className='hover:text-purple-600'><Link to={"/about"}>About</Link></li>
-                <li className='hover:text-purple-600'><Link to={"/login"}>login</Link></li>
+                <li className='hover:text-purple-600 font-roboto'><Link to={"/"}>Home</Link></li>
+                <li className='hover:text-purple-600 font-roboto'><Link to={"/courses"}>Courses</Link></li>
+                <li className='hover:text-purple-600 font-roboto'><Link to={"/wishlist"}>Wishlist</Link></li>
+                <li className='hover:text-purple-600 font-roboto'><Link to={"/about"}>About</Link></li>
+                <li className='hover:text-purple-600 font-roboto'><Link to={"/login"}>login</Link></li>
             </ul>
         </div>
 
         {/* ******copyright container****** */}
         <div>
-            <p className=' text-slate-400 text-sm sm:text-lg'>copyright@{copyRightYear} <span className='text-purple-600'>Dotlib.in</span></p>
+            <p className=' text-slate-400 text-sm sm:text-base font-roboto'>copyright@{copyRightYear} <span className='text-purple-600'>Dotlib.in</span></p>
         </div>
     </div>
   )
