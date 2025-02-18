@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../Hero/Hero";
 import Courses from "../Courses/Courses";
 import Testimonial from "../Testimonials/Testimonial";
+import Footer from "../Footer/footer";
 function Home() {
 
   return (
@@ -9,6 +10,7 @@ function Home() {
       <Hero />
       <Courses />
       <Testimonial />
+      <Footer />
     </div>
   );
 }
