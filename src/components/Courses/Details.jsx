@@ -19,7 +19,7 @@ function Details() {
 
   return course ? (
     <>
-      <CourseDetails key={course.$id} course={course} />;
+      <CourseDetails key={course.$id} course={course} />
     </>
   ) : null;
 }
