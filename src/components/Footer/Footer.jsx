@@ -10,7 +10,7 @@ let copyRightYear=nowDate.getFullYear();
 
 export const Footer = () => {
   return (
-    <div className='bg-neutral-800 w-screen p-5 sm:p-10 flex flex-col items-center justify-center gap-4 '>
+    <div className='bg-neutral-800 mx-auto  sm:p-10 flex flex-col items-center justify-center gap-4 '>
         {/* ******Social media icons wrapper******  */}
         <div className='socialIcons flex items-center justify-evenly gap-6 '>
             <a href="#" className='bg-white p-2 rounded-full hover:bg-purple-600'><FaFacebook size={25}/></a>
