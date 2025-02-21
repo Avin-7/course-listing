@@ -4,7 +4,7 @@ function Hero(){
   return (
     <div>
       <div className=" flex flex-col relative justify-center align-middle  h-screen" id="bgimg44 ">
-      <div className="absolute right- top-10">
+      <div className="absolute right-top-10">
         <div className="bg-purple-500 w-72 h-72 rounded-full top-0 -left-4 absolute mix-blend-multiply filter blur-3xl"> 
         </div>
         <div className="bg-yellow-300 w-72 h-72 rounded-full top-10 left-32 absolute mix-blend-multiply filter blur-3xl"> 
@@ -15,9 +15,9 @@ function Hero(){
         <div className="absolute right-96 top-24">
         <div className="bg-purple-400 w-72 h-72 rounded-full top-0 -left-4 absolute mix-blend-multiply filter blur-3xl"> 
         </div>
-        <div className="bg-yellow-300 w-72 h-72 rounded-full top-10 left-32 absolute mix-blend-multiply filter blur-3xl"> 
+        <div className="bg-yellow-300 w-56 h-72 rounded-full top-10 left-32 absolute mix-blend-multiply filter blur-3xl"> 
         </div>
-        <div className="bg-pink-300 w-72 h-72 rounded-full top-17 left-9 absolute mix-blend-multiply filter blur-3xl"> 
+        <div className="bg-pink-300 w-56 h-72 rounded-full top-17 left-9 absolute mix-blend-multiply filter blur-3xl"> 
         </div>
         </div>
         <div className=" font-poppins relative  h-96 bottom-3 ">
