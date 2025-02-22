@@ -124,25 +124,27 @@ function Card({ course }) {
     }
   };
   return course ? (
-    <div className="relative my-32 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px]">
-      <div className="absolute p-2 text-2xl max-md:text-xl top-0 right-0 bg-white rounded-bl-full">
-        {!wishlisted ? (
-          <RxHeart
-          className=" ml-2"
-            onClick={(e) => {
-              setWishlisted(!wishlisted);
-              dispatch(addToWishlist(course.$id));
-            }}
-          />
-        ) : (
-          <RxHeartFilled
-            className="ml-1.5 text-[#f21b3f]"
-            onClick={() => {
-              setWishlisted(!wishlisted);
-              dispatch(removeFromWishlist(course.$id));
-            }}
-          />
-        )}
+    <div className="relative my-32 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
+      <div className="absolute top-1 right-1">
+        <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
+          {!wishlisted ? (
+            <RxHeart
+              className=" "
+              onClick={(e) => {
+                setWishlisted(!wishlisted);
+                dispatch(addToWishlist(course.$id));
+              }}
+            />
+          ) : (
+            <RxHeartFilled
+              className=" text-[#f21b3f]"
+              onClick={() => {
+                setWishlisted(!wishlisted);
+                dispatch(removeFromWishlist(course.$id));
+              }}
+            />
+          )}
+        </div>
       </div>
       <div className=" bg-neutral-800 text-white w-full h-full rounded-lg">
         <div className=" w-full">
