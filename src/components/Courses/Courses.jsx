@@ -4,7 +4,7 @@ import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
 import { RxMagnifyingGlass, RxArrowRight } from "react-icons/rx";
 import service from "../../appwrite/config.js";
-
+import SearchBar from "./SearchBar.jsx";
 function Courses() {
   // const [data, setData] = useState([
   //   {
@@ -197,6 +197,7 @@ function Courses() {
         price: 0,
         uploaded: "May 1, 2021",
         wishlisted: false,
+        YtLink: "https://www.youtube.com/embed/6v7HjpdXzm8?si=lg3UIIAbhkG95WpB",
       },
     ]);
     // })
@@ -212,7 +213,7 @@ function Courses() {
   */
 
   return (
-    <div id="courses" className=" bg-neutral-900 font-poppins max-sm:8">
+    <div id="courses" className=" bg-neutral-900 font-poppins max-sm:8 pt-10">
       <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>
@@ -248,7 +249,7 @@ function Courses() {
         {""}
         {""}
         {/* Search bar starts from here  */}
-        <div className=" grid grid-rows-1 place-content-center mt-10 ">
+        {/* <div className=" grid grid-rows-1 place-content-center mt-10 ">
           <div className="flex align-middle justify-center relative mb-2 font-figtree">
             <input
               type="text"
@@ -275,7 +276,7 @@ function Courses() {
           Search Suggestions panel code starts from here
           ************************************************
           */}
-          <div className="flex  flex-col relative align-middle justify-center">
+        {/* <div className="flex  flex-col relative align-middle justify-center">
             {searchQuery ? (
               <div className="flex flex-col absolute top-1 w-full text-gray-100 bg-neutral-800 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
                 {suggestions.length > 0 ? (
@@ -290,20 +291,23 @@ function Courses() {
                 )}
               </div>
             ) : null}
-          </div>
+          </div> */}
 
-          {/* 
+        {/* 
           ************************************************
           Search Suggestions panel code ends here
           ************************************************
           */}
+        {/* </div> */}
+        {""}
+        {""}
+        {""}
+        {""}
+        <div className=" flex justify-center items-center w-full mt-6 mb-2">
+          <SearchBar />
         </div>
-        {""}
-        {""}
-        {""}
-        {""}
         {/* Course display layout starts from here */}
-        <div className="">
+        <div>
           <div>
             <div className=" grid grid-cols-4 place-items-center max-xl:grid-cols-3  max-lg:grid-cols-2 max-md:flex max-md:gap-4 max-md:overflow-auto max-md:pl-3">
               {courses &&
