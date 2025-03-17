@@ -169,7 +169,7 @@
   font-weight: bold;
   margin: 10px 0;
   position: relative;
-  margin-left: 41%;
+  margin-left: 50%;
   margin-right: 50%;
 }
 .option:before {
@@ -178,7 +178,7 @@
   background: #b6b6b6;
   width: 64px;
   height: 2px;
-  right: 46px;
+  right: 30px;
   top: 11px;
   border-radius: 10px;
 }
@@ -188,7 +188,7 @@
   background: #b6b6b6;
   width: 64px;
   height: 2px;
-  left: 40px;
+  left: 52px;
   top: 11px;
   border-radius: 10px;
 }
@@ -349,6 +349,10 @@ btn {
   margin-right: 1rem;
   break-inside: avoid;
   height: 8rem;
+}
+
+.ais-SearchBox-submitIcon {
+  color: white;
 }
 
 @keyframes marquee {
