@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between bg-cyan-100/70">
+      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-2xl z-[100]">
         <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-2xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
@@ -37,29 +37,32 @@ function Navbar() {
         </Link>
 
         {/* nav list start here */}
-        <div className="text-black hidden text-md tracking-wide lg:block font-figtree ml-8">
-          <Link to={"/"} className="text-black mr-4 hover:text-purple-600 ">
+        <div className="text-white hidden text-md tracking-wider lg:block font-figtree ml-8 ">
+          <Link
+            to={"/"}
+            className="mr-4 hover:text-purple-600 transition-all ease-linear"
+          >
             Home
           </Link>
           <Link
             to={"/courses"}
-            className="text-black mr-4 hover:text-purple-600"
+            className=" mr-4 hover:text-purple-600 transition-all ease-linear"
           >
             Courses
           </Link>
-          <Link
-            to={"/wishlist"}
-            className="text-black mr-4 hover:text-purple-600"
-          >
+          <Link to={"/wishlist"} className=" mr-4 hover:text-purple-600">
             Wishlist
           </Link>
 
-          <Link to={"/about"} className="text-black mr-4 hover:text-purple-600">
+          <Link
+            to={"/about"}
+            className=" mr-4 hover:text-purple-600 transition-all ease-linear"
+          >
             About
           </Link>
           {adminStatus ? (
             <Link
-              className="text-black mr-4 hover:text-purple-600"
+              className=" mr-4 hover:text-purple-600 transition-all ease-linear"
               to={conf.adminRouteLink}
             >
               Admin
@@ -70,7 +73,7 @@ function Navbar() {
           {!authStatus ? (
             <Link
               to={"/login"}
-              className=" text-black mr-4 hover:text-purple-600 ease-in-out transition"
+              className="  mr-4 hover:text-purple-600 transition-all ease-linear"
             >
               Login
             </Link>
@@ -80,12 +83,14 @@ function Navbar() {
 
         {/*  hamburger starts here*/}
 
-        <div
-          className="lg:hidden absolute top-5 right-12 text-3xl"
-          onClick={() => setShowLinks(!showLinks)}
-        >
-          <IoMenu color="black" />
-        </div>
+        {!showLinks ? (
+          <div
+            className="lg:hidden absolute top-4 right-12 text-3xl"
+            onClick={() => setShowLinks(!showLinks)}
+          >
+            <IoMenu color="white" />
+          </div>
+        ) : null}
         {/* hamburger ends here */}
 
         {/* <!-- create account button statrs here --> */}
@@ -111,23 +116,23 @@ function Navbar() {
         {showLinks ? (
           <div
             id="toggleMenue"
-            className="fixed inset-0 lg:hidden z-10"
+            className="fixed top-0 bg-transparent backdrop-blur-xl inset-0 lg:hidden z-[100]"
           >
-            <div className="w-full h-16 bg-white flex items-center justify-between inset-0">
+            <div className="w-full h-16 flex items-center justify-between inset-0">
               <Link to={"/"}>
                 <h1 className=" text-2xl max-md:text-xl p-5 font-semibold ml-5  font-inter font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                   DotLib
                 </h1>
               </Link>
               <div
-                className="lg:block mr-5 absolute top-5 right-7 text-3xl "
+                className="lg:block mr-5 absolute top-4 right-7 text-3xl "
                 onClick={() => setShowLinks(!showLinks)}
               >
-                <RxCross2 color="black" />
+                <RxCross2 color="white" />
               </div>
             </div>
 
-            <div className="py-6 bg-white flex flex-col justify-center items-center font-figtree">
+            <div className="py-6 bg-neutral-800 text-white flex flex-col justify-center items-center font-figtree z-[100] ">
               <Link
                 to={"/"}
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
@@ -161,7 +166,7 @@ function Navbar() {
                 {adminStatus ? (
                   <Link
                     to={conf.adminRouteLink}
-                    className="text-black m-4 hover:text-purple-600 p-3 text-md tracking-wide lg:block  "
+                    className=" m-4 hover:text-purple-600 p-3 text-md tracking-wide lg:block  "
                     onClick={() => setShowLinks(!showLinks)}
                   >
                     Admin
@@ -173,7 +178,7 @@ function Navbar() {
                   <Link
                     to={"/login"}
                     onClick={() => setShowLinks(!showLinks)}
-                    className=" text-black mr-4 m-4 p-3 hover:text-purple-600 ease-in-out transition "
+                    className=" mr-4 m-4 p-3 hover:text-purple-600 ease-in-out transition "
                   >
                     Login
                   </Link>
@@ -183,21 +188,17 @@ function Navbar() {
 
             {/* <div className="w-full h-[1px] bg-gray-300 mt-6 mb-5"></div> */}
 
-            <div className="lg:hidden p-3 pb-6 bg-white flex justify-center items-center font-figtree">
+            <div className="lg:hidden p-3 pb-6 bg-neutral-800 flex justify-center items-center font-figtree text-white rounded-b-3xl">
               {authStatus ? (
                 <button
-                  className="rounded-xl font-medium px-6 py-3 bg-purple-500  text-white"
+                  className="rounded-xl font-medium px-6 py-3 bg-purple-500  "
                   onClick={() => logoutUser()}
                 >
                   Sign out
                 </button>
               ) : (
-                <Link to={"/signup"}
-                onClick={() => setShowLinks(!showLinks)}
-                >
-                  <button className="text-black">
-                    Create new account
-                  </button>
+                <Link to={"/signup"} onClick={() => setShowLinks(!showLinks)}>
+                  <button className="">Create new account</button>
                 </Link>
               )}
             </div>
