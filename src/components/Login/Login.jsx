@@ -35,7 +35,6 @@ function Login() {
           dispatch(storeWishlist({ userId, wishlist, wishlistId }));
         }
       }
-
       navigate("/");
     } catch (err) {
       setErrorMessage("Invalid email or password");
@@ -43,31 +42,28 @@ function Login() {
   };
   return (
     <>
-      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br from-rose-300 via-fuchsia-600 to-purple-700 py-5">
-        <div className=" w-2/4 text-left flex justify-center max-md:hidden">
-          <div className="py-52 text-white ">
-            <h1 className=" text-7xl font-figtree font-extralight tracking-wide text-balance px-20 break-words mb-3">
-              Login
+      <div className="text-black flex justify-center items-center w-full py-5  bg-neutral-900 pt-24">
+        <div className=" w-[35%] text-left flex justify-center max-md:hidden ">
+          <div className=" ml-36">
+            <h1 className=" text-7xl max-lg:text-5xl tracking-wide text-balance px-10 py-2 break-words mb-3 text-transparent bg-clip-text bg-gradient-to-br from-purple-800 via-pink-600 to-purple-900  font-poppins font-semibold">
+              Login your account.
             </h1>
-            <h3 className=" text-7xl font-figtree tracking-wide font-extralight  text-balance px-20 mb-3">
-              to your
-            </h3>
-            <h2 className="text-7xl font-figtree tracking-wide font-extralight  text-balance px-20 mb-1">
-              account.
-            </h2>
           </div>
         </div>
-        <div className="w-2/4 max-lg:w-11/12 max-[375px]:w-[94%] flex justify-center">
-          <form>
-            <div className="flex bg-white rounded-xl px-6">
-              <div className="pl-10 max-sm:pl-6 mr-5 " id="">
-                <div className=" text-4xl -ml-4 mt-6 mb-12 w-full">
-                  <h1 className=" text-3xl text-black p-5 font-semibold ml-14 max-[375px]:ml-6  font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+        <div className="w-[65%] max-lg:w-11/12 max-[375px]:w-[94%] flex justify-center">
+          <form className="w-[50%] max-xl:w-[65%] max-md:w-[90%]">
+            <div className="flex rounded-xl px-6 max-sm:px-1 bg-neutral-800 font-poppins">
+              <div className="pl-10 max-lg:pl-6 max-sm:pl-6 mr-5 w-full" id="">
+                <div className=" -ml-4 mt-6 mb-12 w-full">
+                  <h1 className=" text-3xl max-lg:text-2xl text-black p-5 font-semibold text-center max-[375px]:ml-6 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-800 via-pink-600 to-purple-900">
                     DotLib
                   </h1>
                 </div>
-                <div className="mt-4 mb-10">
-                  <label htmlFor="email" className=" font-normal mb-2">
+                <div className="mt-4 mb-10 ">
+                  <label
+                    htmlFor="email"
+                    className="text-white font-normal mb-2 tracking-wider"
+                  >
                     Email
                   </label>
                   <input
@@ -75,12 +71,15 @@ function Login() {
                     name="Email"
                     value={email}
                     id="he"
-                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-full focus:border-b-blue-700"
+                    className="bg-transparent border-b-[2px] py-2 outline-none w-full border-b-purple-700 focus:border-b-purple-400 text-white transition-all ease-in"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="mt-4 mb-10">
-                  <label htmlFor="password" className=" font-normal mb-6">
+                  <label
+                    htmlFor="password"
+                    className="text-white font-normal mb-6 tracking-wider"
+                  >
                     Password
                   </label>
                   <input
@@ -88,7 +87,7 @@ function Login() {
                     name="password"
                     id="password"
                     value={password}
-                    className="bg-transparent border-b-[2px] border-b-neutral-800 py-2 outline-none w-full focus:border-b-blue-700"
+                    className="bg-transparent border-b-[2px] py-2 outline-none w-full border-b-purple-700 focus:border-b-purple-400 text-white transition-all ease-in "
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -103,7 +102,7 @@ function Login() {
                 <div className="w-full flex">
                   <Link
                     to="/forgot-password"
-                    className=" no-underline text-blue-900"
+                    className=" no-underline text-white hover:text-purple-500 transition-all ease-linear tracking-wider"
                   >
                     Forgot password
                   </Link>
@@ -112,14 +111,14 @@ function Login() {
                 <div className="relative">
                   <button
                     type="submit"
-                    className=" w-full my-5 bg-[#2121ad] text-white py-3 px-2 rounded-xl hover:bg-[#2121adee] transition ease-linear"
+                    className=" w-full my-5 bg-violet-900 text-white py-3 px-2 rounded-xl hover:bg-violet-800 transition ease-linear tracking-wider"
                     onClick={(e) => login(e)}
                   >
                     Login
                   </button>
                 </div>
                 <div className="option">OR</div>
-                <button className="w-full flex justify-center items-center gap-2 my-10 py-3 px-2 border-b-2 border-blue-700 rounded-xl bg-gray-200 hover:border-blue-900 hover:bg-neutral-100 transition-all ease-linear">
+                <button className="w-full flex justify-center items-center text-white gap-2 my-10 py-3 px-2 border-2 border-purple-700 rounded-xl bg-neutral-800 transition-all ease-linear">
                   <img src={Google} alt="" className="size-5 img" />
                   <span className="span">Login with Google</span>
                 </button>
