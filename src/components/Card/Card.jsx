@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { RxHeart, RxHeartFilled, RxArrowTopRight } from "react-icons/rx";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { RxHeart, RxHeartFilled } from "react-icons/rx";
+import { Link } from "react-router-dom";
 import service from "../../appwrite/config";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../../store/authSlice";
 import fullStar from "../../assets/fullStar.svg";
 import halfStar from "../../assets/fourPointFiveStar.svg";
@@ -124,12 +124,11 @@ function Card({ course }) {
     }
   };
   return course ? (
-    <div className="relative my-32 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
+    <div className="relative mt-12 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
       <div className="absolute top-1 right-1">
         <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
           {!wishlisted ? (
             <RxHeart
-              className=" "
               onClick={(e) => {
                 setWishlisted(!wishlisted);
                 dispatch(addToWishlist(course.$id));
@@ -150,7 +149,6 @@ function Card({ course }) {
         <div className=" w-full">
           <img
             src={service.getFilePreiview(course.image)}
-            alt=""
             className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
           />
         </div>
