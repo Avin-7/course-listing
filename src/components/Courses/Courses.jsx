@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
 import { RxMagnifyingGlass, RxArrowRight } from "react-icons/rx";
 import service from "../../appwrite/config.js";
 import SearchBar from "./SearchBar.jsx";
+import Filter from "./Filter.jsx";
 function Courses() {
   // const [data, setData] = useState([
   //   {
@@ -39,8 +41,10 @@ function Courses() {
   // const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [courses, setCourses] = useState([]);
+  // const [courses, setCourses] = useState([]);
   const [filter, setFilter] = useState("all");
+
+  const courses = useSelector((state) => state.courseData.courses);
 
   const handleSearch = () => {
     console.log(searchQuery);
@@ -146,60 +150,60 @@ function Courses() {
     // service
     //   .getCourses()
     //   .then((courses) => {
-    setCourses([
-      {
-        $collectionId: "67150b750016dff76b2e",
-        $createdAt: "2024-11-03T05:14:44.505+00:00",
-        $databaseId: "67150b58000821ac8c8f",
-        $id: "672706c30001af16ac1d",
-        $permissions: (3)[
-          ('read("user:671ded9a003cee3f8cee")',
-          'update("user:671ded9a003cee3f8cee")',
-          'delete("user:671ded9a003cee3f8cee")')
-        ],
-        $updatedAt: "2024-11-07T04:59:24.911+00:00",
-        author:
-          "Rafael Irizarry Professor of Biostatistics, T.H. Chan School of Public Health",
-        category: "data science",
-        description:
-          "Build a movie recommendation system and learn the science behind one of the most popular and successful data science techniques.",
-        duration: "8 weeks, 2–4 hours per week",
-        image: "67270786002c205dacdd",
-        keywords: "data science",
-        link: "https://www.edx.org/learn/machine-learning/harvard-university-data-science-machine-learning",
-        name: "HarvardX: Data Science: Machine Learning",
-        platform: "edX",
-        price: 0,
-        uploaded: "October 16, 2024",
-        wishlisted: false,
-      },
-      {
-        $collectionId: "67150b750016dff76b2e",
-        $createdAt: "2024-11-05T15:40:03.185+00:00",
-        $databaseId: "67150b58000821ac8c8f",
-        $id: "672a3c5200007a1bd38e",
-        $permissions: (3)[
-          ('read("user:671ded9a003cee3f8cee")',
-          'update("user:671ded9a003cee3f8cee")',
-          'delete("user:671ded9a003cee3f8cee")')
-        ],
-        $updatedAt: "2024-11-07T15:25:44.548+00:00",
-        author: "David J. Malan",
-        category: "programming",
-        description:
-          "A gentle introduction to programming that prepares you for subsequent courses in coding.",
-        duration: "3 weeks, 2 - 6 hours per week",
-        image: "672a3c4c003672ee6931",
-        keywords: "programming",
-        link: "https://www.edx.org/learn/scratch-programming/harvard-university-cs50-s-introduction-to-programming-with-scratch",
-        name: "CS50's Introduction to Programming with Scratch",
-        platform: "edX",
-        price: 0,
-        uploaded: "May 1, 2021",
-        wishlisted: false,
-        YtLink: "https://www.youtube.com/embed/6v7HjpdXzm8?si=lg3UIIAbhkG95WpB",
-      },
-    ]);
+    // setCourses([
+    //   {
+    //     $collectionId: "67150b750016dff76b2e",
+    //     $createdAt: "2024-11-03T05:14:44.505+00:00",
+    //     $databaseId: "67150b58000821ac8c8f",
+    //     $id: "672706c30001af16ac1d",
+    //     $permissions: (3)[
+    //       ('read("user:671ded9a003cee3f8cee")',
+    //       'update("user:671ded9a003cee3f8cee")',
+    //       'delete("user:671ded9a003cee3f8cee")')
+    //     ],
+    //     $updatedAt: "2024-11-07T04:59:24.911+00:00",
+    //     author:
+    //       "Rafael Irizarry Professor of Biostatistics, T.H. Chan School of Public Health",
+    //     category: "data science",
+    //     description:
+    //       "Build a movie recommendation system and learn the science behind one of the most popular and successful data science techniques.",
+    //     duration: "8 weeks, 2–4 hours per week",
+    //     image: "67270786002c205dacdd",
+    //     keywords: "data science",
+    //     link: "https://www.edx.org/learn/machine-learning/harvard-university-data-science-machine-learning",
+    //     name: "HarvardX: Data Science: Machine Learning",
+    //     platform: "edX",
+    //     price: 0,
+    //     uploaded: "October 16, 2024",
+    //     wishlisted: false,
+    //   },
+    //   {
+    //     $collectionId: "67150b750016dff76b2e",
+    //     $createdAt: "2024-11-05T15:40:03.185+00:00",
+    //     $databaseId: "67150b58000821ac8c8f",
+    //     $id: "672a3c5200007a1bd38e",
+    //     $permissions: (3)[
+    //       ('read("user:671ded9a003cee3f8cee")',
+    //       'update("user:671ded9a003cee3f8cee")',
+    //       'delete("user:671ded9a003cee3f8cee")')
+    //     ],
+    //     $updatedAt: "2024-11-07T15:25:44.548+00:00",
+    //     author: "David J. Malan",
+    //     category: "programming",
+    //     description:
+    //       "A gentle introduction to programming that prepares you for subsequent courses in coding.",
+    //     duration: "3 weeks, 2 - 6 hours per week",
+    //     image: "672a3c4c003672ee6931",
+    //     keywords: "programming",
+    //     link: "https://www.edx.org/learn/scratch-programming/harvard-university-cs50-s-introduction-to-programming-with-scratch",
+    //     name: "CS50's Introduction to Programming with Scratch",
+    //     platform: "edX",
+    //     price: 0,
+    //     uploaded: "May 1, 2021",
+    //     wishlisted: false,
+    //     YtLink: "https://www.youtube.com/embed/6v7HjpdXzm8?si=lg3UIIAbhkG95WpB",
+    //   },
+    // ]);
     // })
     // .catch((error) => console.log("Error in data fetch" + error))
     // .finally(() => {
@@ -219,31 +223,7 @@ function Courses() {
       </h1>
       {/* From here search options starts */}
       <div>
-        <div>
-          <div className=" flex justify-center align-middle mt-5 flex-wrap gap-4 font-figtree text-gray-300">
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out  text-sm ">
-              HTML
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4  bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              CSS
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              Javascript
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              Python
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              Java
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              Frontend development
-            </button>
-            <button className=" px-2  py-2 rounded-lg  border-b-4 bg-zinc-800 hover:border-purple-600 tracking-wide border-purple-400 transition ease-in-out text-sm ">
-              Backend development
-            </button>
-          </div>
-        </div>
+        <Filter />
         {""}
         {""}
         {""}
@@ -309,6 +289,14 @@ function Courses() {
         {/* Course display layout starts from here */}
         <div>
           <div>
+            <div className="hidden max-md:block mt-10 mr-5">
+              <Link to={"/courses/list"}>
+                <div className=" text-sm font-normal text-purple-600 flex justify-self-end gap-1">
+                  <span>view all</span>
+                  <RxArrowRight className=" text-lg" />
+                </div>
+              </Link>
+            </div>
             <div className=" grid grid-cols-4 place-items-center max-xl:grid-cols-3  max-lg:grid-cols-2 max-md:flex max-md:gap-4 max-md:overflow-auto max-md:pl-3">
               {courses &&
                 courses.map((course) => {
@@ -318,14 +306,6 @@ function Courses() {
                     </div>
                   );
                 })}
-              <div className="hidden max-md:block ">
-                <Link to={"/courses/list"}>
-                  <div className=" m-4 rounded-full bg-purple-300 px-4 py-3 text-sm font-normal w-28 flex justify-center gap-1">
-                    <span>view all</span>
-                    <RxArrowRight className=" text-lg" />
-                  </div>
-                </Link>
-              </div>
             </div>
             <div>
               {courses.length == 0 ? (
