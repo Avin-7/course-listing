@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-2xl z-[100]">
+      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-2xl z-[100] ">
         <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-2xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
@@ -37,32 +37,32 @@ function Navbar() {
         </Link>
 
         {/* nav list start here */}
-        <div className="text-white hidden text-md tracking-wider lg:block font-figtree ml-8 ">
+        <div className="hidden text-md tracking-wider lg:block font-figtree ml-8 ">
           <Link
             to={"/"}
-            className="mr-4 hover:text-purple-600 transition-all ease-linear"
+            className="mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
           >
             Home
           </Link>
           <Link
             to={"/courses"}
-            className=" mr-4 hover:text-purple-600 transition-all ease-linear"
+            className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
           >
             Courses
           </Link>
-          <Link to={"/wishlist"} className=" mr-4 hover:text-purple-600">
+          <Link to={"/wishlist"} className=" mr-4 text-gray-200 hover:text-gray-400">
             Wishlist
           </Link>
 
           <Link
             to={"/about"}
-            className=" mr-4 hover:text-purple-600 transition-all ease-linear"
+            className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
           >
             About
           </Link>
           {adminStatus ? (
             <Link
-              className=" mr-4 hover:text-purple-600 transition-all ease-linear"
+              className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
               to={conf.adminRouteLink}
             >
               Admin
@@ -73,7 +73,7 @@ function Navbar() {
           {!authStatus ? (
             <Link
               to={"/login"}
-              className="  mr-4 hover:text-purple-600 transition-all ease-linear"
+              className="  mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
             >
               Login
             </Link>
