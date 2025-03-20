@@ -4,7 +4,7 @@ function Testimonial() {
   return (
     <>
       <div>
-        <div className="mx-auto bg-neutral-900 py-28">
+        <div className="mx-auto bg-gray-900 py-28">
           <h2 className="text-3xl text-white font-bold mb-20 text-center font-poppins">
             Testimonials
           </h2>

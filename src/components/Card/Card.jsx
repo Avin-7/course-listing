@@ -145,7 +145,7 @@ function Card({ course }) {
           )}
         </div>
       </div>
-      <div className=" bg-neutral-800 text-white w-full h-full rounded-lg">
+      <div className=" bg-neutral-900 text-white w-full h-full rounded-lg">
         <div className=" w-full">
           <img
             src={service.getFilePreiview(course.image)}
