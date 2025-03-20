@@ -10,7 +10,7 @@ import YTIntro from "./YTIntro";
 function CourseDetails({ course }) {
   return (
     <>
-      <div className=" p-11 w-full h-auto flex sm:p-12 bg-neutral-900 ">
+      <div className=" p-11 w-full h-screen flex sm:p-12 bg-neutral-900 ">
         <div className=" hidden sm:block w-1/2 p-20 pb-28">
           <div>
             <h1 className="text-white font-roboto text-3xl font-bold text mb-4">
