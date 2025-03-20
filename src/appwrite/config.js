@@ -103,6 +103,19 @@ export class Service {
       return false;
     }
   }
+
+  async getCourseByTopic(topic) {
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.equal("topic", topic)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getCourseByTopic :: error " + error);
+      return false;
+    }
+  }
   async createWishlist({ userId, wishlist }) {
     try {
       return await this.database.createDocument(
