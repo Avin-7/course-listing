@@ -63,7 +63,7 @@ function Signup() {
   };
   return (
     <>
-      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br bg-neutral-900 py-5 pt-24">
+      <div className="text-black flex justify-center items-center w-full bg-gradient-to-br bg-neutral-900 py-5 pt-24 h-screen">
         <div className=" w-[35%] max-md:hidden text-left flex justify-center ">
           <div className="py-52 ml-36">
             <h1 className=" text-7xl max-lg:text-5xl tracking-wide text-balance px-10 py-2 break-words mb-3 text-transparent bg-clip-text bg-gradient-to-br from-purple-800 via-pink-600 to-purple-900  font-poppins font-semibold">
