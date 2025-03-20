@@ -52,7 +52,7 @@ function Hero (){
             <section className="relative">
                 <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8">
                     <div className="space-y-5 max-w-4xl mx-auto text-center">
-                        <h2 className="text-4xl max-md:text-3xl text-white font-extrabold mx-auto md:text-5xl">
+                        <h2 className="text-4xl max-md:text-4xl text-white font-extrabold mx-auto md:text-5xl">
                         No more jumping <br />between platforms 
 
                         </h2>
