@@ -4,7 +4,7 @@ import service from "../../appwrite/config";
 function ListItem({ course }) {
   return course ? (
     <div>
-      <div className=" flex justify-center gap-4 w-[98%] mb-4 text-white">
+      <div className=" flex justify-center gap-4 w-[98%] -mb-2 text-white mt-14 px-3">
         <div className=" w-3/12">
           <img
             src={service.getFilePreiview(course.image)}
