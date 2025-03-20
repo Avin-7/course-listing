@@ -124,7 +124,7 @@ function Card({ course }) {
     }
   };
   return course ? (
-    <div className="relative mt-12 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
+    <div className="relative mt-12 max-md:mt-5 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
       <div className="absolute top-1 right-1">
         <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
           {!wishlisted ? (
