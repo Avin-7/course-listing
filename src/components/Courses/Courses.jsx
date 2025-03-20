@@ -9,144 +9,8 @@ import SearchBar from "./SearchBar.jsx";
 import Filter from "./Filter.jsx";
 import { storeData } from "../../store/courseSlice.js";
 function Courses() {
-  // const [data, setData] = useState([
-  //   {
-  //     id: 1,
-  //     title: "Dummy title",
-  //     desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-  //     image:
-  //       "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Dummy title",
-  //     desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-  //     image:
-  //       "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Dummy title",
-  //     desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-  //     image:
-  //       "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Dummy title",
-  //     desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, doloribus perferendis. Iusto assumenda at tempore incidunt, a numquam et voluptatibus?",
-  //     image:
-  //       "https://th.bing.com/th/id/OIP.zmDZPFvLFIiT3PfNxgkS7gHaEK?rs=1&pid=ImgDetMain",
-  //   },
-  // ]);
-  // const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  // const [courses, setCourses] = useState([]);
-  const [filter, setFilter] = useState("all");
-
   const courses = useSelector((state) => state.courseData.courses);
   const dispatch = useDispatch();
-
-  const handleSearch = () => {
-    console.log(searchQuery);
-  };
-
-  /*
-  ***************************************
-  Search bar suggesstions code starts here 
-  ***************************************
-  */
-  const smartQueries = [
-    {
-      A: ["Angular"],
-      a: ["Angular"],
-    },
-    {
-      C: ["C", "C++", "C#", "CSS", "Cloud Computing"],
-      c: ["C", "C++", "C#", "CSS", "Cloud Computing"],
-    },
-    {
-      D: ["Django"],
-      d: ["Django"],
-    },
-    {
-      H: ["HTML"],
-      h: ["HTML"],
-    },
-    {
-      J: ["Java", "Javascript"],
-      j: ["Java", "Javascript"],
-    },
-    {
-      M: ["MongoDB", "Mongoose"],
-      m: ["MongoDB", "Mongoose"],
-    },
-    {
-      N: ["Next JS"],
-      n: ["Next JS"],
-    },
-    {
-      P: ["Python"],
-      p: ["Python"],
-    },
-    {
-      R: ["React JS", "Rust", "R"],
-      r: ["React JS", "Rust", "R"],
-    },
-    {
-      S: ["SQL"],
-      s: ["SQL"],
-    },
-    {
-      T: ["Tailwind CSS", "Typescript"],
-      t: ["Tailwind CSS", "Typescript"],
-    },
-    {
-      V: ["Vue JS"],
-      v: ["Vue JS"],
-    },
-  ];
-
-  const handleSuggestions = () => {
-    if (searchQuery.length == 0) setSuggestions([]);
-    smartQueries.map((obj) => {
-      for (let item in obj) {
-        if (obj.hasOwnProperty(item)) {
-          if (item == searchQuery.substring(0, 1)) {
-            obj[item].map((query) => {
-              if (!suggestions.includes(query)) {
-                if (suggestions.length < 5) {
-                  setSuggestions((prev) => [query, ...prev]);
-                }
-              }
-            });
-          }
-        }
-      }
-    });
-  };
-
-  const displaySuggestions = () => {
-    let i = 0;
-    return suggestions.map((query) => {
-      if (i < 5) {
-        i++;
-        return (
-          <button
-            key={Math.random()}
-            className="bg-transparent backdrop-blur-3xl border-b-[1px] border-neutral-700  px-4 py-2 m-1 text-left"
-          >
-            {query}
-          </button>
-        );
-      }
-    });
-  };
-
-  useEffect(() => {
-    handleSuggestions();
-  }, [searchQuery]);
 
   useEffect(() => {
     service
@@ -158,84 +22,18 @@ function Courses() {
       .finally(() => {
         console.log("fetch completed!!");
       });
-  }, [filter]);
-  /*
-  ***************************************
-  Search bar suggesstions code ends here 
-  ***************************************
-  */
+  }, [courses]);
 
   return (
     <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 px-5">
       <h1 className=" text-center font-bold text-3xl max-md:text-2xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>
-      {/* From here search options starts */}
       <div>
         <Filter />
-        {""}
-        {""}
-        {""}
-        {""}
-        {/* Search bar starts from here  */}
-        {/* <div className=" grid grid-rows-1 place-content-center mt-10 ">
-          <div className="flex align-middle justify-center relative mb-2 font-figtree">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-              }}
-              placeholder="Enter Keywords"
-              className="w-96 max-lg:w-72 max-md:w-60 pl-4 py-3 px-2 rounded-xl outline-none bg-neutral-800 placeholder-gray-400 text-gray-100 my-0"
-            />
-            <button
-              onClick={() => {
-                handleSearch();
-              }}
-              className="px-4 bg-transparent absolute top-3 right-2"
-            >
-              <RxMagnifyingGlass className=" text-neutral-600" size={"1.5em"} />
-            </button>
-          </div>
-          {/* 
-          ************************************************
-          Search Suggestions panel code starts from here
-          ************************************************
-          */}
-        {/* <div className="flex  flex-col relative align-middle justify-center">
-            {searchQuery ? (
-              <div className="flex flex-col absolute top-1 w-full text-gray-100 bg-neutral-800 rounded-b-lg rounded-t-md transition-transform ease-in-out z-10 ">
-                {suggestions.length > 0 ? (
-                  displaySuggestions()
-                ) : (
-                  <button
-                    key={Date.now()}
-                    className="bg-transparent px-4 py-2 m-1 text-left"
-                  >
-                    No results found
-                  </button>
-                )}
-              </div>
-            ) : null}
-          </div> */}
-
-        {/* 
-          ************************************************
-          Search Suggestions panel code ends here
-          ************************************************
-          */}
-        {/* </div> */}
-        {""}
-        {""}
-        {""}
-        {""}
         <div className=" flex justify-center items-center w-full mt-6 mb-2">
           <SearchBar />
         </div>
-        {/* Course display layout starts from here */}
         <div>
           <div>
             <div className="hidden max-md:block mt-10 mr-5">
