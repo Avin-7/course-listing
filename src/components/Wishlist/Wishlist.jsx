@@ -14,8 +14,8 @@ function Wishlist() {
   //   });
   // }, [wishlistData]);
   return (
-    <div className="">
-      <div >
+    <div className="pt-12">
+      <div>
         <h1 className=" text-3xl font-semibold font-poppins tracking tracking-wide mt-10 ml-24">
           Wishlist
         </h1>

@@ -217,7 +217,7 @@ function Courses() {
   */
 
   return (
-    <div id="courses" className=" bg-neutral-900 font-poppins max-sm:8 pt-10">
+    <div id="courses" className=" bg-neutral-900 font-poppins pt-12">
       <h1 className=" text-center font-bold text-3xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>

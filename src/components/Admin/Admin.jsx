@@ -34,7 +34,7 @@ function Admin() {
   }, [component.view]);
 
   return (
-    <div className="font-poppins tracking-wide">
+    <div className="font-poppins tracking-wide pt-12">
       <div className="w-[96%]">
         <div className="mt-10 ml-20 flex gap-12">
           <div>
