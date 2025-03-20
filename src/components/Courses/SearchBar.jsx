@@ -10,8 +10,8 @@ const searchClient = algoliasearch(
 function Hit({ hit }) {
   if (hit) {
     return (
-      <article className=" px-[18px] ">
-        <div className=" border-[1px] border-zinc-500 my-3 p-2 hover:bg-purple-950 ease-linear transition-colors">
+      <article className=" px-[18px]">
+        <div className=" border-[1px] border-purple-950 my-3 p-3.5 hover:bg-purple-950 ease-linear transition-colors">
           <p className=" text-gray-400 text-sm">{hit.category}</p>
           <h1 className="text-sm">
             <Highlight attribute="name" hit={hit} />
@@ -30,7 +30,7 @@ function SearchBar() {
         <InstantSearch searchClient={searchClient} indexName="data" insights>
           <SearchBox
             classNames={{
-              form: "relative bg-neutral-800 w-[480px] max-md:w-[380px] max-sm:w-[300px] rounded-t-md rounded-b-sm ",
+              form: "relative bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] rounded-t-md rounded-b-sm ",
               input:
                 " w-[400px] max-lg:w-72 max-md:w-60 max-sm:w-38 py-3 px-2 ml-12 bg-transparent rounded-t-xl outline-none  placeholder-gray-400 text-gray-100 font-figtree",
               submitIcon: "absolute top-3 left-2 mx-3",
@@ -54,7 +54,7 @@ function SearchBar() {
           />
           {isFocused && (
             <Hits
-              className=" text-white bg-neutral-800  w-[480px] max-md:w-[380px] max-sm:w-[300px] absolute top-10 "
+              className=" text-white bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] absolute top-14 "
               hitComponent={Hit}
             />
           )}

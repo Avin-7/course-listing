@@ -29,15 +29,15 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-2xl z-[100] ">
+      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-3xl z-[100] ">
         <Link to={"/"} className=" border-none outline-none">
-          <h1 className=" text-2xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+          <h1 className=" text-xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
         </Link>
 
         {/* nav list start here */}
-        <div className="hidden text-md tracking-wider lg:block font-figtree ml-8 ">
+        <div className="hidden text-sm tracking-wider lg:block font-figtree ml-8 ">
           <Link
             to={"/"}
             className="mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
@@ -50,7 +50,10 @@ function Navbar() {
           >
             Courses
           </Link>
-          <Link to={"/wishlist"} className=" mr-4 text-gray-200 hover:text-gray-400">
+          <Link
+            to={"/wishlist"}
+            className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear "
+          >
             Wishlist
           </Link>
 
@@ -97,14 +100,14 @@ function Navbar() {
         <div className="hidden lg:block p-3 text-white mr-5 font-poppins">
           {authStatus ? (
             <button
-              className="rounded-xl font-medium px-4 py-3 bg-purple-500  text-white"
+              className="rounded-xl font-medium px-4 py-2 bg-purple-500  text-white"
               onClick={() => logoutUser()}
             >
               Sign out
             </button>
           ) : (
             <Link to={"/signup"}>
-              <button className="rounded-xl font-medium btn-hover-animation color-7">
+              <button className="text-[15px] rounded-lg btn-hover-animation color-7 text-gray-100">
                 Create new account
               </button>
             </Link>
@@ -188,10 +191,10 @@ function Navbar() {
 
             {/* <div className="w-full h-[1px] bg-gray-300 mt-6 mb-5"></div> */}
 
-            <div className="lg:hidden p-3 pb-6 bg-neutral-800 flex justify-center items-center font-figtree text-white rounded-b-3xl">
+            <div className="lg:hidden p-0 bg-neutral-800 flex justify-center items-center font-figtree text-white rounded-b-3xl">
               {authStatus ? (
                 <button
-                  className="rounded-xl font-medium px-6 py-3 bg-purple-500  "
+                  className="rounded-xl font-medium px-2 py-0 bg-purple-500  "
                   onClick={() => logoutUser()}
                 >
                   Sign out

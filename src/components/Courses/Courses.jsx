@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
 import { RxMagnifyingGlass, RxArrowRight } from "react-icons/rx";
 import service from "../../appwrite/config.js";
 import SearchBar from "./SearchBar.jsx";
 import Filter from "./Filter.jsx";
+import { storeData } from "../../store/courseSlice.js";
 function Courses() {
   // const [data, setData] = useState([
   //   {
@@ -45,6 +46,7 @@ function Courses() {
   const [filter, setFilter] = useState("all");
 
   const courses = useSelector((state) => state.courseData.courses);
+  const dispatch = useDispatch();
 
   const handleSearch = () => {
     console.log(searchQuery);
@@ -147,68 +149,15 @@ function Courses() {
   }, [searchQuery]);
 
   useEffect(() => {
-    // service
-    //   .getCourses()
-    //   .then((courses) => {
-    // setCourses([
-    //   {
-    //     $collectionId: "67150b750016dff76b2e",
-    //     $createdAt: "2024-11-03T05:14:44.505+00:00",
-    //     $databaseId: "67150b58000821ac8c8f",
-    //     $id: "672706c30001af16ac1d",
-    //     $permissions: (3)[
-    //       ('read("user:671ded9a003cee3f8cee")',
-    //       'update("user:671ded9a003cee3f8cee")',
-    //       'delete("user:671ded9a003cee3f8cee")')
-    //     ],
-    //     $updatedAt: "2024-11-07T04:59:24.911+00:00",
-    //     author:
-    //       "Rafael Irizarry Professor of Biostatistics, T.H. Chan School of Public Health",
-    //     category: "data science",
-    //     description:
-    //       "Build a movie recommendation system and learn the science behind one of the most popular and successful data science techniques.",
-    //     duration: "8 weeks, 2–4 hours per week",
-    //     image: "67270786002c205dacdd",
-    //     keywords: "data science",
-    //     link: "https://www.edx.org/learn/machine-learning/harvard-university-data-science-machine-learning",
-    //     name: "HarvardX: Data Science: Machine Learning",
-    //     platform: "edX",
-    //     price: 0,
-    //     uploaded: "October 16, 2024",
-    //     wishlisted: false,
-    //   },
-    //   {
-    //     $collectionId: "67150b750016dff76b2e",
-    //     $createdAt: "2024-11-05T15:40:03.185+00:00",
-    //     $databaseId: "67150b58000821ac8c8f",
-    //     $id: "672a3c5200007a1bd38e",
-    //     $permissions: (3)[
-    //       ('read("user:671ded9a003cee3f8cee")',
-    //       'update("user:671ded9a003cee3f8cee")',
-    //       'delete("user:671ded9a003cee3f8cee")')
-    //     ],
-    //     $updatedAt: "2024-11-07T15:25:44.548+00:00",
-    //     author: "David J. Malan",
-    //     category: "programming",
-    //     description:
-    //       "A gentle introduction to programming that prepares you for subsequent courses in coding.",
-    //     duration: "3 weeks, 2 - 6 hours per week",
-    //     image: "672a3c4c003672ee6931",
-    //     keywords: "programming",
-    //     link: "https://www.edx.org/learn/scratch-programming/harvard-university-cs50-s-introduction-to-programming-with-scratch",
-    //     name: "CS50's Introduction to Programming with Scratch",
-    //     platform: "edX",
-    //     price: 0,
-    //     uploaded: "May 1, 2021",
-    //     wishlisted: false,
-    //     YtLink: "https://www.youtube.com/embed/6v7HjpdXzm8?si=lg3UIIAbhkG95WpB",
-    //   },
-    // ]);
-    // })
-    // .catch((error) => console.log("Error in data fetch" + error))
-    // .finally(() => {
-    //   console.log("fetch completed!!");
-    // });
+    service
+      .getCourses()
+      .then((courses) => {
+        dispatch(storeData(courses.documents));
+      })
+      .catch((error) => console.log("Error in data fetch" + error))
+      .finally(() => {
+        console.log("fetch completed!!");
+      });
   }, [filter]);
   /*
   ***************************************
@@ -217,7 +166,7 @@ function Courses() {
   */
 
   return (
-    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 px-5 h-screen">
+    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 px-5">
       <h1 className=" text-center font-bold text-3xl max-md:text-2xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>

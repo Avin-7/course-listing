@@ -42,20 +42,20 @@ function Login() {
   };
   return (
     <>
-      <div className="text-black flex justify-center items-center w-full py-5  bg-neutral-900 pt-24 h-screen">
+      <div className="text-black flex justify-center items-center w-full py-5  bg-gray-900 pt-24 h-screen">
         <div className=" w-[35%] text-left flex justify-center max-md:hidden ">
           <div className=" ml-36">
-            <h1 className=" text-7xl max-lg:text-5xl tracking-wide text-balance px-10 py-2 break-words mb-3 text-transparent bg-clip-text bg-gradient-to-br from-purple-800 via-pink-600 to-purple-900  font-poppins font-semibold">
+            <h1 className=" text-7xl max-lg:text-5xl tracking-wide text-balance px-10 py-2 break-words mb-3 text-transparent bg-clip-text bg-gradient-to-br from-gray-500 via-gray-200 to-gray-500  font-poppins font-semibold">
               Login your account.
             </h1>
           </div>
         </div>
         <div className="w-[65%] max-lg:w-11/12 max-[375px]:w-[94%] flex justify-center">
           <form className="w-[50%] max-xl:w-[65%] max-md:w-[90%]">
-            <div className="flex rounded-xl px-6 max-sm:px-1 bg-neutral-800 font-poppins">
+            <div className="flex rounded-xl px-6 max-sm:px-1 bg-[#1a2230dc]  font-poppins">
               <div className="pl-10 max-lg:pl-6 max-sm:pl-6 mr-5 w-full" id="">
                 <div className=" -ml-4 mt-6 mb-12 w-full">
-                  <h1 className=" text-3xl max-lg:text-2xl text-black p-5 font-semibold text-center max-[375px]:ml-6 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-800 via-pink-600 to-purple-900">
+                  <h1 className=" text-3xl max-lg:text-2xl text-black p-5 font-semibold text-center max-[375px]:ml-6 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                     DotLib
                   </h1>
                 </div>
