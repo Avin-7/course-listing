@@ -56,13 +56,13 @@ function Navbar() {
           >
             Wishlist
           </Link>
-
+{/* 
           <Link
             to={"/about"}
             className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
           >
             About
-          </Link>
+          </Link> */}
           {adminStatus ? (
             <Link
               className=" mr-4 text-gray-200 hover:text-gray-400 transition-all ease-linear"
@@ -157,13 +157,13 @@ function Navbar() {
               >
                 Wishlist
               </Link>
-              <Link
+              {/* <Link
                 to={"/about"}
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 About us
-              </Link>
+              </Link> */}
 
               <div className="mt-6">
                 {adminStatus ? (

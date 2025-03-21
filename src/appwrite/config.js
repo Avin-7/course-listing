@@ -142,15 +142,17 @@ export class Service {
   }
 
   async updateWishlist(id, userId, wishlist) {
-    try {
-      return await this.database.updateDocument(
-        conf.appWriteDatabaseId,
-        conf.appWriteWishlistCollectionId,
-        id,
-        { userId: userId, wishlist: wishlist }
-      );
-    } catch (error) {
-      console.log("Appwrite service :: updatePost :: error " + error);
+    if (id) {
+      try {
+        return await this.database.updateDocument(
+          conf.appWriteDatabaseId,
+          conf.appWriteWishlistCollectionId,
+          id,
+          { userId: userId, wishlist: wishlist }
+        );
+      } catch (error) {
+        console.log("Appwrite service :: updatePost :: error " + error);
+      }
     }
   }
 

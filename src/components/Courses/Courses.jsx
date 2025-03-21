@@ -10,6 +10,9 @@ import Filter from "./Filter.jsx";
 import { storeData } from "../../store/courseSlice.js";
 function Courses() {
   const courses = useSelector((state) => state.courseData.courses);
+  const user = useSelector((state) => state.auth.status);
+  const admin = useSelector((state) => state.adminauth.status);
+  const wishlist = useSelector((state) => state.auth.wishlistData);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,10 +25,10 @@ function Courses() {
       .finally(() => {
         console.log("fetch completed!!");
       });
-  }, [courses]);
+  }, [user, admin, wishlist]);
 
   return (
-    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 px-5">
+    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 pb-32  px-5">
       <h1 className=" text-center font-bold text-3xl max-md:text-2xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>
@@ -55,8 +58,8 @@ function Courses() {
                 })}
             </div>
             <div>
-              {courses.length == 0 ? (
-                <div className=" grid grid-cols-4 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
+              {!courses ? (
+                <div className=" grid grid-cols-4 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-4 gap-1 max-md:gap-72 max-md:pl-36 max-md:overflow-auto ">
                   <SkeletonCard />
                   <SkeletonCard />
                   <SkeletonCard />

@@ -59,7 +59,7 @@ function ListOfCourses() {
   return (
     <>
       <div className="bg-neutral-800 h-svh">
-        <div className=" my-2 ">
+        <div className=" ">
           <div className="w-full py-4">
             {courses
               ? courses.map((course) => {

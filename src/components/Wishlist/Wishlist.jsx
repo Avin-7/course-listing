@@ -6,13 +6,13 @@ import magnifier from "../../assets/magnifier.png";
 function Wishlist() {
   const wishlistData = useSelector((state) => state.auth.wishlistData);
   const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   service.getWishlistedCourses(wishlistData).then((res) => {
-  //     if (res) {
-  //       setData(res.documents);
-  //     }
-  //   });
-  // }, [wishlistData]);
+  useEffect(() => {
+    service.getWishlistedCourses(wishlistData).then((res) => {
+      if (res) {
+        setData(res.documents);
+      }
+    });
+  }, [wishlistData]);
   return (
     <div className="pt-12 bg-gray-900 text-white">
       <div>

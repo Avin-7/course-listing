@@ -4,7 +4,7 @@ function SkeletonCard() {
   return (
     <>
       <div className="">
-        <div className="bg-gray-200 rounded-lg w-52 h-60 m-14 animate-pulsate">
+        <div className="bg-gray-800 border rounded-lg w-52 h-60 m-14 animate-pulsate">
           <div className=" flex align-middle justify-center flex-col p-2">
             <div className=" bg-gray-300 w-full h-32 rounded-lg text-gray-500 ">
               {/* img  */}

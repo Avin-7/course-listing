@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import service from "../../appwrite/config";
@@ -16,9 +16,17 @@ import fourPointNineStar from "../../assets/fourPointNineStar.svg";
 function Card({ course }) {
   const dispatch = useDispatch();
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
-  // useEffect(() => {
-  //   service.updateWishlistStatus(course.$id, wishlisted);
-  // }, [wishlisted]);
+
+  const updateWishlist = async () => {
+    try {
+      await service.updateWishlistStatus(course.$id, wishlisted);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    updateWishlist();
+  }, [wishlisted]);
   const [ratings, setRatings] = useState(5);
 
   const showRatings = () => {
@@ -165,7 +173,7 @@ function Card({ course }) {
               <span className=" mt-1">{showRatings()}</span>
             </div>
             <p className=" text-[16px] text-purple-50">
-              {course.price == 0 ? "Free" : course.price}
+              {course.price == 0 ? "Free" : <span>&#8377; {course.price}</span>}
             </p>
           </Link>
         </div>

@@ -41,9 +41,9 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   service.updateWishlist(wishlistId, userId, wishlistData);
-  // }, [wishlistData]);
+  useEffect(() => {
+    service.updateWishlist(wishlistId, userId, wishlistData);
+  }, [wishlistData]);
 
   return (
     <>
