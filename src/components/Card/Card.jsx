@@ -138,7 +138,7 @@ function Card({ course }) {
           {!wishlisted ? (
             <RxHeart
               onClick={(e) => {
-                setWishlisted(!wishlisted);
+                setWishlisted(true);
                 dispatch(addToWishlist(course.$id));
               }}
             />
@@ -146,7 +146,7 @@ function Card({ course }) {
             <RxHeartFilled
               className=" text-[#f21b3f]"
               onClick={() => {
-                setWishlisted(!wishlisted);
+                setWishlisted(false);
                 dispatch(removeFromWishlist(course.$id));
               }}
             />

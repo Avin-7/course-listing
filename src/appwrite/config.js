@@ -66,7 +66,6 @@ export class Service {
     }
   }
   async getWishlistedCourses(numbers) {
-    console.log(numbers);
     try {
       return await this.database.listDocuments(
         conf.appWriteDatabaseId,
