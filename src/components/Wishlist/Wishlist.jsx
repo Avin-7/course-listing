@@ -14,7 +14,7 @@ function Wishlist() {
     });
   }, [wishlistData]);
   return (
-    <div className="pt-12 pb-24 bg-gray-900 text-white">
+    <div className="pt-12 pb-24 bg-gray-900 text-white min-h-lvh">
       <div>
         <h1 className=" text-3xl font-semibold font-poppins tracking tracking-wide mt-10 ml-24 text-white">
           Wishlist
