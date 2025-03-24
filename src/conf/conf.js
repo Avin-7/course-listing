@@ -9,5 +9,7 @@ const conf = {
   appWriteBucketId: import.meta.env.VITE_APPWRITE_BUCKET_ID,
   adminEmailId: import.meta.env.VITE_EMAIL_ID,
   adminPassword: import.meta.env.VITE_PASSWORD,
+  algoliaAppId: import.meta.env.VITE_ALGOLIA_APPLICATION_ID,
+  algoliaSearchApiKey: import.meta.env.VITE_ALGOLIA_SEARCH_API_KEY,
 };
 export default conf;
