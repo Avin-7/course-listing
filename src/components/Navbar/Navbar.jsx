@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-transparent backdrop-blur-3xl z-[100] ">
+      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-gray-900 sm:bg-transparent backdrop-blur-3xl z-[100] ">
         <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
@@ -123,7 +123,7 @@ function Navbar() {
           >
             <div className="w-full h-16 flex items-center justify-between inset-0">
               <Link to={"/"}>
-                <h1 className=" text-2xl max-md:text-xl p-5 font-semibold ml-5  font-inter font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+                <h1 className=" text-xl max-md:text-xl p-5 font-semibold ml-5  font-inter font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
                   DotLib
                 </h1>
               </Link>
@@ -135,7 +135,7 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="py-6 bg-neutral-800 text-white flex flex-col justify-center items-center font-figtree z-[100] ">
+            <div className="py-6 bg-gray-900 backdrop-blur-3xl text-white flex flex-col justify-center items-center font-figtree z-[100] ">
               <Link
                 to={"/"}
                 className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
@@ -191,7 +191,7 @@ function Navbar() {
 
             {/* <div className="w-full h-[1px] bg-gray-300 mt-6 mb-5"></div> */}
 
-            <div className="lg:hidden p-0 bg-neutral-800 flex justify-center items-center font-figtree text-white rounded-b-3xl">
+            <div className="lg:hidden py-6 bg-gray-900 backdrop-blur-3xl flex justify-center items-center font-figtree text-white rounded-b-3xl">
               {authStatus ? (
                 <button
                   className="rounded-xl font-medium px-2 py-0 bg-purple-500  "

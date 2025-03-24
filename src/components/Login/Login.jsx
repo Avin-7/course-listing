@@ -42,7 +42,7 @@ function Login() {
   };
   return (
     <>
-      <div className="text-black flex justify-center items-center w-full py-5  bg-gray-900 pt-24 h-screen">
+      <div className="text-black flex justify-center items-center w-full py-5  bg-gray-900 pt-24 min-h-lvh">
         <div className=" w-[35%] text-left flex justify-center max-md:hidden ">
           <div className=" ml-36">
             <h1 className=" text-7xl max-lg:text-5xl tracking-wide text-balance px-10 py-2 break-words mb-3 text-transparent bg-clip-text bg-gradient-to-br from-gray-500 via-gray-200 to-gray-500  font-poppins font-semibold">
