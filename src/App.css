@@ -5,6 +5,15 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
+body {
+  background-color: #111827;
+}
+
+/* this below styling will hide the 'x' or clear button in input tag of type search in the SearchBar.jsx component */
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
 /* signup button  */
 
 .btn-hover-animation {
