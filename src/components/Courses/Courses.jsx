@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import SkeletonCard from "../Card/SkeletonCard";
 import Card from "../Card/Card.jsx";
-import { RxMagnifyingGlass, RxArrowRight } from "react-icons/rx";
+import { RxArrowRight } from "react-icons/rx";
 import service from "../../appwrite/config.js";
 import SearchBar from "./SearchBar.jsx";
 import Filter from "./Filter.jsx";
@@ -28,7 +28,7 @@ function Courses() {
   }, [user, admin, wishlist]);
 
   return (
-    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 pb-32  px-5">
+    <div id="courses" className=" bg-gray-900 font-poppins max-sm:8 pt-4 pb-20  px-5">
       <h1 className=" text-center font-bold text-3xl max-md:text-2xl pt-14 text-transparent bg-clip-text bg-gradient-to-tr mb-20 from-purple-500 via-purple-600 to-blue-300">
         What would you like to learn?
       </h1>
