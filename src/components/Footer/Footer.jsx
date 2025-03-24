@@ -28,7 +28,7 @@ const Footer = () => {
       setEmailError("Please enter a valid email address");
       return;
     }
-    addDoc(collection(dataBase,"users"),{
+     addDoc(collection(dataBase,"users"),{
       email:email,
       time: getTime(),
     })
