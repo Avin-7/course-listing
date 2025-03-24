@@ -9,5 +9,14 @@ const conf = {
   appWriteBucketId: import.meta.env.VITE_APPWRITE_BUCKET_ID,
   adminEmailId: import.meta.env.VITE_EMAIL_ID,
   adminPassword: import.meta.env.VITE_PASSWORD,
+
+  // Firebase 
+
+  firebaseApiKey :import.meta.env.FIREBASE_API_KEY,
+  authDomain:import.meta.env.AUTH_DOMAIN,
+  firebaseProjectId:import.meta.env.FIREBASE_PROJECT_ID,
+  firebaseStorageBucket:import.meta.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:import.meta.env.MESSAGING_SENDER_ID,
+  firebaseAppId:import.meta.env.FIREBASE_APP_ID,
 };
 export default conf;
