@@ -72,6 +72,7 @@ function CourseDetails({ course }) {
               <img
                 src={service.getFilePreiview(course.image)}
                 alt="course-image"
+
                 className="w-[350px] h-[250px] sm:w-[450px] sm:h-[350px] object-cover"
               />
             </div>
