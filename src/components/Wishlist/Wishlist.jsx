@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 import service from "../../appwrite/config";
-import magnifier from "../../assets/magnifier.png";
+import { IoMdInformationCircleOutline } from "react-icons/io";
 function Wishlist() {
   const wishlistData = useSelector((state) => state.auth.wishlistData);
+  const loginStatus = useSelector((state) => state.auth.status);
+
   const [data, setData] = useState([]);
   useEffect(() => {
     service.getWishlistedCourses(wishlistData).then((res) => {
@@ -20,8 +22,15 @@ function Wishlist() {
           Wishlist
         </h1>
       </div>
+      {!loginStatus ? (
+        <div className=" w-5/6 ml-24 mt-4 border-[1px] border-yellow-500 rounded-xl">
+          <div className=" bg-[#ffbd2e1d] text-white p-4 opacity-90 rounded-xl flex gap-2">
+              <IoMdInformationCircleOutline className=" text-xl"/> Please Login or Signup to wishlist the courses.
+          </div>
+        </div>
+      ) : null}
       <div className=" ">
-        <div className=" grid grid-cols-3 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
+        <div className=" grid grid-cols-4 place-items-center  max-lg:grid-cols-2 max-md:grid-cols-1 gap-1">
           {data.length != 0
             ? data.map((course) => {
                 return (
@@ -34,7 +43,7 @@ function Wishlist() {
         </div>
       </div>
       {data.length == 0 ? (
-        <div className=" flex justify-center align-middle bg-gray-900 w-full h-full py-[17.3rem]">
+        <div className=" flex justify-center align-middle bg-gray-900 w-full h-full py-[12rem]">
           <div className="">
             <h1 className=" text-center text-4xl text-purple-400 font-poppins">
               No results found
