@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-catch */
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID, OAuthProvider } from "appwrite";
 import conf from "../conf/conf.js";
 
 export class AuthService {
@@ -37,6 +37,20 @@ export class AuthService {
     } catch (error) {
       throw error;
     }
+  }
+  async loginWithGoogle() {
+    try {
+      return this.account.createOAuth2Session(
+        OAuthProvider.Google,
+        "http://localhost:5173/success",
+        "http://localhost:5173/failed"
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async getCurrentSession() {
+    return await this.account.getSession("current");
   }
 
   async forgotPassword({ email }) {
