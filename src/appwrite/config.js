@@ -127,6 +127,20 @@ export class Service {
       console.log("Appwrite service :: createPost :: error " + error);
     }
   }
+
+  async checkWishlistExists(userId) {
+    try {
+      const res = await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteWishlistCollectionId,
+        [Query.equal("userId", userId)]
+      );
+      return res;
+    } catch (error) {
+      console.log("Appwrite service :: checkWishlistExists :: error " + error);
+    }
+  }
+
   async getWishlists(userId) {
     try {
       return await this.database.listDocuments(
@@ -136,7 +150,6 @@ export class Service {
       );
     } catch (error) {
       console.log("Appwrite service :: getData :: error " + error);
-      return false;
     }
   }
 
