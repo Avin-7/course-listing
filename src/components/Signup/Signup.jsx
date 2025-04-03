@@ -28,11 +28,6 @@ function Signup() {
             });
             if (user) {
               dispatch(authLogin(user));
-              const userId = user.userId;
-              const wishlist = [];
-              const res = await service.createWishlist({ userId, wishlist });
-              const wishlistId = res.$id;
-              dispatch(storeWishlist({ userId, wishlist, wishlistId }));
             }
             if (email == conf.adminEmailId && password == conf.adminPassword) {
               dispatch(
@@ -41,7 +36,6 @@ function Signup() {
                 )
               );
             }
-
             navigate("/");
           } else {
             setError(
@@ -61,6 +55,14 @@ function Signup() {
       console.log(err.message);
     }
   };
+  const signupWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await authService.loginWithGoogle();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="text-black flex justify-center items-center w-full bg-gradient-to-br bg-gray-900 pt-24 pb-10 min-h-lvh">
@@ -71,7 +73,7 @@ function Signup() {
             </h1>
           </div>
         </div>
-        <div className="w-[65%] max-lg:w-11/12 max-[375px]:w-[94%] flex justify-center"> 
+        <div className="w-[65%] max-lg:w-11/12 max-[375px]:w-[94%] flex justify-center">
           <form className=" w-[50%] max-xl:w-[65%] max-md:w-[90%]">
             <div className="w-full bg-[#1a2230dc] py-1 px-5 max-sm:px-1 rounded-xl">
               <div className="pl-8 max-lg:pl-4 max-[375px]:pl-4 mr-5">
@@ -81,7 +83,10 @@ function Signup() {
                   </h1>
                 </div>
                 <div className="mt-4 mb-6 text-white font-poppins">
-                  <label htmlFor="email" className=" font-normal mb-2 tracking-wider">
+                  <label
+                    htmlFor="email"
+                    className=" font-normal mb-2 tracking-wider"
+                  >
                     Name
                   </label>
                   <input
@@ -94,7 +99,10 @@ function Signup() {
                   />
                 </div>
                 <div className="mt-4 mb-6 text-white font-poppins">
-                  <label htmlFor="email" className=" font-normal mb-2 tracking-wider">
+                  <label
+                    htmlFor="email"
+                    className=" font-normal mb-2 tracking-wider"
+                  >
                     Email
                   </label>
                   <input
@@ -107,7 +115,10 @@ function Signup() {
                   />
                 </div>
                 <div className="mt-4 mb-6 text-white font-poppins">
-                  <label htmlFor="password" className=" font-normal mb-6 tracking-wider">
+                  <label
+                    htmlFor="password"
+                    className=" font-normal mb-6 tracking-wider"
+                  >
                     Password
                   </label>
                   <input
@@ -135,7 +146,10 @@ function Signup() {
                   </button>
                 </div>
                 <div className="option ">OR</div>
-                <button className="w-full flex justify-center items-center text-white gap-2 my-10 py-3 px-2 border-2 border-purple-700 rounded-xl bg-neutral-800 transition-all ease-linear font-poppins">
+                <button
+                  className="w-full flex justify-center items-center text-white gap-2 my-10 py-3 px-2 border-2 border-purple-700 rounded-xl bg-neutral-800 transition-all ease-linear font-poppins"
+                  onClick={(e) => signupWithGoogle(e)}
+                >
                   <img src={Google} alt="" className="size-5 img" />
                   <span className="span">Signup with Google</span>
                 </button>
