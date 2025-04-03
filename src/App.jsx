@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { Outlet, useNavigate } from "react-router-dom";
 import authService from "./appwrite/auth";
@@ -11,35 +11,77 @@ import { adminlogin } from "./store/adminSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const user = useSelector((state) => state.auth.userData);
+  const loginStatus = useSelector((state) => state.auth.status);
   const wishlistData = useSelector((state) => state.auth.wishlistData);
+  const userData = useSelector((state) => state.auth.userData);
   const userId = useSelector((state) => state.auth.userId);
   const wishlistId = useSelector((state) => state.auth.wishlistId);
-
-  const adminStatus = useSelector((state) => state.adminauth.status);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    authService.getCurrentUser().then((userData) => {
-      if (userData) {
-        dispatch(login({ userData }));
-        const userId = userData.$id;
-        service.getWishlists(userId).then((res) => {
-          if (res) {
-            const wishlist = res.documents[0]?.wishlist;
-            const wishlistId = res.documents[0]?.$id;
-            dispatch(storeWishlist({ userId, wishlist, wishlistId }));
+    if (!loginStatus) {
+      authService
+        .getCurrentUser()
+        .then((userData) => {
+          if (userData) {
+            dispatch(login({ userData }));
+          } else {
+            dispatch(logout());
           }
-        });
-      } else {
-        dispatch(logout());
+          if (userData.email == conf.adminEmailId.toLowerCase()) {
+            dispatch(adminlogin(true));
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [loginStatus]);
+
+  const fetchWishlists = async (userId) => {
+    try {
+      const res = await service.getWishlists(userId);
+      if (res) {
+        console.log(res);
+        const wishlist = res.documents[0].wishlist;
+        const wishlistId = res.documents[0].$id;
+        dispatch(storeWishlist({ userId, wishlist, wishlistId }));
       }
-      if (userData.email == conf.adminEmailId.toLowerCase()) {
-        dispatch(adminlogin(true));
+    } catch (error) {
+      console.log("Error in fetchWishlists :: App.jsx" + error);
+    }
+  };
+
+  const createWishlists = async (userId) => {
+    try {
+      const wishlist = [];
+      const res = await service.createWishlist({ userId, wishlist });
+      if (res) {
+        console.log(res);
+        const wishlistId = res.$id;
+        dispatch(storeWishlist({ userId, wishlist, wishlistId }));
       }
-    });
-  }, []);
+    } catch (error) {
+      console.log("Error in createWishlists :: App.jsx" + error);
+    }
+  };
+
+  useEffect(() => {
+    if (loginStatus) {
+      console.log(userData?.targets[0]?.userId);
+      const userId = userData?.targets[0]?.userId;
+      service
+        .checkWishlistExists(userId)
+        .then((res) => {
+          if (res?.documents.length > 0) {
+            fetchWishlists(userId);
+          } else {
+            createWishlists(userId);
+          }
+        })
+        .catch((err) =>
+          console.log("Error :: checkWishlistExists : App.jsx" + err)
+        );
+    }
+  }, [loginStatus]);
 
   useEffect(() => {
     service.updateWishlist(wishlistId, userId, wishlistData);
