@@ -40,7 +40,6 @@ function App() {
     try {
       const res = await service.getWishlists(userId);
       if (res) {
-        console.log(res);
         const wishlist = res.documents[0].wishlist;
         const wishlistId = res.documents[0].$id;
         dispatch(storeWishlist({ userId, wishlist, wishlistId }));
@@ -66,7 +65,6 @@ function App() {
 
   useEffect(() => {
     if (loginStatus) {
-      console.log(userData?.targets[0]?.userId);
       const userId = userData?.targets[0]?.userId;
       service
         .checkWishlistExists(userId)
