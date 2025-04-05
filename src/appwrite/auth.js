@@ -42,8 +42,8 @@ export class AuthService {
     try {
       return this.account.createOAuth2Session(
         OAuthProvider.Google,
-        "http://localhost:5173/success",
-        "http://localhost:5173/failed"
+        "https://www.dotlib.in/success",
+        "https://www.dotlib.in/failed"
       );
     } catch (error) {
       console.log(error);
