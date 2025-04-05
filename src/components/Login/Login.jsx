@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Google from "../../assets/Google.png";
 import { useDispatch, useSelector } from "react-redux";
-import { login as authLogin, storeWishlist } from "../../store/authSlice";
+import { login as authLogin } from "../../store/authSlice";
 import { adminlogin } from "../../store/adminSlice";
 import { useNavigate, Link } from "react-router-dom";
 import authService from "../../appwrite/auth";
 import conf from "../../conf/conf";
-import service from "../../appwrite/config";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -36,13 +35,7 @@ function Login() {
   const loginWithGoogle = async (e) => {
     e.preventDefault();
     try {
-      const user = await authService.loginWithGoogle();
-      if (user) {
-        dispatch(authLogin(user));
-        if (user.providerUid == conf.adminEmailId.toLowerCase()) {
-          dispatch(adminlogin(true));
-        }
-      }
+      await authService.loginWithGoogle();
     } catch (error) {
       console.log(error);
     }
