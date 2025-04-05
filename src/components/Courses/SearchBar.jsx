@@ -43,7 +43,13 @@ function SearchBar() {
   return (
     <div>
       <div className=" flex flex-col justify-center items-center z-50 relative">
-        <InstantSearch searchClient={searchClient} indexName="data">
+        <InstantSearch
+          searchClient={searchClient}
+          future={{
+            preserveSharedStateOnUnmount: true,
+          }}
+          indexName="data"
+        >
           <div className=" flex relative">
             <SearchBox
               classNames={{
