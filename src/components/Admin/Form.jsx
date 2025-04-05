@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import service from "../../appwrite/config";
 
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
+import CloudinaryUploadWidget from "../Cloudinary/CloudinaryUploadWidget";
+
 function Form({ formToAdmin, showAddCourseForm }) {
   /**
    **States which manages the form inputs....
@@ -19,6 +23,9 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [allBenefits, setAllBenefits] = useState([]);
   const [benefit, setBenefit] = useState("");
   const [ratings, setRatings] = useState(0);
+
+  const [publicId, setPublicId] = useState("nikzbwffsnndrafu2rts");
+
   /**
    **Submit button handler function....
    */
@@ -37,29 +44,30 @@ function Form({ formToAdmin, showAddCourseForm }) {
       price,
       image,
     };
-
-    const file = await service.uploadFile(image);
-    if (file) {
-      const fileId = file.$id;
-      const res = await service.uploadData({
-        name,
-        description,
-        platform,
-        author,
-        price,
-        category,
-        link,
-        fileId,
-        uploaded,
-        duration,
-        keywords,
-        ratings,
-        allBenefits,
-      });
-      // if (res) console.log(res);
+    try {
+      // const file = await service.uploadFile(image);
+      if (publicId) {
+        const fileId = publicId;
+        const res = await service.uploadData({
+          name,
+          description,
+          platform,
+          author,
+          price,
+          category,
+          link,
+          fileId,
+          uploaded,
+          duration,
+          keywords,
+          ratings,
+          allBenefits,
+        });
+        if (res) console.log(res);
+      }
+    } catch (error) {
+      console.log("Error :: handleSubmit : Form.jsx" + error);
     }
-
-    console.log("data added");
   };
 
   const validateData = () => {
@@ -101,10 +109,40 @@ function Form({ formToAdmin, showAddCourseForm }) {
     setAllBenefits([]);
     setBenefit("");
   };
+
+  const cloudName = "dxigz92ht";
+  const uploadPreset = "aoh4ghnb";
+
+  // State
+
+  // Cloudinary configuration
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName,
+    },
+  });
+
+  // Upload Widget Configuration
+  const uwConfig = {
+    cloudName,
+    uploadPreset,
+    // Uncomment and modify as needed:
+    // cropping: true,
+    // showAdvancedOptions: true,
+    // sources: ['local', 'url'],
+    // multiple: false,
+    // folder: 'user_images',
+    // tags: ['users', 'profile'],
+    // context: { alt: 'user_uploaded' },
+    // clientAllowedFormats: ['images'],
+    // maxImageFileSize: 2000000,
+    // maxImageWidth: 2000,
+    // theme: 'purple',
+  };
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <form
-        className="text-black flex justify-center align-middle gap-2 w-10/12"
+        className="text-white flex justify-center align-middle gap-2 w-10/12"
         onSubmit={handleSubmit}
       >
         <div className=" flex flex-col w-2/4">
@@ -250,6 +288,21 @@ function Form({ formToAdmin, showAddCourseForm }) {
                 </span>
               </div>
             ) : null}
+          </div>
+          <CloudinaryUploadWidget
+            uwConfig={uwConfig}
+            setPublicId={setPublicId}
+          />
+          <div>
+            {publicId && (
+              <div className="image-preview" style={{ margin: "20px auto" }}>
+                <AdvancedImage
+                  style={{ maxWidth: "100%" }}
+                  cldImg={cld.image(publicId)}
+                  plugins={[responsive(), placeholder()]}
+                />
+              </div>
+            )}
           </div>
         </div>
       </form>

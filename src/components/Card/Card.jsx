@@ -13,9 +13,15 @@ import fourPointSixStar from "../../assets/fourPointSixStar.svg";
 import fourPointSevenStar from "../../assets/fourPointSevenStar.svg";
 import fourPointEightStar from "../../assets/fourPointEightStar.svg";
 import fourPointNineStar from "../../assets/fourPointNineStar.svg";
+
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
+
 function Card({ course }) {
   const dispatch = useDispatch();
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
+
+  const [publicId, setPublicId] = useState("");
 
   const updateWishlist = async () => {
     try {
@@ -28,6 +34,13 @@ function Card({ course }) {
     updateWishlist();
   }, [wishlisted]);
   const [ratings, setRatings] = useState(5);
+
+  const cloudName = "dxigz92ht";
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName,
+    },
+  });
 
   const showRatings = () => {
     if (course.ratings == 4) {
@@ -155,10 +168,13 @@ function Card({ course }) {
       </div>
       <div className=" bg-neutral-900 text-white w-full h-full rounded-lg">
         <div className=" w-full">
-          <img
-            src={service.getFilePreiview(course.image)}
-            className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
-          />
+          <div className="image-preview">
+            <AdvancedImage
+              className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
+              cldImg={cld.image(course.image)}
+              plugins={[responsive(), placeholder()]}
+            />
+          </div>
         </div>
         <div className=" p-3.5 text-gray-400 font-poppins ">
           <Link to={`/course/${course.$id}`}>
