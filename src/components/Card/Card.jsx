@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { RxHeart, RxHeartFilled } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import service from "../../appwrite/config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../../store/authSlice";
 import fullStar from "../../assets/fullStar.svg";
 import halfStar from "../../assets/fourPointFiveStar.svg";
@@ -19,6 +19,7 @@ import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
 function Card({ course }) {
   const dispatch = useDispatch();
+  const wishlistData = useSelector((state) => state.auth.wishlistData);
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
 
   const [publicId, setPublicId] = useState("");
@@ -30,9 +31,15 @@ function Card({ course }) {
       console.log(error);
     }
   };
+  const checkWishlisted = () => {
+    if (wishlistData.length > 0) {
+      setWishlisted(wishlistData.includes(course.$id));
+    }
+  };
   useEffect(() => {
     updateWishlist();
-  }, [wishlisted]);
+    checkWishlisted();
+  }, [wishlisted, wishlistData]);
   const [ratings, setRatings] = useState(5);
 
   const cloudName = "dxigz92ht";
