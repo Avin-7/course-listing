@@ -138,21 +138,21 @@ function Navbar() {
             <div className="py-6 bg-gray-900 backdrop-blur-3xl text-white flex flex-col justify-center items-center font-figtree z-[100] ">
               <Link
                 to={"/"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
+                className="mr-4 hover:text-purple-600  rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Home
               </Link>
               <Link
                 to={"/courses"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block block"
+                className="mr-4  hover:text-purple-600 rounded-lg m-4 p-3 text-md tracking-wide lg:block block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Courses
               </Link>
               <Link
                 to={"/wishlist"}
-                className="mr-4 hover:text-cyan-500 hover:bg-gray-50 rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
+                className="mr-4 hover:text-purple-600   rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
                 onClick={() => setShowLinks(!showLinks)}
               >
                 Wishlist
@@ -194,7 +194,7 @@ function Navbar() {
             <div className="lg:hidden py-6 bg-gray-900 backdrop-blur-3xl flex justify-center items-center font-figtree text-white rounded-b-3xl">
               {authStatus ? (
                 <button
-                  className="rounded-xl font-medium px-2 py-0 bg-purple-500  "
+                  className="rounded-xl font-medium px-2 py-0 hover:text-purple-600 "
                   onClick={() => logoutUser()}
                 >
                   Sign out
