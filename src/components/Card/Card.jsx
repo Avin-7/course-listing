@@ -17,13 +17,25 @@ import fourPointNineStar from "../../assets/fourPointNineStar.svg";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
+import { Modal, ConfigProvider } from "antd";
+
 function Card({ course }) {
   const dispatch = useDispatch();
+  const loginStatus = useSelector((state) => state.auth.status);
   const wishlistData = useSelector((state) => state.auth.wishlistData);
   const [wishlisted, setWishlisted] = useState(course.wishlisted);
 
   const [publicId, setPublicId] = useState("");
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const updateWishlist = async () => {
     try {
       await service.updateWishlistStatus(course.$id, wishlisted);
@@ -48,7 +60,22 @@ function Card({ course }) {
       cloudName,
     },
   });
-
+  const addCourseToWishlist = (id) => {
+    if (loginStatus) {
+      setWishlisted(true);
+      dispatch(addToWishlist(id));
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+  const removeCourseFromWishlist = (id) => {
+    if (loginStatus) {
+      setWishlisted(false);
+      dispatch(removeFromWishlist(id));
+    } else {
+      setIsModalOpen(true);
+    }
+  };
   const showRatings = () => {
     if (course.ratings == 4) {
       return (
@@ -152,56 +179,88 @@ function Card({ course }) {
     }
   };
   return course ? (
-    <div className="relative mt-12 max-md:mt-5 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
-      <div className="absolute top-1 right-1">
-        <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
-          {!wishlisted ? (
-            <RxHeart
-              onClick={(e) => {
-                setWishlisted(true);
-                dispatch(addToWishlist(course.$id));
+    <>
+      <div className=" flex justify-center align-middle pb-20 pt-28">
+        {isModalOpen ? (
+          <>
+            <ConfigProvider
+              theme={{
+                components: {
+                  Modal: {
+                    contentBg: "#0d1b2a",
+                  },
+                },
               }}
-            />
-          ) : (
-            <RxHeartFilled
-              className=" text-[#f21b3f]"
-              onClick={() => {
-                setWishlisted(false);
-                dispatch(removeFromWishlist(course.$id));
-              }}
-            />
-          )}
-        </div>
+            >
+              ...
+              <Modal
+                title=""
+                open={isModalOpen}
+                onOk={handleOk}
+                contentBg="#212121"
+                footerBg="#000"
+              >
+                <h1 className=" text-white text-lg">Please Login or signup</h1>
+              </Modal>
+            </ConfigProvider>
+          </>
+        ) : (
+          ""
+        )}
       </div>
-      <div className=" bg-neutral-900 text-white w-full h-full rounded-lg">
-        <div className=" w-full">
-          <div className="image-preview">
-            <AdvancedImage
-              className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
-              cldImg={cld.image(course.image)}
-              plugins={[responsive(), placeholder()]}
-            />
+      <div className="relative mt-12 max-md:mt-5 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
+        <div className="absolute top-1 right-1">
+          <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
+            {!wishlisted ? (
+              <RxHeart
+                onClick={(e) => {
+                  addCourseToWishlist(course.$id);
+                }}
+              />
+            ) : (
+              <RxHeartFilled
+                className=" text-[#f21b3f]"
+                onClick={() => {
+                  removeCourseFromWishlist(course.$id);
+                }}
+              />
+            )}
           </div>
         </div>
-        <div className=" p-3.5 text-gray-400 font-poppins ">
-          <Link to={`/course/${course.$id}`}>
-            <h2 className="font-figtree text-balance text-white text-[16px] max-md:text-[14px] my-2 max-md:my-0.5 max-md:mr-4">
-              {course.name.slice(0, 49)}...
-            </h2>
-            <p className=" font-thin text-[14px] my-0.5 max-md:hidden">
-              {course.description.slice(0, 90)}...
-            </p>
-            <div className=" my-1.5 flex gap-1">
-              <span>{course.ratings}</span>
-              <span className=" mt-1">{showRatings()}</span>
+        <div className=" bg-neutral-900 text-white w-full h-full rounded-lg">
+          <div className=" w-full">
+            <div className="image-preview">
+              <AdvancedImage
+                className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
+                cldImg={cld.image(course.image)}
+                plugins={[responsive(), placeholder()]}
+              />
             </div>
-            <p className=" text-[16px] text-purple-50">
-              {course.price == 0 ? "Free" : <span>&#8377; {course.price}</span>}
-            </p>
-          </Link>
+          </div>
+          <div className=" p-3.5 text-gray-400 font-poppins ">
+            <Link to={`/course/${course.$id}`}>
+              <h2 className="font-figtree text-balance text-white text-[16px] max-md:text-[14px] my-2 max-md:my-0.5 max-md:mr-4">
+                {course.name.slice(0, 49)}...
+              </h2>
+              <p className=" font-thin text-[14px] my-0.5 max-md:hidden">
+                {course.description.slice(0, 90)}...
+              </p>
+              <div className=" my-1.5 flex gap-1">
+                <span>{course.ratings}</span>
+                <span className=" mt-1">{showRatings()}</span>
+              </div>
+              <p className=" text-[16px] text-purple-50">
+                {course.price == 0 ? (
+                  "Free"
+                ) : (
+                  <span>&#8377; {course.price}</span>
+                )}
+              </p>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   ) : null;
 }
 
