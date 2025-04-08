@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Google from "../../assets/Google.png";
 import { useDispatch, useSelector } from "react-redux";
-import { login as authLogin, storeWishlist } from "../../store/authSlice";
+import { login as authLogin } from "../../store/authSlice";
 import { adminlogin } from "../../store/adminSlice";
 import { useNavigate, Link } from "react-router-dom";
 import authService from "../../appwrite/auth";
 import conf from "../../conf/conf";
-import service from "../../appwrite/config";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -27,17 +26,18 @@ function Login() {
         if (user.providerUid == conf.adminEmailId.toLowerCase()) {
           dispatch(adminlogin(true));
         }
-        const userId = user.userId;
-        const res = await service.getWishlists(userId);
-        if (res) {
-          const wishlist = res.documents[0].wishlist;
-          const wishlistId = res.documents[0].$id;
-          dispatch(storeWishlist({ userId, wishlist, wishlistId }));
-        }
       }
       navigate("/");
     } catch (err) {
       setErrorMessage("Invalid email or password");
+    }
+  };
+  const loginWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await authService.loginWithGoogle();
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -118,7 +118,10 @@ function Login() {
                   </button>
                 </div>
                 <div className="option">OR</div>
-                <button className="w-full flex justify-center items-center text-white gap-2 my-10 py-3 px-2 border-2 border-purple-700 rounded-xl bg-neutral-800 transition-all ease-linear">
+                <button
+                  className="w-full flex justify-center items-center text-white gap-2 my-10 py-3 px-2 border-2 border-purple-700 rounded-xl bg-neutral-800 transition-all ease-linear"
+                  onClick={(e) => loginWithGoogle(e)}
+                >
                   <img src={Google} alt="" className="size-5 img" />
                   <span className="span">Login with Google</span>
                 </button>

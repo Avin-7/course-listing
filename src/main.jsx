@@ -18,6 +18,8 @@ import Courses from "./components/Courses/Courses.jsx";
 import CourseDetails from "./components/Courses/CourseDetails.jsx";
 import Details from "./components/Courses/Details.jsx";
 import ListOfCourses from "./components/Courses/ListOfCourses.jsx";
+import LoginSuccess from "./components/Login/LoginSuccess.jsx";
+import LoginFailure from "./components/Login/LoginFailure.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: "/reset-password",
         element: <ResetPassword />,
+      },
+      {
+        path: "/success",
+        element: <LoginSuccess />,
+      },
+      {
+        path: "/failed",
+        element: <LoginFailure />,
       },
     ],
   },

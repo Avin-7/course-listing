@@ -22,9 +22,6 @@ function Courses() {
         dispatch(storeData(courses.documents));
       })
       .catch((error) => console.log("Error in data fetch" + error))
-      .finally(() => {
-        console.log("fetch completed!!");
-      });
   }, [user, admin, wishlist]);
 
   return (

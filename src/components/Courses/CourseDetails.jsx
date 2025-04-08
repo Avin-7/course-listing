@@ -7,7 +7,16 @@ import { FaRegStar } from "react-icons/fa6";
 import { LuClock } from "react-icons/lu";
 import service from "../../appwrite/config";
 import YTIntro from "./YTIntro";
+
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 function CourseDetails({ course }) {
+  const cloudName = "dxigz92ht";
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName,
+    },
+  });
   return (
     <>
       <div className=" p-11 w-full h-screen flex sm:p-12 bg-neutral-900 ">
@@ -68,12 +77,11 @@ function CourseDetails({ course }) {
         </div>
         <div className=" w-full sm:w-1/2 p-20 flex items-start justify-center">
           <div className="bg-neutral-800 h-auto w-auto shadow-xl">
-            <div>
-              <img
-                src={service.getFilePreiview(course.image)}
-                alt="course-image"
-
-                className="w-[350px] h-[250px] sm:w-[450px] sm:h-[350px] object-cover"
+            <div className="image-preview">
+              <AdvancedImage
+                className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
+                cldImg={cld.image(course.image)}
+                plugins={[responsive(), placeholder()]}
               />
             </div>
             <div className="text-white sm:hidden ml-3 mt-3 text-lg font-roboto font-bold">
