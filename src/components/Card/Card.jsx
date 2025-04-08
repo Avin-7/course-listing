@@ -27,9 +27,7 @@ function Card({ course }) {
 
   const [publicId, setPublicId] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
