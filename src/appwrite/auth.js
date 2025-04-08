@@ -42,7 +42,7 @@ export class AuthService {
     try {
       return this.account.createOAuth2Session(
         OAuthProvider.Google,
-        "https://www.dotlib.in/success",
+        "https://www.dotlib.in/",
         "https://www.dotlib.in/failed"
       );
     } catch (error) {
