@@ -152,7 +152,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter name"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="py-2 border border-sky-500  rounded-md pl-2 bg-gray-900 outline-none"
           />
 
           <label className="mt-2 mb-0 ">Enter description </label>
@@ -161,7 +161,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter description"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter category </label>
@@ -170,7 +170,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             placeholder="eg: coding/data analysis"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter keywords</label>
@@ -179,7 +179,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={keywords}
             onChange={(e) => setKeywords(e.target.value)}
             placeholder="eg: frontend/database/fullstack"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
           <label className="mt-2 mb-0 ">Enter price</label>
           <input
@@ -187,14 +187,14 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             placeholder="eg: 0/199"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
           <label className="mt-2 mb-0 ">Enter image</label>
           <input
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
             placeholder="eg: .jpg/.png"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
         </div>
         <div className=" flex flex-col w-2/4">
@@ -204,7 +204,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={link}
             onChange={(e) => setLink(e.target.value)}
             placeholder="eg:www.udemy.com/webdev-course/"
-            className=" py-2 mb-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className=" py-2 mb-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter uploaded date </label>
@@ -213,7 +213,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={uploaded}
             onChange={(e) => setUploaded(e.target.value)}
             placeholder="eg:12/02/2023"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter duration </label>
@@ -222,7 +222,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
             placeholder="Enter duration eg:02:20(2hrs & 20 min)"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter author </label>
@@ -231,7 +231,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Enter author"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter platform </label>
@@ -240,7 +240,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
             placeholder="Enter platform"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
           <label className="mt-2 mb-0 ">Enter ratings </label>
           <input
@@ -248,7 +248,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
             value={ratings}
             onChange={(e) => setRatings(Number.parseFloat(e.target.value))}
             placeholder="Enter ratings in numbers eg:4.5"
-            className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2"
+            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
           <div className=" mt-3">
             <label className=" ">{`Enter benefits (separate with an underscore _)`}</label>
@@ -258,7 +258,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
                 value={benefit}
                 onChange={(e) => setBenefit(e.target.value)}
                 placeholder="Enter benefits"
-                className="mb-2 py-2 border border-sky-500 outline-blue-600 rounded-md pl-2 w-[95%] h-32 resize-none"
+                className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
               />
               <span
                 onClick={(e) => handleAddBenefit()}
@@ -268,7 +268,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
               </span>
               <span
                 onClick={(e) => setBenefit([])}
-                className=" bg-yellow-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12"
+                className=" bg-yellow-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12 "
               >
                 CLEAR
               </span>
