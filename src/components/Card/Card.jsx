@@ -178,35 +178,34 @@ function Card({ course }) {
   };
   return course ? (
     <>
-      <div className=" flex justify-center align-middle pb-20 pt-28">
-        {isModalOpen ? (
-          <>
-            <ConfigProvider
-              theme={{
-                components: {
-                  Modal: {
-                    contentBg: "#0d1b2a",
-                  },
+      {isModalOpen ? (
+        <>
+          <ConfigProvider
+            theme={{
+              components: {
+                Modal: {
+                  contentBg: "#0d1b2a",
                 },
-              }}
+              },
+            }}
+          >
+            ...
+            <Modal
+              title=""
+              open={isModalOpen}
+              onOk={handleOk}
+              centered={true}
+              contentBg="#212121"
+              footerBg="#000"
             >
-              ...
-              <Modal
-                title=""
-                open={isModalOpen}
-                onOk={handleOk}
-                contentBg="#212121"
-                footerBg="#000"
-              >
-                <h1 className=" text-white text-lg">Please Login or signup</h1>
-              </Modal>
-            </ConfigProvider>
-          </>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className="relative mt-12 max-md:mt-5 mb-24 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
+              <h1 className=" text-white text-lg">Please Login or signup</h1>
+            </Modal>
+          </ConfigProvider>
+        </>
+      ) : (
+        ""
+      )}
+      <div className="relative mt-10 max-md:mt-5 mb-1.5 ml-12 w-[300px] h-[400px] max-md:h-[245px] max-md:w-[190px] ">
         <div className="absolute top-1 right-1">
           <div className=" bg-neutral-800 text-white p-2 rounded-full text-xl">
             {!wishlisted ? (
