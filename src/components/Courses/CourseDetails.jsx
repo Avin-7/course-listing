@@ -6,7 +6,6 @@ import { PiVideoBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa6";
 import { LuClock } from "react-icons/lu";
 import service from "../../appwrite/config";
-import YTIntro from "./YTIntro";
 
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
@@ -148,14 +147,6 @@ function CourseDetails({ course }) {
           </div>
         </div>
       </div>
-      {course.YTLink ? (
-        <div className=" w-full p-32 flex flex-col justify-center items-center bg-neutral-800 ">
-          <h1 className=" text-purple-400 font-semibold font-poppins track-wider text-4xl text-center">
-            Introduction
-          </h1>
-          <YTIntro course={course} />
-        </div>
-      ) : null}
     </>
   );
 }
