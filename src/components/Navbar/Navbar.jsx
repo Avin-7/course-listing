@@ -29,7 +29,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-gray-900 sm:bg-transparent backdrop-blur-3xl z-[100] ">
+      <nav className="w-full h-16 flex items-center justify-between fixed top-0 bg-gray-900 sm:bg-transparent backdrop-blur-3xl z-[900] ">
         <Link to={"/"} className=" border-none outline-none">
           <h1 className=" text-xl max-md:text-xl text-black p-5 font-semibold ml-5 font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
@@ -119,7 +119,7 @@ function Navbar() {
         {showLinks ? (
           <div
             id="toggleMenue"
-            className="fixed top-0 bg-transparent backdrop-blur-xl inset-0 lg:hidden z-[100]"
+            className="fixed top-0 bg-transparent backdrop-blur-xl inset-0 lg:hidden z-[900]"
           >
             <div className="w-full h-16 flex items-center justify-between inset-0">
               <Link to={"/"}>
@@ -135,7 +135,7 @@ function Navbar() {
               </div>
             </div>
 
-            <div className="py-6 bg-gray-900 backdrop-blur-3xl text-white flex flex-col justify-center items-center font-figtree z-[100] ">
+            <div className="py-6 bg-gray-900 backdrop-blur-3xl text-white flex flex-col justify-center items-center font-figtree z-[900] ">
               <Link
                 to={"/"}
                 className="mr-4 hover:text-purple-600  rounded-lg m-4 p-3 text-md tracking-wide lg:block  block"
