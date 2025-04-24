@@ -78,7 +78,7 @@ function CourseDetails({ course }) {
           <div className="bg-neutral-800 h-auto w-auto shadow-xl">
             <div className="image-preview">
               <AdvancedImage
-                className=" h-[190px] max-md:h-[100px] w-full rounded-t-lg object-cover"
+                className=" h-[250px] sm:h-[300px] w-full rounded-t-lg object-cover"
                 cldImg={cld.image(course.image)}
                 plugins={[responsive(), placeholder()]}
               />
