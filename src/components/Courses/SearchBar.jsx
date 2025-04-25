@@ -53,9 +53,9 @@ function SearchBar() {
           <div className=" flex relative">
             <SearchBox
               classNames={{
-                form: "relative bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] rounded-t-md rounded-b-sm ",
+                form: "relative bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] max-[375px]:w-[260px] rounded-t-md rounded-b-sm ",
                 input:
-                  " w-[400px] max-lg:w-72 max-md:w-60 max-sm:w-38 py-3 px-2 ml-12 bg-transparent rounded-t-xl outline-none  placeholder-gray-400 text-gray-100 font-figtree",
+                  " w-[400px] max-lg:w-72 max-md:w-60 max-sm:w-38 max-[375px]:w-28 py-3 px-2 ml-12 bg-transparent rounded-t-xl outline-none placeholder-gray-400 text-gray-100 font-figtree max-[375px]:text-sm",
                 submitIcon: "absolute top-3 left-2 mx-3",
                 loadingIcon: " absolute top-4 right-5",
                 resetIcon: "absolute top-2 right-1 ",
@@ -64,8 +64,7 @@ function SearchBar() {
               submitIconComponent={({ classNames }) => (
                 <div className={classNames.submitIcon}>
                   <RxMagnifyingGlass
-                    className=" text-neutral-600"
-                    size={"1.5em"}
+                    className=" text-neutral-600 size-6 max-[375px]:size-5"
                   />
                 </div>
               )}
@@ -80,7 +79,7 @@ function SearchBar() {
             />
             <button
               className="absolute top-2.5 right-2 text-neutral-600 bg-[#a69caf00] py-0.5 px-1.5 rounded-xl border-[1px]
-                  border-gray-500"
+                  border-gray-500 max-[375px]:text-sm"
               onClick={(e) => setIsSearchBarOpen(false)}
             >
               esc
