@@ -103,15 +103,67 @@ export class Service {
     }
   }
 
-  async getCourseByTopic(topic) {
+  async getCourseByTopic(val) {
     try {
       return await this.database.listDocuments(
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
-        [Query.equal("topic", topic)]
+        [Query.equal("topic", val)]
       );
     } catch (error) {
       console.log("Appwrite service :: getCourseByTopic :: error " + error);
+      return false;
+    }
+  }
+  async getCourseByCategory(val) {
+    console.log(val);
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.equal("category", val)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getCourseByCategory :: error " + error);
+      return false;
+    }
+  }
+  async getCourseByPlatform(val) {
+    console.log(val);
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.equal("platform", val)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getCourseByPlatform :: error " + error);
+      return false;
+    }
+  }
+  async getCourseByPrice(val) {
+    console.log(val);
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.lessThanEqual("price", val)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getCourseByPrice :: error " + error);
+      return false;
+    }
+  }
+  async getCourseByRating(val) {
+    console.log(val);
+    try {
+      return await this.database.listDocuments(
+        conf.appWriteDatabaseId,
+        conf.appWriteCollectionId,
+        [Query.greaterThanEqual("ratings", val)]
+      );
+    } catch (error) {
+      console.log("Appwrite service :: getCourseByRating :: error " + error);
       return false;
     }
   }
