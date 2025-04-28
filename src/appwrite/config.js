@@ -13,41 +13,14 @@ export class Service {
     this.database = new Databases(this.client);
     this.bucket = new Storage(this.client);
   }
-  async uploadData({
-    name,
-    description,
-    platform,
-    author,
-    price,
-    category,
-    link,
-    fileId,
-    uploaded,
-    duration,
-    keywords,
-    ratings,
-    allBenefits,
-  }) {
+
+  async uploadData(formData) {
     try {
       return await this.database.createDocument(
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
         ID.unique(),
-        {
-          name: name,
-          description: description,
-          platform: platform,
-          author: author,
-          price: price,
-          category: category,
-          link: link,
-          image: fileId,
-          uploaded: uploaded,
-          duration: duration,
-          keywords: keywords,
-          ratings: ratings,
-          benefits: allBenefits,
-        }
+        formData
       );
     } catch (error) {
       console.log("Appwrite service :: createPost :: error " + error);

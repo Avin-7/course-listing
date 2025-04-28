@@ -3,9 +3,9 @@ import React from "react";
 function Testimonial() {
   return (
     <>
-      <div className=" py-96 max-md:py-72 bg-gray-900">
+      <div className=" pt-32 pb-20 max-md:py-72 bg-gray-900">
         <div className="mx-auto">
-          <h2 className="text-4xl text-white font-bold mb-20 text-center font-poppins">
+          <h2 className="text-4xl max-lg:text-2xl text-white font-bold mb-20 text-center font-poppins">
             Testimonials
           </h2>
           <div className="mb-10 masonry overflow-hidden">

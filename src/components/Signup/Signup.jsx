@@ -93,7 +93,6 @@ function Signup() {
                     type="text"
                     name="Name"
                     value={name}
-                    id="he"
                     className="bg-transparent border-b-[2px] py-2 outline-none w-[98%]  border-b-purple-700 focus:border-b-purple-400 text-white transition-all ease-in"
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -109,7 +108,6 @@ function Signup() {
                     type="email"
                     name="Email"
                     value={email}
-                    id="he"
                     className="bg-transparent border-b-[2px] py-2 outline-none w-[98%]  border-b-purple-700 focus:border-b-purple-400 text-white transition-all ease-in"
                     onChange={(e) => setEmail(e.target.value)}
                   />

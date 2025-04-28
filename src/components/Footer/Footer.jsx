@@ -1,19 +1,33 @@
 import { useState } from "react";
-import { FaLinkedin, FaTwitter, FaInstagram, FaGithub, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaTwitter,
+  FaInstagram,
+  FaGithub,
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
-import {dataBase} from "../firebase/firebase";
-import  {collection,addDoc} from "firebase/firestore";
+import { dataBase } from "../firebase/firebase";
+import { collection, addDoc } from "firebase/firestore";
 
-const getTime =()=>{
-    let currentDate = new Date();
-    let formattedDate = currentDate.getFullYear() + '-' 
-                    + (currentDate.getMonth() + 1) + '-' 
-                    + currentDate.getDate() + ' ' 
-                    + currentDate.getHours() + ':' 
-                    + currentDate.getMinutes() + ':' 
-                    + currentDate.getSeconds();
-   return formattedDate;
-}
+const getTime = () => {
+  let currentDate = new Date();
+  let formattedDate =
+    currentDate.getFullYear() +
+    "-" +
+    (currentDate.getMonth() + 1) +
+    "-" +
+    currentDate.getDate() +
+    " " +
+    currentDate.getHours() +
+    ":" +
+    currentDate.getMinutes() +
+    ":" +
+    currentDate.getSeconds();
+  return formattedDate;
+};
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -28,11 +42,11 @@ const Footer = () => {
       setEmailError("Please enter a valid email address");
       return;
     }
-     addDoc(collection(dataBase,"users"),{
-      email:email,
+    addDoc(collection(dataBase, "users"), {
+      email: email,
       time: getTime(),
-    })
-    
+    });
+
     setEmailError("");
     setEmail("");
     alert("Thank you for subscribing!");
@@ -44,13 +58,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo Section */}
           <div className="space-y-4">
-            <img
-              src="https://images.unsplash.com/photo-1557683316-973673baf926"
-              alt="DotLib Logo"
-              className="h-12 w-auto"
-            />
+          <h1 className=" text-xl max-md:text-xl text-black font-semibold font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
+            DotLib
+          </h1>
             <p className="text-sm">
-              Empowering digital innovation through cutting-edge solutions and exceptional service.
+              Empowering digital innovation through cutting-edge solutions and
+              exceptional service.
             </p>
           </div>
 
@@ -58,18 +71,27 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 flex flex-col">
-               <Link to={"/"}className="hover:text-blue-400 transition-colors" >
+              <a href="#home" className="hover:text-blue-400 transition-colors">
                 Home
-                </Link>
-                <Link to={"/courses"}className="hover:text-blue-400 transition-colors" >
+              </a>
+              <a
+                href="#courses"
+                className="hover:text-blue-400 transition-colors"
+              >
                 Courses
-                </Link>
-                <Link to={"/wishlist"}className="hover:text-blue-400 transition-colors" >
+              </a>
+              <Link
+                to={"/wishlist"}
+                className="hover:text-blue-400 transition-colors"
+              >
                 Wishlist
-                </Link>
-                <Link to={"#"}className="hover:text-blue-400 transition-colors" >
+              </Link>
+              <a
+                href="#about"
+                className="hover:text-blue-400 transition-colors"
+              >
                 About
-                </Link>
+              </a>
             </ul>
           </div>
 
@@ -94,7 +116,9 @@ const Footer = () => {
 
           {/* Newsletter Signup */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe for Updates</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              Subscribe for Updates
+            </h3>
             <div className="space-y-4">
               <input
                 type="email"
@@ -103,7 +127,9 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
-              {emailError && <p className="text-red-400 text-sm">{emailError}</p>}
+              {emailError && (
+                <p className="text-red-400 text-sm">{emailError}</p>
+              )}
               <button
                 onClick={handleSubscribe}
                 className="w-full bg-blue-500 hover:bg-blue-600 transition-colors py-2 rounded font-medium"
@@ -136,18 +162,16 @@ const Footer = () => {
 
             {/* Legal Links */}
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              {[
-                "Privacy Policy",
-                "Terms of Service",
-                "Cookie Policy",
-              ].map((link) => (
-                <button
-                  key={link}
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  {link}
-                </button>
-              ))}
+              {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
+                (link) => (
+                  <button
+                    key={link}
+                    className="hover:text-blue-400 transition-colors"
+                  >
+                    {link}
+                  </button>
+                )
+              )}
             </div>
           </div>
 

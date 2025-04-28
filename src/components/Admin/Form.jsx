@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import service from "../../appwrite/config";
 
 import { Cloudinary } from "@cloudinary/url-gen";
@@ -9,60 +9,53 @@ function Form({ formToAdmin, showAddCourseForm }) {
   /**
    **States which manages the form inputs....
    */
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [keywords, setKeywords] = useState([]);
-  const [link, setLink] = useState("");
-  const [uploaded, setUploaded] = useState("");
-  const [duration, setDuration] = useState("");
-  const [author, setAuthor] = useState("");
-  const [platform, setPlatform] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
-  const [allBenefits, setAllBenefits] = useState([]);
-  const [benefit, setBenefit] = useState("");
-  const [ratings, setRatings] = useState(0);
 
-  const [publicId, setPublicId] = useState("nikzbwffsnndrafu2rts");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    category: "",
+    keywords: "",
+    link: "",
+    uploaded: "",
+    duration: "",
+    author: "",
+    platform: "",
+    image: "",
+    price: 0,
+    benefits: "",
+    ratings: 4.0,
+  });
+  const [publicId, setPublicId] = useState("");
+
+  const handleChange = (e) => {
+    if (e.target.name == "ratings") {
+      setFormData({
+        ...formData,
+        [e.target.name]: Number.parseFloat(e.target.value),
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   /**
    **Submit button handler function....
    */
+  const setImageId = () => {
+    setFormData({
+      ...formData,
+      image: publicId,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      name,
-      description,
-      category,
-      keywords,
-      link,
-      uploaded,
-      duration,
-      author,
-      platform,
-      price,
-      image,
-    };
     try {
-      // const file = await service.uploadFile(image);
       if (publicId) {
-        const fileId = publicId;
-        const res = await service.uploadData({
-          name,
-          description,
-          platform,
-          author,
-          price,
-          category,
-          link,
-          fileId,
-          uploaded,
-          duration,
-          keywords,
-          ratings,
-          allBenefits,
-        });
+        const res = await service.uploadData(formData);
         if (res) console.log(res);
       }
     } catch (error) {
@@ -70,44 +63,20 @@ function Form({ formToAdmin, showAddCourseForm }) {
     }
   };
 
-  const validateData = () => {
-    if (
-      name &&
-      description &&
-      category &&
-      keywords &&
-      courseLink &&
-      uploadedOn &&
-      duration &&
-      author &&
-      platform
-    ) {
-    } else {
-      console.log("Invalid data");
-    }
+  const splitKeywords = () => {
+    const allKeywords = formData.keywords.split("/");
+    setFormData({
+      ...formData,
+      keywords: allKeywords,
+    });
   };
-  const handleAddBenefit = () => {
-    if (benefit) {
-      const res = benefit.split("_");
-      setAllBenefits(res);
-      console.log(res);
-    }
-  };
-  const clearAllFields = () => {
-    setName("");
-    setDescription("");
-    setCategory("");
-    setKeywords([]);
-    setLink("");
-    setUploaded("");
-    setDuration("");
-    setAuthor("");
-    setPlatform("");
-    setImage("");
-    setPrice(0);
-    setRatings(0);
-    setAllBenefits([]);
-    setBenefit("");
+
+  const splitBenefits = () => {
+    const allBenefits = formData.benefits.split("/");
+    setFormData({
+      ...formData,
+      benefits: allBenefits,
+    });
   };
 
   const cloudName = "dxigz92ht";
@@ -126,19 +95,14 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const uwConfig = {
     cloudName,
     uploadPreset,
-    // Uncomment and modify as needed:
-    // cropping: true,
-    // showAdvancedOptions: true,
-    // sources: ['local', 'url'],
-    // multiple: false,
-    // folder: 'user_images',
-    // tags: ['users', 'profile'],
-    // context: { alt: 'user_uploaded' },
-    // clientAllowedFormats: ['images'],
-    // maxImageFileSize: 2000000,
-    // maxImageWidth: 2000,
-    // theme: 'purple',
   };
+
+  useEffect(() => {
+    if (publicId) {
+      setImageId();
+    }
+  }, [publicId]);
+
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <form
@@ -149,51 +113,65 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter name </label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="Enter name"
             className="py-2 border border-sky-500  rounded-md pl-2 bg-gray-900 outline-none"
           />
-
           <label className="mt-2 mb-0 ">Enter description </label>
           <input
             type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
             placeholder="Enter description"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-
           <label className="mt-2 mb-0 ">Enter category </label>
           <input
             type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
             placeholder="eg: coding/data analysis"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-
-          <label className="mt-2 mb-0 ">Enter keywords</label>
-          <input
-            type="text"
-            value={keywords}
-            onChange={(e) => setKeywords(e.target.value)}
-            placeholder="eg: frontend/database/fullstack"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
-          />
+          <label className="mt-2 mb-0 ">
+            Enter keywords ( separate them with / )
+          </label>
+          <div className="flex ">
+            <input
+              type="text"
+              name="keywords"
+              value={formData.keywords}
+              onChange={handleChange}
+              placeholder="eg: frontend/database/fullstack"
+              className="mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            />
+            <button
+              onClick={splitKeywords}
+              className=" px-2 rounded-xl m-2 bg-blue-500 hover:bg-blue-400 tracking-wide"
+            >
+              Add
+            </button>
+          </div>
           <label className="mt-2 mb-0 ">Enter price</label>
           <input
             type="number"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
             placeholder="eg: 0/199"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
-          />
-          <label className="mt-2 mb-0 ">Enter image</label>
+          />{" "}
+          <label className="mt-2 mb-0 ">Enter ratings </label>
           <input
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            placeholder="eg: .jpg/.png"
+            type="number"
+            name="ratings"
+            value={formData.ratings}
+            onChange={handleChange}
+            placeholder="Enter ratings in numbers eg:4.5"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
         </div>
@@ -201,8 +179,9 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter course link </label>
           <input
             type="text"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
+            name="link"
+            value={formData.link}
+            onChange={handleChange}
             placeholder="eg:www.udemy.com/webdev-course/"
             className=" py-2 mb-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
@@ -210,8 +189,9 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter uploaded date </label>
           <input
             type="text"
-            value={uploaded}
-            onChange={(e) => setUploaded(e.target.value)}
+            name="uploaded"
+            value={formData.uploaded}
+            onChange={handleChange}
             placeholder="eg:12/02/2023"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
@@ -219,8 +199,9 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter duration </label>
           <input
             type="text"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
+            name="duration"
+            value={formData.duration}
+            onChange={handleChange}
             placeholder="Enter duration eg:02:20(2hrs & 20 min)"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
@@ -228,8 +209,9 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter author </label>
           <input
             type="text"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
             placeholder="Enter author"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
@@ -237,57 +219,28 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0 ">Enter platform </label>
           <input
             type="text"
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
+            name="platform"
+            value={formData.platform}
+            onChange={handleChange}
             placeholder="Enter platform"
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-          <label className="mt-2 mb-0 ">Enter ratings </label>
-          <input
-            type="number"
-            value={ratings}
-            onChange={(e) => setRatings(Number.parseFloat(e.target.value))}
-            placeholder="Enter ratings in numbers eg:4.5"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
-          />
-          <div className=" mt-3">
-            <label className=" ">{`Enter benefits (separate with an underscore _)`}</label>
-            <div className=" flex">
-              <textarea
-                type="text"
-                value={benefit}
-                onChange={(e) => setBenefit(e.target.value)}
-                placeholder="Enter benefits"
-                className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
-              />
-              <span
-                onClick={(e) => handleAddBenefit()}
-                className=" bg-blue-500 text-white ml-1 mb-2 px-4 py-3 text-sm rounded-md h-12"
-              >
-                ADD
-              </span>
-              <span
-                onClick={(e) => setBenefit([])}
-                className=" bg-yellow-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12 "
-              >
-                CLEAR
-              </span>
-            </div>
-            {allBenefits.length > 0 ? (
-              <div>
-                <ul className=" list-disc pl-5 mb-2">
-                  {allBenefits.map((data) => {
-                    return <li>{data}</li>;
-                  })}
-                </ul>
-                <span
-                  onClick={(e) => setAllBenefits([])}
-                  className=" bg-red-500 text-white ml-1 mb-2 px-2 py-3 text-sm rounded-md h-12"
-                >
-                  Delete all
-                </span>
-              </div>
-            ) : null}
+          <label className=" ">Enter benefits (separate them with /)</label>
+          <div className="flex">
+            <textarea
+              type="text"
+              name="benefits"
+              value={formData.benefits}
+              onChange={handleChange}
+              placeholder="eg: Benefit 1/Benefit 2"
+              className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
+            />
+            <button
+              onClick={splitBenefits}
+              className=" px-2 rounded-xl m-2 h-10 bg-blue-500 hover:bg-blue-400 tracking-wide"
+            >
+              Add
+            </button>
           </div>
           <CloudinaryUploadWidget
             uwConfig={uwConfig}
@@ -318,9 +271,6 @@ function Form({ formToAdmin, showAddCourseForm }) {
         </button>
         <button
           type="submit"
-          onClick={() => {
-            clearAllFields();
-          }}
           className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-yellow-600 hover:bg-yellow-600 hover:text-white transition"
         >
           Clear all fields

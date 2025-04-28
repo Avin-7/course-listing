@@ -52,8 +52,10 @@ function Filter() {
     try {
       const filterOption = findTheNotNullProp(filterBy);
       if (!filterOption) {
-        // const res = await service.getCourses();
-        // if (res) dispatch(storeData(res.documents));
+        const res = await service.getCourses();
+        if (res) {
+          dispatch(storeData(res.documents));
+        }
       } else {
         const { name, val } = filterOption;
         if (name == "topic") {

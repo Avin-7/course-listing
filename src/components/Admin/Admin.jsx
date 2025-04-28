@@ -9,7 +9,7 @@ function Admin() {
 
   const [component, setComponent] = useState({
     view: false,
-    add: false,
+    add: true,
   });
 
   const formToAdmin = (data) => {
@@ -35,14 +35,14 @@ function Admin() {
 
   return (
     <div className="font-poppins tracking-wide pt-12">
-      <div className="w-[96%]">
-        <div className="mt-10 ml-20 flex gap-12">
+      <div className=" bg-[#1725545a] p-2 mt-10">
+        <div className="ml-20 flex gap-12">
           <div>
             <button
               onClick={() => {
-                setComponent({ view: false, add: true });
+                setComponent({ view: !component.view, add: !component.add });
               }}
-              className=" px-4 py-3 bg-blue-500 text-white text-sm font-semibold rounded-md"
+              className=" px-4 py-3 border border-blue-500 text-white text-sm font-semibold rounded-md tracking-wide"
             >
               Add course
             </button>
@@ -50,18 +50,16 @@ function Admin() {
           <div>
             <button
               onClick={() => {
-                setComponent({ view: !component.view, add: false });
+                setComponent({ view: true, add: false });
               }}
-              className=" px-4 py-3 bg-blue-500 text-white text-sm font-semibold rounded-md"
+              className=" px-4 py-3 border border-blue-500 text-white text-sm font-semibold rounded-md tracking-wide"
             >
               View courses
             </button>
           </div>
         </div>
-        <div className=" w-[98%] ">
-          {handleComponents()}
-        </div>
       </div>
+      <div className="p-4  bg-[#17255429]">{handleComponents()}</div>
     </div>
   );
 }

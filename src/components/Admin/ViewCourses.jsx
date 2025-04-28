@@ -15,40 +15,12 @@ function ViewCourses({ courses }) {
     { id: "platform", label: "Platform", minWidth: 70 },
     { id: "author", label: "Author", minWidth: 80 },
     { id: "price", label: "Price", minWidth: 10 },
-    { id: "link", label: "Link", minWidth: 100 },
+    { id: "link", label: "Link", minWidth: 50 },
     { id: "image", label: "Image", minWidth: 30 },
     { id: "uploaded", label: "Uploaded", minWidth: 100 },
     { id: "duration", label: "Duration", minWidth: 100 },
     { id: "keywords", label: "Keywords", minWidth: 100 },
     { id: "wishlisted", label: "Wishlisted", minWidth: 10 },
-  ];
-
-  const rows = [
-    {
-      $collectionId: "67150b750016dff76b2e",
-      $createdAt: "2024-11-05T15:40:03.185+00:00",
-      $databaseId: "67150b58000821ac8c8f",
-      $id: "672a3c5200007a1bd38e",
-      $permissions: (3)[
-        ('read("user:671ded9a003cee3f8cee")',
-        'update("user:671ded9a003cee3f8cee")',
-        'delete("user:671ded9a003cee3f8cee")')
-      ],
-      $updatedAt: "2024-11-07T15:25:44.548+00:00",
-      author: "David J. Malan",
-      category: "programming",
-      description:
-        "A gentle introduction to programming that prepares you for subsequent courses in coding.",
-      duration: "3 weeks, 2 - 6 hours per week",
-      image: "672a3c4c003672ee6931",
-      keywords: "programming",
-      link: "https://www.edx.org/learn/scratch-programming/harvard-university-cs50-s-introduction-to-programming-with-scratch",
-      name: "CS50's Introduction to Programming with Scratch",
-      platform: "edX",
-      price: 0,
-      uploaded: "May 1, 2021",
-      wishlisted: false,
-    },
   ];
 
   const [page, setPage] = React.useState(0);
@@ -84,7 +56,7 @@ function ViewCourses({ courses }) {
               </TableHead>
               <TableBody>
                 {courses
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
                     return (
                       <TableRow

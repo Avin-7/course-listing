@@ -87,7 +87,8 @@ function SearchBar() {
           </div>
           {isSearchBarOpen && (
             <Hits
-              className=" text-white bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] absolute top-14 searchBarResults"
+              className=" text-white bg-neutral-900 border-[1px] border-purple-700 w-[480px] max-md:w-[380px] max-sm:w-[300px] 
+              max-[375px]:w-[260px] absolute top-14 searchBarResults"
               hitComponent={Hit}
             />
           )}
