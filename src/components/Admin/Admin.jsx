@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Form from "./Form";
-import Table from "../Admin/Table";
 import ViewCourses from "./ViewCourses";
 import service from "../../appwrite/config.js";
 
@@ -34,7 +33,7 @@ function Admin() {
   }, [component.view]);
 
   return (
-    <div className="font-poppins tracking-wide pt-12">
+    <div className="tracking-wide pt-12">
       <div className=" bg-[#1725545a] p-2 mt-10">
         <div className="ml-20 flex gap-12">
           <div>
@@ -42,7 +41,7 @@ function Admin() {
               onClick={() => {
                 setComponent({ view: !component.view, add: !component.add });
               }}
-              className=" px-4 py-3 border border-blue-500 text-white text-sm font-semibold rounded-md tracking-wide"
+              className=" px-4 py-3 border border-blue-500 hover:bg-blue-500 transition-all ease-linear text-white text-sm font-semibold font-figtree rounded-md tracking-wider"
             >
               Add course
             </button>
@@ -52,14 +51,14 @@ function Admin() {
               onClick={() => {
                 setComponent({ view: true, add: false });
               }}
-              className=" px-4 py-3 border border-blue-500 text-white text-sm font-semibold rounded-md tracking-wide"
+              className=" px-4 py-3 border border-blue-500 hover:bg-blue-500 transition-all ease-linear text-white text-sm font-semibold font-figtree rounded-md tracking-wider"
             >
               View courses
             </button>
           </div>
         </div>
       </div>
-      <div className="p-4  bg-[#17255429]">{handleComponents()}</div>
+      <div className=" bg-[#17255429]">{handleComponents()}</div>
     </div>
   );
 }

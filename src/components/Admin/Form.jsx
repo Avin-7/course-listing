@@ -110,34 +110,34 @@ function Form({ formToAdmin, showAddCourseForm }) {
         onSubmit={handleSubmit}
       >
         <div className=" flex flex-col w-2/4">
-          <label className="mt-2 mb-0 ">Enter name </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter name </label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter name"
-            className="py-2 border border-sky-500  rounded-md pl-2 bg-gray-900 outline-none"
+            className=" font-figtree py-2 border border-sky-500  rounded-md pl-2 bg-gray-900 outline-none"
           />
-          <label className="mt-2 mb-0 ">Enter description </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter description </label>
           <input
             type="text"
             name="description"
             value={formData.description}
             onChange={handleChange}
             placeholder="Enter description"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-          <label className="mt-2 mb-0 ">Enter category </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter category </label>
           <input
             type="text"
             name="category"
             value={formData.category}
             onChange={handleChange}
             placeholder="eg: coding/data analysis"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-          <label className="mt-2 mb-0 ">
+          <label className="mt-2 mb-0  font-figtree ">
             Enter keywords ( separate them with / )
           </label>
           <div className="flex ">
@@ -147,43 +147,43 @@ function Form({ formToAdmin, showAddCourseForm }) {
               value={formData.keywords}
               onChange={handleChange}
               placeholder="eg: frontend/database/fullstack"
-              className="mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+              className=" font-figtree mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
             />
             <button
               onClick={splitKeywords}
-              className=" px-2 rounded-xl m-2 bg-blue-500 hover:bg-blue-400 tracking-wide"
+              className=" font-figtree  px-2 rounded-xl m-2 bg-blue-500 hover:bg-blue-400 tracking-wide"
             >
               Add
             </button>
           </div>
-          <label className="mt-2 mb-0 ">Enter price</label>
+          <label className="mt-2 mb-0  font-figtree ">Enter price</label>
           <input
             type="number"
             name="price"
             value={formData.price}
             onChange={handleChange}
             placeholder="eg: 0/199"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />{" "}
-          <label className="mt-2 mb-0 ">Enter ratings </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter ratings </label>
           <input
             type="number"
             name="ratings"
             value={formData.ratings}
             onChange={handleChange}
             placeholder="Enter ratings in numbers eg:4.5"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
         </div>
         <div className=" flex flex-col w-2/4">
-          <label className="mt-2 mb-0 ">Enter course link </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter course link </label>
           <input
             type="text"
             name="link"
             value={formData.link}
             onChange={handleChange}
             placeholder="eg:www.udemy.com/webdev-course/"
-            className=" py-2 mb-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree  py-2 mb-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
           <label className="mt-2 mb-0 ">Enter uploaded date </label>
@@ -196,36 +196,38 @@ function Form({ formToAdmin, showAddCourseForm }) {
             className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
-          <label className="mt-2 mb-0 ">Enter duration </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter duration </label>
           <input
             type="text"
             name="duration"
             value={formData.duration}
             onChange={handleChange}
             placeholder="Enter duration eg:02:20(2hrs & 20 min)"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
-          <label className="mt-2 mb-0 ">Enter author </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter author </label>
           <input
             type="text"
             name="author"
             value={formData.author}
             onChange={handleChange}
             placeholder="Enter author"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
 
-          <label className="mt-2 mb-0 ">Enter platform </label>
+          <label className="mt-2 mb-0  font-figtree ">Enter platform </label>
           <input
             type="text"
             name="platform"
             value={formData.platform}
             onChange={handleChange}
             placeholder="Enter platform"
-            className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
           />
-          <label className=" ">Enter benefits (separate them with /)</label>
+          <label className="  font-figtree ">
+            Enter benefits (separate them with /)
+          </label>
           <div className="flex">
             <textarea
               type="text"
@@ -233,7 +235,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
               value={formData.benefits}
               onChange={handleChange}
               placeholder="eg: Benefit 1/Benefit 2"
-              className="mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
+              className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
             />
             <button
               onClick={splitBenefits}
@@ -262,23 +264,14 @@ function Form({ formToAdmin, showAddCourseForm }) {
       <div className=" flex justify-end gap-2 w-9/12 my-12">
         <button
           type="submit"
-          onClick={() => {
-            formToAdmin(!showAddCourseForm);
-          }}
-          className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-red-600 hover:bg-red-600 hover:text-white transition"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-yellow-600 hover:bg-yellow-600 hover:text-white transition"
+          className=" font-figtree w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-yellow-600 hover:bg-yellow-600 hover:text-white transition ease-linear"
         >
           Clear all fields
         </button>
         <button
           type="submit"
           onClick={(e) => handleSubmit(e)}
-          className="w-2/4 px-2 py-3 bg-blue-800 rounded-md text-white"
+          className=" font-figtree w-2/4 px-2 py-3 bg-blue-800 rounded-md text-white transition-all ease-linear"
         >
           Submit
         </button>

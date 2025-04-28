@@ -1,99 +1,106 @@
-import React, { useState } from "react";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import service from "../../appwrite/config";
+function ViewCourses() {
+  const admin = useSelector((state) => state.adminauth.status);
 
-function ViewCourses({ courses }) {
-  const columns = [
-    { id: "name", label: "Name", minWidth: 170 },
-    { id: "description", label: "Description", minWidth: 100 },
-    { id: "platform", label: "Platform", minWidth: 70 },
-    { id: "author", label: "Author", minWidth: 80 },
-    { id: "price", label: "Price", minWidth: 10 },
-    { id: "link", label: "Link", minWidth: 50 },
-    { id: "image", label: "Image", minWidth: 30 },
-    { id: "uploaded", label: "Uploaded", minWidth: 100 },
-    { id: "duration", label: "Duration", minWidth: 100 },
-    { id: "keywords", label: "Keywords", minWidth: 100 },
-    { id: "wishlisted", label: "Wishlisted", minWidth: 10 },
-  ];
+  const [courses, setCourses] = useState([]);
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+  const handleAction = (id) => {
+    console.log(`Action clicked for course ID: ${id}`);
+    // Add your action logic here
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const fetchAllCourses = async () => {
+    const res = await service.getCourses();
+    if (res) setCourses(res.documents);
   };
 
-  return (
-    <div className="ml-14 mt-14 mb-20">
-      <div>
-        <Paper sx={{ width: "102%", overflow: "hidden" }}>
-          <TableContainer sx={{ maxHeight: 500 }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {courses
-                  ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.code}
-                      >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value.toString()}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={courses.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
+  useEffect(() => {
+    if (!admin) {
+      fetchAllCourses();
+    }
+  }, [admin]);
+
+  return courses.length !== 0 ? (
+    <div className="p-5 text-white">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse bg-[#0c0e20] rounded-lg overflow-hidden ">
+          <thead className=" bg-[#282697] text-[13px] ">
+            <tr className="  ">
+              <th className="font-figtree font-medium  p-5 text-left">Name</th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Description
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Platform
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">Author</th>
+              <th className="font-figtree font-medium p-5 text-left">Price</th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Category
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">Link</th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Image Id
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Duration
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Ratings
+              </th>
+              <th className="font-figtree font-medium p-5 text-left">
+                Keywords
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.map((course) => (
+              <tr
+                key={course.$id}
+                className=" text-sm hover:bg-[#28269755] transition-colors ease-linear "
+              >
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.name}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.description}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.platform}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.author}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.price}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.category}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.link.slice(0, 50)}...
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.image}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.duration}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.ratings}
+                </td>
+                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                  {course.keywords}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default ViewCourses;
