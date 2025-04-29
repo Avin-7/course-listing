@@ -61,7 +61,7 @@ const Footer = () => {
           <h1 className=" text-xl max-md:text-xl text-black font-semibold font-playwrite bg-clip-text text-transparent bg-gradient-to-r from-purple-900 to-purple-400">
             DotLib
           </h1>
-            <p className="text-sm">
+            <p className="text-sm text-gray-400 tracking-wider font-figtree">
               Empowering digital innovation through cutting-edge solutions and
               exceptional service.
             </p>
@@ -69,26 +69,26 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold font-poppins mb-4">Quick Links</h3>
             <ul className="space-y-2 flex flex-col">
-              <a href="#home" className="hover:text-blue-400 transition-colors">
+              <a href="#home" className="text-gray-400 hover:text-purple-400 transition-colors tracking-wider font-figtree">
                 Home
               </a>
               <a
                 href="#courses"
-                className="hover:text-blue-400 transition-colors"
+                className="text-gray-400 hover:text-purple-400 transition-colors tracking-wide font-figtree"
               >
                 Courses
               </a>
               <Link
                 to={"/wishlist"}
-                className="hover:text-blue-400 transition-colors"
+                className="text-gray-400 hover:text-purple-400 transition-colors tracking-wide font-figtree"
               >
                 Wishlist
               </Link>
               <a
                 href="#about"
-                className="hover:text-blue-400 transition-colors"
+                className="text-gray-400 hover:text-purple-400 transition-colors tracking-wide font-figtree"
               >
                 About
               </a>
@@ -97,26 +97,26 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-semibold font-poppins mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
-                <FaEnvelope className="text-blue-400" />
-                <span>dotlibplatform@gmail.com</span>
+                <FaEnvelope className="text-purple-400" />
+                <span className=" font-figtree tracking-wider text-gray-400">dotlibplatform@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
-                <FaPhone className="text-blue-400" />
-                <span>+91 7204149678</span>
+                <FaPhone className="text-purple-400" />
+                <span className=" font-figtree tracking-wider text-gray-400">+91 7204149678</span>
               </li>
               <li className="flex items-center gap-2">
-                <FaMapMarkerAlt className="text-blue-400" />
-                <span>574227 Moodabidri, Mangalore, India</span>
+                <FaMapMarkerAlt className="text-purple-400" />
+                <span className=" font-figtree tracking-wider text-gray-400">574227 Moodabidri, Mangalore, India</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter Signup */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">
+            <h3 className="text-lg font-poppins font-semibold mb-4">
               Subscribe for Updates
             </h3>
             <div className="space-y-4">
@@ -125,14 +125,14 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full font-figtree px-4 py-2 bg-gray-800 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
               {emailError && (
                 <p className="text-red-400 text-sm">{emailError}</p>
               )}
               <button
                 onClick={handleSubscribe}
-                className="w-full bg-blue-500 hover:bg-blue-600 transition-colors py-2 rounded font-medium"
+                className="w-full bg-purple-500 hover:bg-purple-600 transition-colors py-2 rounded font-medium font-figtree"
               >
                 Subscribe
               </button>
@@ -153,7 +153,7 @@ const Footer = () => {
                 <button
                   key={label}
                   aria-label={label}
-                  className="text-2xl hover:text-blue-400 transition-colors"
+                  className="text-xl hover:text-purple-400 transition-colors ease-linear"
                 >
                   <Icon />
                 </button>
@@ -166,7 +166,7 @@ const Footer = () => {
                 (link) => (
                   <button
                     key={link}
-                    className="hover:text-blue-400 transition-colors"
+                    className="font-figtree tracking-wider hover:text-purple-400 transition-colors ease-linear"
                   >
                     {link}
                   </button>
@@ -176,7 +176,7 @@ const Footer = () => {
           </div>
 
           {/* Copyright Notice */}
-          <div className="mt-8 text-center text-sm text-gray-400">
+          <div className="mt-8 text-center text-sm text-gray-400 font-poppins tracking-wider">
             © {new Date().getFullYear()} DotLib. All rights reserved.
           </div>
         </div>

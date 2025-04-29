@@ -24,16 +24,15 @@ function Hero() {
         <section className="relative">
           <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-28 md:px-8">
             <div className="space-y-5 max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl max-md:text-4xl text-white font-extrabold mx-auto md:text-5xl">
-                No more jumping <br />
-                between platforms
+              <h2 className="text-xl max-md:text-4xl text-purple-200 font-bold font-DMsans leading-8 tracking-wide mx-auto md:text-6xl">
+                No more jumping between <span className=" text-transparent bg-clip-text bg-gradient-to-br from-purple-700  via-purple-100 to-purple-500"> platforms</span>
               </h2>
-              <p className="max-w-2xl mx-auto text-gray-400">
+              <p className="max-w-2xl mx-auto font-figtree text-gray-400 tracking-wide">
                 find everything you need right here for focused, <br />
                 hassle-free learning.
               </p>
 
-              <div className="flex justify-center items-center gap-x-4 text-gray-400 text-sm">
+              <div className="flex justify-center items-center gap-x-4 text-gray-400 tracking-wide text-sm">
                 <span className=" flex gap-0.5 text-sm">
                   <img src={fullStar} alt="" className="size-3" />
                   <img src={fullStar} alt="" className="size-3" />
@@ -49,7 +48,7 @@ function Hero() {
                   </svg>
                 </span>
                 <p>
-                  <span className="text-gray-100">4.0</span> by over 200 users
+                  <span className="text-gray-100 tracking-wide font-figtree">4.0</span> by over 200 users
                 </p>
               </div>
             </div>
