@@ -17,12 +17,12 @@ function ViewCourses() {
   };
 
   useEffect(() => {
-    if (!admin) {
+    if (admin) {
       fetchAllCourses();
     }
   }, [admin]);
 
-  return courses.length !== 0 ? (
+  return courses ? (
     <div className="p-5 text-white">
       <div className="overflow-x-auto">
         <table className="w-full border-collapse bg-[#0c0e20] rounded-lg overflow-hidden ">
@@ -100,7 +100,9 @@ function ViewCourses() {
         </table>
       </div>
     </div>
-  ) : null;
+  ) : (
+    <div>No results found</div>
+  );
 }
 
 export default ViewCourses;

@@ -195,7 +195,7 @@ function Filter() {
                   </button>
                   <button
                     className="text-sm text-purple-400 hover:text-purple-300 ease-linear transition-all p-0.5 "
-                    value="DSA"
+                    value="dsa"
                     onClick={(e) => {
                       setFilterBy(
                         keepSingleProp(filterBy, "category", e.target.value)
