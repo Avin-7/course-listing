@@ -41,10 +41,10 @@ function AboutUs() {
   return (
     <div className="min-h-screen bg-gray-900" id="about">
       <section
-        className="py-20 px-20 max-md:px-12 "
+        className="py-20 px-20 max-md:px-12 max-sm:px-2"
         data-aos="fade-up"
       >
-        <div className=" border border-purple-500 bg-[#220b2c57] m-6 p-16 rounded-xl">
+        <div className=" border border-purple-500 bg-[#220b2c57] m-6 max-md:m-2 p-16 rounded-xl">
           <h2 className="text-4xl max-lg:text-2xl font-semibold font-poppins  tracking-wide text-center mb-16 text-gray-300 ">
             Our Mission
           </h2>
