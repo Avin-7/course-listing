@@ -28,10 +28,15 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [publicId, setPublicId] = useState("");
 
   const handleChange = (e) => {
-    if (e.target.name == "ratings" || e.target.name == "price" ) {
+    if (e.target.name == "ratings") {
       setFormData({
         ...formData,
         [e.target.name]: Number.parseFloat(e.target.value),
+      });
+    } else if (e.target.name == "price") {
+      setFormData({
+        ...formData,
+        [e.target.name]: Number.parseInt(e.target.value),
       });
     } else {
       setFormData({
