@@ -28,7 +28,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
   const [publicId, setPublicId] = useState("");
 
   const handleChange = (e) => {
-    if (e.target.name == "ratings") {
+    if (e.target.name == "ratings" || e.target.name == "price" ) {
       setFormData({
         ...formData,
         [e.target.name]: Number.parseFloat(e.target.value),
