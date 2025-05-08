@@ -129,8 +129,8 @@ function CourseDetails({ course }) {
   };
   return (
     <>
-      <div className=" px-11 max-lg:p-6 w-full flex sm:p-12 bg-neutral-900">
-        <div className=" max-lg:hidden w-1/2 p-20 pb-28 mt-12">
+      <div className= " min-h-screen px-11 max-lg:p-6 w-full flex sm:p-12 bg-neutral-900">
+        <div className=" max-lg:hidden w-1/2 pt-6 px-20 pb-28  mt-12">
           <div>
             <h1 className="text-gray-400  text-4xl font-DMsan font-semibold text mb-4">
               {course.name}
