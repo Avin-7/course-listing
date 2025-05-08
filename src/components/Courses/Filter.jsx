@@ -156,7 +156,7 @@ function Filter() {
                   </button>
                   <button
                     className="text-sm text-purple-400 hover:text-purple-300 ease-linear transition-all p-0.5 "
-                    value="react"
+                    value="react js"
                     onClick={(e) => {
                       setFilterBy(
                         keepSingleProp(filterBy, "topic", e.target.value)
