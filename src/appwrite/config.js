@@ -81,7 +81,7 @@ export class Service {
       return await this.database.listDocuments(
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
-        [Query.equal("topic", val)]
+        [Query.equal("keywords", val)]
       );
     } catch (error) {
       console.log("Appwrite service :: getCourseByTopic :: error " + error);
