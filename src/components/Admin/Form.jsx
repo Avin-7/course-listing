@@ -5,6 +5,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 import CloudinaryUploadWidget from "../Cloudinary/CloudinaryUploadWidget";
 
+import { toast, Bounce } from "react-toastify";
 function Form({ formToAdmin, showAddCourseForm }) {
   /**
    **States which manages the form inputs....
@@ -61,9 +62,31 @@ function Form({ formToAdmin, showAddCourseForm }) {
     try {
       if (publicId) {
         const res = await service.uploadData(formData);
-        if (res) console.log(res);
+        if (res)
+          toast.success("Data added successfully!!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
       }
     } catch (error) {
+      toast.error("Something went wrong!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
       console.log("Error :: handleSubmit : Form.jsx" + error);
     }
   };

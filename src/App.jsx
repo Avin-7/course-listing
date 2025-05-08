@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import conf from "./conf/conf";
 import { login, logout, storeWishlist } from "./store/authSlice";
 import { adminlogin } from "./store/adminSlice";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
@@ -88,6 +88,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <Outlet />
     </>
   );
