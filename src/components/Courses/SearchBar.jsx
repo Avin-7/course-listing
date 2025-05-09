@@ -48,7 +48,7 @@ function SearchBar() {
           future={{
             preserveSharedStateOnUnmount: true,
           }}
-          indexName="data"
+          indexName="courses"
         >
           <div className=" flex relative">
             <SearchBox
