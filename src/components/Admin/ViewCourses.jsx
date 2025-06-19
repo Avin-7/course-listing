@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import service from "../../appwrite/config";
+import { useQuery } from "@tanstack/react-query";
 function ViewCourses() {
-  const admin = useSelector((state) => state.adminauth.status);
-
-  const [courses, setCourses] = useState([]);
-
-  const handleAction = (id) => {
-    console.log(`Action clicked for course ID: ${id}`);
-    // Add your action logic here
-  };
-
   const fetchAllCourses = async () => {
-    const res = await service.getCourses();
-    if (res) setCourses(res.documents);
+    try {
+      const res = await service.getCourses();
+      return res.documents;
+    } catch (error) {}
   };
 
-  useEffect(() => {
-    if (admin) {
-      fetchAllCourses();
-    }
-  }, [admin]);
+  const {
+    data: courses,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["courses"],
+    queryFn: fetchAllCourses,
+    refetchOnWindowFocus: false,
+  });
+
+  if (isLoading) return <div className=" text-white">Loading...</div>;
+
+  if (error) return <div className=" text-white">Something went wrong</div>;
 
   return courses ? (
     <div className="p-5 text-white">
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto h-[550px]">
         <table className="w-full border-collapse bg-[#0c0e20] rounded-lg overflow-hidden ">
           <thead className=" bg-[#282697] text-[13px] ">
             <tr className="  ">
@@ -61,7 +62,7 @@ function ViewCourses() {
                 key={course.$id}
                 className=" text-sm hover:bg-[#28269755] transition-colors ease-linear "
               >
-                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                <td className="font-figtree font-medium p-2 text-left border-b-[1px] border-[#28269755]">
                   {course.name}
                 </td>
                 <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
@@ -79,7 +80,7 @@ function ViewCourses() {
                 <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
                   {course.category}
                 </td>
-                <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
+                <td className="font-figtree font-medium text-left border-b-[1px] border-[#28269755]">
                   {course.link.slice(0, 50)}...
                 </td>
                 <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
@@ -92,7 +93,11 @@ function ViewCourses() {
                   {course.ratings}
                 </td>
                 <td className="font-figtree font-medium p-5 text-left border-b-[1px] border-[#28269755]">
-                  {course.keywords}
+                  <ul className=" list-none">
+                    {course.keywords.map((keyword, index) => (
+                      <li key={index}>{keyword}</li>
+                    ))}
+                  </ul>
                 </td>
               </tr>
             ))}

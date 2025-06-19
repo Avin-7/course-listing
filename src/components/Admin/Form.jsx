@@ -5,17 +5,32 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 import CloudinaryUploadWidget from "../Cloudinary/CloudinaryUploadWidget";
 
-import { toast, Bounce } from "react-toastify";
-function Form({ formToAdmin, showAddCourseForm }) {
+import { toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
+
+function Form() {
   /**
    **States which manages the form inputs....
    */
+
+  const [publicId, setPublicId] = useState("");
+  const [allKeywords, setAllKeywords] = useState({
+    K1: "",
+    K2: "",
+    K3: "",
+  });
+
+  const [allBenefits, setAllBenefits] = useState({
+    B1: "",
+    B2: "",
+    B3: "",
+  });
 
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     category: "",
-    keywords: "",
+    keywords: [],
     link: "",
     uploaded: "",
     duration: "",
@@ -23,10 +38,43 @@ function Form({ formToAdmin, showAddCourseForm }) {
     platform: "",
     image: "",
     price: 0,
-    benefits: "",
+    benefits: [],
     ratings: 4.0,
   });
-  const [publicId, setPublicId] = useState("");
+
+  const saveAllKeywords = (e) => {
+    let allKeywordsArray = Object.values(allKeywords);
+    allKeywordsArray = allKeywordsArray.filter((item) => item.length > 1);
+    setFormData((prev) => {
+      return { ...prev, keywords: allKeywordsArray };
+    });
+  };
+  const saveAllBenefits = (e) => {
+    let allBenefitsArray = Object.values(allBenefits);
+    allBenefitsArray = allBenefitsArray.filter((item) => item.length > 1);
+    setFormData((prev) => {
+      return { ...prev, benefits: allBenefitsArray };
+    });
+  };
+
+  const clearAllFields = () => {
+    setFormData({
+      name: "",
+      description: "",
+      category: "",
+      keywords: [],
+      link: "",
+      uploaded: "",
+      duration: "",
+      author: "",
+      platform: "",
+      image: "",
+      price: 0,
+      benefits: [],
+      ratings: 4.0,
+    });
+    setPublicId("");
+  };
 
   const handleChange = (e) => {
     if (e.target.name == "ratings") {
@@ -57,55 +105,26 @@ function Form({ formToAdmin, showAddCourseForm }) {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const uploadCourseData = async () => {
     try {
       if (publicId) {
         const res = await service.uploadData(formData);
-        if (res)
-          toast.success("Data added successfully!!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-          });
+        if (res) toast.success("Data added successfully!!");
       }
     } catch (error) {
-      toast.error("Something went wrong!!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
+      toast.error("Something went wrong!!");
       console.log("Error :: handleSubmit : Form.jsx" + error);
     }
   };
 
-  const splitKeywords = () => {
-    const allKeywords = formData.keywords.split("/");
-    setFormData({
-      ...formData,
-      keywords: allKeywords,
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    uploadCourseDataMutation();
   };
 
-  const splitBenefits = () => {
-    const allBenefits = formData.benefits.split("/");
-    setFormData({
-      ...formData,
-      benefits: allBenefits,
-    });
-  };
+  const { mutate: uploadCourseDataMutation } = useMutation({
+    mutationFn: uploadCourseData,
+  });
 
   const cloudName = "dxigz92ht";
   const uploadPreset = "aoh4ghnb";
@@ -133,10 +152,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <form
-        className="text-white flex justify-center align-middle gap-2 w-10/12"
-        onSubmit={handleSubmit}
-      >
+      <form className="text-white flex justify-center align-middle gap-2 w-10/12">
         <div className=" flex flex-col w-2/4">
           <label className="mt-2 mb-0  font-figtree ">Enter name </label>
           <input
@@ -168,6 +184,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="mt-2 mb-0  font-figtree ">
             Enter keywords ( separate them with / )
           </label>
+          {/*
           <div className="flex ">
             <input
               type="text"
@@ -182,6 +199,45 @@ function Form({ formToAdmin, showAddCourseForm }) {
               className=" font-figtree  px-2 rounded-xl m-2 bg-blue-500 hover:bg-blue-400 tracking-wide"
             >
               Add
+            </button>
+          </div>*/}
+          <div>
+            <input
+              type="text"
+              name="K1"
+              value={allKeywords.K1}
+              onChange={(e) =>
+                setAllKeywords((prev) => ({ ...prev, K1: e.target.value }))
+              }
+              placeholder="eg: frontend/database/fullstack"
+              className=" font-figtree mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            />
+            <input
+              type="text"
+              name="K2"
+              value={allKeywords.K2}
+              onChange={(e) =>
+                setAllKeywords((prev) => ({ ...prev, K2: e.target.value }))
+              }
+              placeholder="eg: frontend/database/fullstack"
+              className=" font-figtree mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            />
+            <input
+              type="text"
+              name="K3"
+              value={allKeywords.K3}
+              onChange={(e) =>
+                setAllKeywords((prev) => ({ ...prev, K3: e.target.value }))
+              }
+              placeholder="eg: frontend/database/fullstack"
+              className=" font-figtree mb-2 py-2 w-11/12 border border-sky-500 outline-none rounded-md pl-2 bg-gray-900"
+            />
+            <button
+              type="button"
+              onClick={saveAllKeywords}
+              className=" font-figtree  px-2 rounded-xl m-2 bg-blue-500 hover:bg-blue-400 tracking-wide"
+            >
+              Save
             </button>
           </div>
           <label className="mt-2 mb-0  font-figtree ">Enter price</label>
@@ -256,7 +312,7 @@ function Form({ formToAdmin, showAddCourseForm }) {
           <label className="  font-figtree ">
             Enter benefits (separate them with /)
           </label>
-          <div className="flex">
+          {/* <div className="flex">
             <textarea
               type="text"
               name="benefits"
@@ -270,6 +326,45 @@ function Form({ formToAdmin, showAddCourseForm }) {
               className=" px-2 rounded-xl m-2 h-10 bg-blue-500 hover:bg-blue-400 tracking-wide"
             >
               Add
+            </button>
+          </div> */}
+          <div className="">
+            <textarea
+              type="text"
+              name="benefit 1"
+              value={allBenefits.B1}
+              onChange={(e) =>
+                setAllBenefits((prev) => ({ ...prev, B1: e.target.value }))
+              }
+              placeholder="Benefit 1"
+              className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
+            />
+            <textarea
+              type="text"
+              name="benefit 2"
+              value={allBenefits.B2}
+              onChange={(e) =>
+                setAllBenefits((prev) => ({ ...prev, B2: e.target.value }))
+              }
+              placeholder="Benefit 2"
+              className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
+            />
+            <textarea
+              type="text"
+              name="benefit 3"
+              value={allBenefits.B3}
+              onChange={(e) =>
+                setAllBenefits((prev) => ({ ...prev, B3: e.target.value }))
+              }
+              placeholder="Benefit 3"
+              className=" font-figtree mb-2 py-2 border border-sky-500 outline-none rounded-md pl-2 w-[95%] h-32 resize-none bg-gray-900"
+            />
+            <button
+              type="button"
+              onClick={saveAllBenefits}
+              className=" px-2 rounded-xl m-2 h-10 bg-blue-500 hover:bg-blue-400 tracking-wide"
+            >
+              Save
             </button>
           </div>
           <CloudinaryUploadWidget
@@ -291,14 +386,14 @@ function Form({ formToAdmin, showAddCourseForm }) {
       </form>
       <div className=" flex justify-end gap-2 w-9/12 my-12">
         <button
-          type="submit"
+          onClick={clearAllFields}
           className=" font-figtree w-2/4 px-2 py-3 bg-transparent border border-red-600 rounded-md text-yellow-600 hover:bg-yellow-600 hover:text-white transition ease-linear"
         >
           Clear all fields
         </button>
         <button
           type="submit"
-          onClick={(e) => handleSubmit(e)}
+          onClick={handleSubmit}
           className=" font-figtree w-2/4 px-2 py-3 bg-blue-800 rounded-md text-white transition-all ease-linear"
         >
           Submit

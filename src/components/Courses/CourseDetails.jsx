@@ -1,23 +1,10 @@
 import React from "react";
-import courseImage from "../../assets/CourseImage.jpeg";
 import { PiGlobeBold } from "react-icons/pi";
-import { MdSubtitles } from "react-icons/md";
-import { PiVideoBold } from "react-icons/pi";
-import { LuClock } from "react-icons/lu";
-import service from "../../appwrite/config";
-
-import fullStar from "../../assets/fullStar.svg";
-import halfStar from "../../assets/fourPointFiveStar.svg";
-import fourPointTwoStar from "../../assets/fourPointTwoStar.svg";
-import fourPointThreeStar from "../../assets/fourPointThreeStar.svg";
-import fourPointFourStar from "../../assets/fourPointFourStar.svg";
-import fourPointSixStar from "../../assets/fourPointSixStar.svg";
-import fourPointSevenStar from "../../assets/fourPointSevenStar.svg";
-import fourPointEightStar from "../../assets/fourPointEightStar.svg";
-import fourPointNineStar from "../../assets/fourPointNineStar.svg";
-
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
+
+import { showRatings } from "../Ratings/Ratings";
+
 function CourseDetails({ course }) {
   const cloudName = "dxigz92ht";
   const cld = new Cloudinary({
@@ -25,111 +12,9 @@ function CourseDetails({ course }) {
       cloudName,
     },
   });
-  const showRatings = () => {
-    if (course.ratings == 4) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.1 || course.ratings == 4.2) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointTwoStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.3) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointThreeStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.4) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointFourStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.5) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={halfStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.6) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointSixStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.7) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointSevenStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.8) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointEightStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 4.9) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fourPointNineStar} alt="" className="size-3" />
-        </span>
-      );
-    } else if (course.ratings == 5) {
-      return (
-        <span className=" flex gap-0.5 text-sm">
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-          <img src={fullStar} alt="" className="size-3" />
-        </span>
-      );
-    }
-  };
   return (
     <>
-      <div className= " min-h-screen px-11 max-lg:p-6 w-full flex sm:p-12 bg-neutral-900">
+      <div className=" min-h-screen px-11 max-lg:p-6 w-full flex sm:p-12 bg-neutral-900">
         <div className=" max-lg:hidden w-1/2 pt-6 px-20 pb-28  mt-12">
           <div>
             <h1 className="text-gray-400  text-4xl font-DMsan font-semibold text mb-4">
@@ -139,7 +24,7 @@ function CourseDetails({ course }) {
           </div>
           <div className="flex gap-2 items-center mt-3 mb-5">
             <p className=" text-gray-300">{course.ratings}</p>
-            <span>{showRatings()}</span>
+            <span>{showRatings(course.ratings)}</span>
           </div>
           <div>
             <p className="font-figtree text-gray-400 text-lg mb-10">
@@ -174,7 +59,7 @@ function CourseDetails({ course }) {
               </p>
             </div>
           </div>
-          {course.benefits.length !== 0 ? (
+          {course.benefits?.length !== 0 ? (
             <div>
               <div className="mt-5">
                 <h1 className="font-roboto text-white text-2xl font-bold">
@@ -185,7 +70,9 @@ function CourseDetails({ course }) {
                 <ul className="list-disc p-4 font-poppins text-slate-500 ">
                   {course.benefits
                     ? course.benefits.map((item) => (
-                        <li className=" font-figtree">{item}</li>
+                        <li key={Math.random() * 20} className=" font-figtree">
+                          {item}
+                        </li>
                       ))
                     : null}
                 </ul>

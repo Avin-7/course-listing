@@ -3,11 +3,9 @@ import Google from "../../assets/Google.png";
 import authService from "../../appwrite/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login as authLogin, storeWishlist } from "../../store/authSlice";
+import { login as authLogin } from "../../store/authSlice";
 import { adminlogin } from "../../store/adminSlice";
 import conf from "../.././conf/conf";
-import validation from "../../validation";
-import service from "../../appwrite/config";
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

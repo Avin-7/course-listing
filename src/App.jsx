@@ -9,6 +9,8 @@ import conf from "./conf/conf";
 import { login, logout, storeWishlist } from "./store/authSlice";
 import { adminlogin } from "./store/adminSlice";
 import { ToastContainer } from "react-toastify";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 function App() {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.auth.status);
@@ -17,6 +19,8 @@ function App() {
   const userId = useSelector((state) => state.auth.userId);
   const wishlistId = useSelector((state) => state.auth.wishlistId);
   const [user, setUser] = useState("");
+
+  const queryClient = new QueryClient();
 
   useEffect(() => {
     if (!loginStatus) {
@@ -87,9 +91,11 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <ToastContainer />
-      <Outlet />
+      <Navbar />{" "}
+      <QueryClientProvider client={queryClient}>
+        <ToastContainer />
+        <Outlet />
+      </QueryClientProvider>
     </>
   );
 }

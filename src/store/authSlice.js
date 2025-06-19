@@ -5,7 +5,7 @@ const initialState = {
   userData: null,
   userId: null,
   wishlistId: null,
-  wishlistData: [""],
+  wishlistData: [],
 };
 
 const authSlice = createSlice({
