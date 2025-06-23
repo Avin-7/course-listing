@@ -9,6 +9,7 @@ import conf from "./conf/conf";
 import { login, logout, storeWishlist } from "./store/authSlice";
 import { adminlogin } from "./store/adminSlice";
 import { ToastContainer } from "react-toastify";
+import { Analytics } from '@vercel/analytics/react';
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 function App() {
@@ -95,6 +96,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
         <Outlet />
+        <Analytics />
       </QueryClientProvider>
     </>
   );
